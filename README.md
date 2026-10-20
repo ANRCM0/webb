@@ -48,6 +48,10 @@ bash tools/regress.sh                        # 31 路由 + 9 个弹层，输出 
 
 口径：单像素三通道累计差 > 24 记为「不同」；比对脚本 `tools/pngdiff.py`（纯标准库 PNG 解码）。
 
+## 未完成项
+
+尚未复刻/未验证的内容集中在插件页与验证维度，详见 [xboard-admin-rebuild/REPORT-REMAINING.md](xboard-admin-rebuild/REPORT-REMAINING.md)。
+
 ## 说明与边界
 
 - 上游为 MIT 许可；本仓库的重建代码在同等条件下可用。
