@@ -1,7 +1,7 @@
 import * as React from "react";
 import { useTranslation } from "react-i18next";
 import { useQuery, useQueryClient } from "@tanstack/react-query";
-import Editor from "@monaco-editor/react";
+import { MonacoEditor } from "@/components/ui/monaco-editor";
 import type { AxiosResponse } from "axios";
 import { ChevronLeft, ChevronRight, Images, Loader2, Trash2, Upload } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -539,7 +539,7 @@ function ThemeConfigDialog({
           </div>
         ) : (
           <div className="overflow-hidden rounded-md border">
-            <Editor
+            <MonacoEditor
               height="360px"
               language="json"
               theme="vs-dark"

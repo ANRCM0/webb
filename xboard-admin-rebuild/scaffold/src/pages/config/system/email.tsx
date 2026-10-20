@@ -1,5 +1,5 @@
 import * as React from "react";
-import Editor from "@monaco-editor/react";
+import { MonacoEditor } from "@/components/ui/monaco-editor";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { toast } from "sonner";
 import { LayoutBody } from "@/components/layout/layout";
@@ -555,7 +555,7 @@ function EmailTemplatesTab() {
                   <div className="space-y-2">
                     <Label>{t("email_template.content")}</Label>
                     <div className="overflow-hidden rounded-md border">
-                      <Editor
+                      <MonacoEditor
                         height="450px"
                         defaultLanguage="html"
                         value={draft.content}

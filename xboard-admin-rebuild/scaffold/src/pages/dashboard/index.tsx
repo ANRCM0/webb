@@ -35,6 +35,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Badge } from "@/components/ui/badge";
 import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import { DateRangePicker } from "@/components/ui/date-range-picker";
 import { Dialog, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { DataTable } from "@/components/data-table/data-table";
 import { Layout, LayoutBody, LayoutHeader } from "@/components/layout/layout";
@@ -119,6 +120,14 @@ function formatTimestamp(value: number | string | null | undefined, withTime = t
 /** 原件 _S(date,'yyyy-MM-dd')，用于请求参数 */
 function formatDateParam(date: Date): string {
   return `${date.getFullYear()}-${pad2(date.getMonth() + 1)}-${pad2(date.getDate())}`;
+}
+
+/** "yyyy-MM-dd" → Date（本地时区零点），非法值返回 undefined */
+function parseDateParam(value: string): Date | undefined {
+  const m = /^(\d{4})-(\d{2})-(\d{2})$/.exec(value);
+  if (!m) return undefined;
+  const date = new Date(Number(m[1]), Number(m[2]) - 1, Number(m[3]));
+  return Number.isNaN(date.getTime()) ? undefined : date;
 }
 
 function startOfDay(date: Date): Date {
@@ -500,25 +509,15 @@ function RevenueOverview() {
                 </SelectContent>
               </Select>
               {range === "custom" && (
-                <div className="flex items-center gap-1">
-                  <input
-                    type="date"
-                    aria-label={t("overview.selectDate")}
-                    value={customFrom}
-                    max={customTo}
-                    onChange={(event) => setCustomFrom(event.target.value)}
-                    className="h-9 rounded-md border border-input bg-transparent px-2 text-sm"
-                  />
-                  <span className="text-sm text-muted-foreground">-</span>
-                  <input
-                    type="date"
-                    aria-label={t("overview.selectDate")}
-                    value={customTo}
-                    min={customFrom}
-                    onChange={(event) => setCustomTo(event.target.value)}
-                    className="h-9 rounded-md border border-input bg-transparent px-2 text-sm"
-                  />
-                </div>
+                <DateRangePicker
+                  value={{ from: parseDateParam(customFrom), to: parseDateParam(customTo) }}
+                  onChange={(next) => {
+                    setCustomFrom(next?.from ? formatDateParam(next.from) : "");
+                    setCustomTo(next?.to ? formatDateParam(next.to) : "");
+                  }}
+                  placeholder={t("overview.selectTimeRange")}
+                  className="w-[240px]"
+                />
               )}
             </div>
             <Tabs value={type} onValueChange={(value) => setType(value === "count" ? "count" : "amount")}>
@@ -725,25 +724,15 @@ function TrafficRankCard({ title, icon, variant }: TrafficRankCardProps) {
               </SelectContent>
             </Select>
             {range === "custom" && (
-              <div className="flex items-center gap-1">
-                <input
-                  type="date"
-                  aria-label={t("dashboard:trafficRank.selectDateRange")}
-                  value={from}
-                  max={to}
-                  onChange={(event) => setFrom(event.target.value)}
-                  className="h-9 rounded-md border border-input bg-transparent px-2 text-sm"
-                />
-                <span className="text-sm text-muted-foreground">-</span>
-                <input
-                  type="date"
-                  aria-label={t("dashboard:trafficRank.selectDateRange")}
-                  value={to}
-                  min={from}
-                  onChange={(event) => setTo(event.target.value)}
-                  className="h-9 rounded-md border border-input bg-transparent px-2 text-sm"
-                />
-              </div>
+              <DateRangePicker
+                value={{ from: parseDateParam(from), to: parseDateParam(to) }}
+                onChange={(next) => {
+                  setFrom(next?.from ? formatDateParam(next.from) : "");
+                  setTo(next?.to ? formatDateParam(next.to) : "");
+                }}
+                placeholder={t("dashboard:trafficRank.selectDateRange")}
+                className="w-[240px]"
+              />
             )}
           </div>
         </div>

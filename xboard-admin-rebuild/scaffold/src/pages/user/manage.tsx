@@ -108,6 +108,20 @@ export interface UserRow {
   created_at?: number;
   uuid?: string;
   token?: string;
+  /* 编辑抽屉 K8t 用（可能缺失） */
+  invite_user?: { email?: string | null } | null;
+  phone_auth_enabled?: boolean;
+  phone_auth_countries?: { code: string; name: string; dial_code?: string | number }[];
+  phone_country_code?: string | null;
+  phone_default_country_code?: string | null;
+  phone_national_number?: string | null;
+  phone?: string | null;
+  commission_type?: number | null;
+  commission_rate?: number | null;
+  discount?: number | null;
+  speed_limit?: number | null;
+  device_limit?: number | null;
+  remarks?: string | null;
 }
 
 interface UserPage {
@@ -169,17 +183,72 @@ interface UserForm {
   is_staff: boolean;
 }
 
-const emptyForm: UserForm = {
-  id: null,
-  email: "",
-  transfer_enable: "",
-  expired_at: "",
-  banned: false,
-  is_admin: false,
-  is_staff: false,
-};
+function numOrNull(value: string): number | null {
+  if (value.trim() === "") return null;
+  const n = Number(value);
+  return Number.isFinite(n) ? n : null;
+}
 
-function UserDialog({
+/** 原件 K8t：编辑抽屉表单状态（数字字段用字符串以便留空） */
+interface EditUserFormState {
+  email: string;
+  invite_user_email: string;
+  country_code: string;
+  phone: string;
+  password: string;
+  balance: string;
+  commission_balance: string;
+  upload: string; // GB
+  download: string; // GB
+  total_traffic: string; // GB
+  expired_at: number | null;
+  plan_id: string;
+  commission_type: string;
+  commission_rate: string;
+  discount: string;
+  speed_limit: string;
+  device_limit: string;
+  is_admin: boolean;
+  is_staff: boolean;
+  banned: boolean;
+  remarks: string;
+}
+
+function editUserFormFromRow(row: UserRow): EditUserFormState {
+  const gb = (bytes?: number) => (bytes ? (bytes / GB).toFixed(3) : "");
+  return {
+    email: row.email ?? "",
+    invite_user_email: row.invite_user?.email ?? "",
+    country_code: row.phone_country_code || row.phone_default_country_code || "CN",
+    phone: row.phone_national_number || row.phone || "",
+    password: "",
+    balance: row.balance != null ? String(row.balance) : "",
+    commission_balance: row.commission_balance != null ? String(row.commission_balance) : "",
+    upload: gb(row.u),
+    download: gb(row.d),
+    total_traffic: gb(row.transfer_enable),
+    expired_at: row.expired_at ?? null,
+    plan_id: row.plan_id != null ? String(row.plan_id) : "null",
+    commission_type: row.commission_type != null ? String(row.commission_type) : "null",
+    commission_rate: row.commission_rate != null ? String(row.commission_rate) : "",
+    discount: row.discount != null ? String(row.discount) : "",
+    speed_limit: row.speed_limit != null ? String(row.speed_limit) : "",
+    device_limit: row.device_limit != null ? String(row.device_limit) : "",
+    is_admin: Boolean(row.is_admin),
+    is_staff: Boolean(row.is_staff),
+    banned: Boolean(row.banned),
+    remarks: row.remarks ?? "",
+  };
+}
+
+/**
+ * 原件 K8t（bundle offset 6,461,815，12,927B）：用户编辑抽屉。
+ * 字段集与原件一致：email / 邀请人邮箱 / 手机号（phone_auth_enabled 时显示国家码+号码）/
+ * 密码 / 余额 / 佣金余额 / 已用上/下行(GB) / 总流量(GB) / 到期时间（Calendar + 快捷预设）/
+ * 订阅计划 / 佣金类型(0系统/1循环/2首次) / 佣金比例(%) / 折扣(%) / 限速(Mbps) / 设备限制(台) /
+ * 管理员/员工开关 / 备注；提交时仅发送发生变化的字段（u/d/transfer_enable 按 GB→字节换算）。
+ */
+function EditUserDrawer({
   refetch,
   defaultValues,
   trigger,
@@ -191,88 +260,343 @@ function UserDialog({
   const { t } = useTranslation(["user", "common"]);
   const [open, setOpen] = React.useState(false);
   const [busy, setBusy] = React.useState(false);
-  const [form, setForm] = React.useState<UserForm>(emptyForm);
+  const [form, setForm] = React.useState<EditUserFormState>(() => editUserFormFromRow(defaultValues));
+  const [plans, setPlans] = React.useState<PlanOption[]>([]);
+  const [errors, setErrors] = React.useState<{ email?: string }>({});
+
+  const phoneEnabled = Boolean(defaultValues.phone_auth_enabled);
+  const countries = defaultValues.phone_auth_countries ?? [];
 
   React.useEffect(() => {
     if (!open) return;
-    setForm({
-      id: defaultValues.id,
-      email: defaultValues.email ?? "",
-      transfer_enable: defaultValues.transfer_enable
-        ? (defaultValues.transfer_enable / GB).toFixed(2)
-        : "",
-      expired_at: defaultValues.expired_at ? String(defaultValues.expired_at) : "",
-      banned: Boolean(defaultValues.banned),
-      is_admin: Boolean(defaultValues.is_admin),
-      is_staff: Boolean(defaultValues.is_staff),
-    });
+    setForm(editUserFormFromRow(defaultValues));
+    setErrors({});
+    fetchPlans()
+      .then((body) => setPlans(body.data ?? []))
+      .catch(() => setPlans([]));
   }, [open, defaultValues]);
+
+  const set = (patch: Partial<EditUserFormState>) => setForm((prev) => ({ ...prev, ...patch }));
+
+  const expirePresets: { key: string; apply: () => number | null }[] = [
+    {
+      key: "expire_time_today",
+      apply: () => {
+        const now = new Date();
+        now.setHours(23, 59, 59, 999);
+        return Math.floor(now.getTime() / 1000);
+      },
+    },
+    { key: "expire_time_permanent", apply: () => null },
+    {
+      key: "expire_time_1month",
+      apply: () => Math.floor(Date.now() / 1000) + 30 * 86400,
+    },
+    {
+      key: "expire_time_3months",
+      apply: () => Math.floor(Date.now() / 1000) + 90 * 86400,
+    },
+  ];
+
+  const submit = async () => {
+    if (!form.email.trim()) {
+      setErrors({ email: t("edit.form.email", { defaultValue: "邮箱" }) + " *" });
+      return;
+    }
+    setErrors({});
+    setBusy(true);
+    try {
+      const pristine = editUserFormFromRow(defaultValues);
+      const body: Record<string, unknown> = { id: defaultValues.id };
+      if (form.email !== pristine.email) body.email = form.email;
+      if (form.invite_user_email !== pristine.invite_user_email) {
+        body.invite_user_email = form.invite_user_email.trim() ? form.invite_user_email.trim() : null;
+      }
+      if (phoneEnabled) {
+        if (form.country_code !== pristine.country_code) body.country_code = form.country_code;
+        if (form.phone !== pristine.phone) body.phone = form.phone.trim() ? form.phone.trim() : null;
+      }
+      if (form.password) body.password = form.password;
+      const balance = numOrNull(form.balance);
+      if (balance !== (defaultValues.balance ?? null)) body.balance = balance;
+      const commissionBalance = numOrNull(form.commission_balance);
+      if (commissionBalance !== (defaultValues.commission_balance ?? null)) {
+        body.commission_balance = commissionBalance;
+      }
+      if (form.upload !== pristine.upload) body.u = Math.round(1024 * parseFloat(form.upload || "0") * 1024 * 1024);
+      if (form.download !== pristine.download) body.d = Math.round(1024 * parseFloat(form.download || "0") * 1024 * 1024);
+      if (form.total_traffic !== pristine.total_traffic) {
+        body.transfer_enable = Math.round(1024 * parseFloat(form.total_traffic || "0") * 1024 * 1024);
+      }
+      if (form.expired_at !== pristine.expired_at) body.expired_at = form.expired_at;
+      if (form.plan_id !== pristine.plan_id) body.plan_id = form.plan_id === "null" ? null : Number(form.plan_id);
+      if (form.commission_type !== pristine.commission_type) {
+        body.commission_type = form.commission_type === "null" ? null : Number(form.commission_type);
+      }
+      const rate = numOrNull(form.commission_rate);
+      if (rate !== (defaultValues.commission_rate ?? null)) body.commission_rate = rate;
+      const discount = numOrNull(form.discount);
+      if (discount !== (defaultValues.discount ?? null)) body.discount = discount;
+      const speed = numOrNull(form.speed_limit);
+      if (speed !== (defaultValues.speed_limit ?? null)) body.speed_limit = speed;
+      const device = numOrNull(form.device_limit);
+      if (device !== (defaultValues.device_limit ?? null)) body.device_limit = device;
+      if (form.is_admin !== pristine.is_admin) body.is_admin = form.is_admin ? 1 : 0;
+      if (form.is_staff !== pristine.is_staff) body.is_staff = form.is_staff ? 1 : 0;
+      if (form.banned !== pristine.banned) body.banned = form.banned ? 1 : 0;
+      if (form.remarks !== pristine.remarks) body.remarks = form.remarks.trim() ? form.remarks : null;
+      await updateUser(body);
+      toast.success(t("edit.form.success", { defaultValue: "修改成功" }));
+      setOpen(false);
+      refetch();
+    } catch {
+      toast.error(t("messages.failed", { defaultValue: "操作失败" }));
+    } finally {
+      setBusy(false);
+    }
+  };
+
+  const numberField = (
+    label: string,
+    value: string,
+    onChange: (v: string) => void,
+    placeholder: string,
+    suffix?: string,
+  ) => (
+    <div className="grid gap-2 md:grid-cols-2">
+      <div className="space-y-1.5">
+        <label className="text-sm font-medium leading-none">{label}</label>
+        <div className="flex">
+          <Input
+            type="number"
+            value={value}
+            placeholder={placeholder}
+            onChange={(e) => onChange(e.target.value)}
+            className="rounded-r-none font-mono text-xs"
+          />
+          {suffix ? (
+            <div className="z-[-1] flex items-center rounded-md rounded-l-none border border-l-0 border-input px-3 py-1 text-xs text-muted-foreground shadow-sm">
+              {suffix}
+            </div>
+          ) : null}
+        </div>
+      </div>
+    </div>
+  );
 
   return (
     <Dialog open={open} onOpenChange={setOpen}>
-      {trigger ? <DialogTrigger asChild>{trigger}</DialogTrigger> : null}
-      <DialogContent className="max-w-lg">
+      <DialogTrigger asChild>{trigger}</DialogTrigger>
+      <DialogContent className="max-w-[90%] space-y-4">
         <DialogHeader>
-          <DialogTitle>{t("columns.actions_menu.edit", { defaultValue: "编辑用户" })}</DialogTitle>
+          <DialogTitle>{t("edit.title", { defaultValue: "编辑用户" })}</DialogTitle>
         </DialogHeader>
-        <div className="space-y-3">
-          <div className="space-y-1">
-            <label className="text-xs uppercase tracking-wider text-muted-foreground">
-              {t("columns.email", { defaultValue: "邮箱" })}
-            </label>
-            <Input value={form.email} onChange={(e) => setForm({ ...form, email: e.target.value })} />
-          </div>
-          <div className="space-y-1">
-            <label className="text-xs uppercase tracking-wider text-muted-foreground">
-              {t("columns.total_traffic", { defaultValue: "总流量" })} (GB)
-            </label>
+        <div className="space-y-4">
+          <div className="space-y-1.5">
+            <label className="text-sm font-medium leading-none">{t("edit.form.email")}</label>
             <Input
-              type="number"
-              value={form.transfer_enable}
-              onChange={(e) => setForm({ ...form, transfer_enable: e.target.value })}
+              value={form.email}
+              placeholder={t("edit.form.email_placeholder")}
+              autoComplete="username"
+              onChange={(e) => set({ email: e.target.value })}
+            />
+            {errors.email ? <p className="text-[0.8rem] font-medium text-destructive">{errors.email}</p> : null}
+          </div>
+          <div className="space-y-1.5">
+            <label className="text-sm font-medium leading-none">{t("edit.form.inviter_email")}</label>
+            <Input
+              value={form.invite_user_email}
+              placeholder={t("edit.form.inviter_email_placeholder")}
+              autoComplete="off"
+              name="invite_user_email"
+              onChange={(e) => set({ invite_user_email: e.target.value })}
             />
           </div>
+          {phoneEnabled ? (
+            <div className="grid gap-2 md:grid-cols-[10rem_1fr]">
+              <div className="space-y-1.5">
+                <label className="text-sm font-medium leading-none">{t("edit.form.phone_country")}</label>
+                <Select value={form.country_code} onValueChange={(v) => set({ country_code: v })} disabled={countries.length <= 1}>
+                  <SelectTrigger>
+                    <SelectValue />
+                  </SelectTrigger>
+                  <SelectContent>
+                    {countries.map((c) => (
+                      <SelectItem key={c.code} value={c.code}>
+                        {c.name} +{c.dial_code}
+                      </SelectItem>
+                    ))}
+                  </SelectContent>
+                </Select>
+              </div>
+              <div className="space-y-1.5">
+                <label className="text-sm font-medium leading-none">{t("edit.form.phone")}</label>
+                <Input
+                  value={form.phone}
+                  placeholder={t("edit.form.phone_placeholder")}
+                  autoComplete="tel-national"
+                  onChange={(e) => set({ phone: e.target.value })}
+                />
+              </div>
+            </div>
+          ) : null}
+          <div className="space-y-1.5">
+            <label className="text-sm font-medium leading-none">{t("edit.form.password")}</label>
+            <Input
+              type="password"
+              value={form.password}
+              placeholder={t("edit.form.password_placeholder")}
+              autoComplete="new-password"
+              onChange={(e) => set({ password: e.target.value })}
+            />
+          </div>
+          <div className="grid gap-2 md:grid-cols-2">
+            {numberField(t("edit.form.balance"), form.balance, (v) => set({ balance: v }), t("edit.form.balance_placeholder"))}
+            {numberField(
+              t("edit.form.commission_balance"),
+              form.commission_balance,
+              (v) => set({ commission_balance: v }),
+              t("edit.form.commission_balance_placeholder"),
+            )}
+          </div>
+          <div className="grid gap-2 md:grid-cols-2">
+            {numberField(t("edit.form.upload"), form.upload, (v) => set({ upload: v }), t("edit.form.upload_placeholder"), "GB")}
+            {numberField(t("edit.form.download"), form.download, (v) => set({ download: v }), t("edit.form.download_placeholder"), "GB")}
+          </div>
+          <div className="grid gap-2 md:grid-cols-2">
+            {numberField(
+              t("edit.form.total_traffic"),
+              form.total_traffic,
+              (v) => set({ total_traffic: v }),
+              t("edit.form.total_traffic_placeholder"),
+              "GB",
+            )}
+            <div className="space-y-1.5">
+              <label className="text-sm font-medium leading-none">{t("edit.form.expire_time")}</label>
+              <Popover>
+                <PopoverTrigger asChild>
+                  <Button variant="outline" className="h-9 w-full justify-start gap-2 font-normal">
+                    <CalendarIcon className="size-4 text-muted-foreground" />
+                    {form.expired_at ? (
+                      <span className="font-mono text-xs">
+                        {formatDateTime(form.expired_at, "yyyy-MM-dd HH:mm")}
+                      </span>
+                    ) : (
+                      <span className="text-muted-foreground">{t("edit.form.expire_time_permanent")}</span>
+                    )}
+                  </Button>
+                </PopoverTrigger>
+                <PopoverContent className="w-auto p-0" align="start">
+                  <div className="flex flex-wrap gap-1 border-b p-2">
+                    {expirePresets.map((preset) => (
+                      <Button
+                        key={preset.key}
+                        size="sm"
+                        variant="outline"
+                        className="h-7 px-2 text-xs"
+                        onClick={() => set({ expired_at: preset.apply() })}
+                      >
+                        {t(`edit.form.${preset.key}`)}
+                      </Button>
+                    ))}
+                  </div>
+                  <Calendar
+                    mode="single"
+                    selected={form.expired_at ? new Date(form.expired_at * 1000) : undefined}
+                    onSelect={(date) => set({ expired_at: date ? Math.floor(date.getTime() / 1000) : null })}
+                    initialFocus
+                  />
+                </PopoverContent>
+              </Popover>
+            </div>
+          </div>
+          <div className="grid gap-2 md:grid-cols-2">
+            <div className="space-y-1.5">
+              <label className="text-sm font-medium leading-none">{t("edit.form.subscription")}</label>
+              <Select value={form.plan_id} onValueChange={(v) => set({ plan_id: v })}>
+                <SelectTrigger>
+                  <SelectValue placeholder={t("edit.form.subscription_none")} />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="null">{t("edit.form.subscription_none")}</SelectItem>
+                  {plans.map((plan) => (
+                    <SelectItem key={plan.id} value={String(plan.id)}>
+                      {plan.name}
+                    </SelectItem>
+                  ))}
+                </SelectContent>
+              </Select>
+            </div>
+            <div className="space-y-1.5">
+              <label className="text-sm font-medium leading-none">{t("edit.form.commission_type")}</label>
+              <Select value={form.commission_type} onValueChange={(v) => set({ commission_type: v })}>
+                <SelectTrigger>
+                  <SelectValue />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="null">{t("edit.form.commission_type_system")}</SelectItem>
+                  <SelectItem value="1">{t("edit.form.commission_type_cycle")}</SelectItem>
+                  <SelectItem value="2">{t("edit.form.commission_type_onetime")}</SelectItem>
+                </SelectContent>
+              </Select>
+            </div>
+          </div>
+          <div className="grid gap-2 md:grid-cols-2">
+            {numberField(
+              t("edit.form.commission_rate"),
+              form.commission_rate,
+              (v) => set({ commission_rate: v }),
+              t("edit.form.commission_rate_placeholder"),
+              "%",
+            )}
+            {numberField(t("edit.form.discount"), form.discount, (v) => set({ discount: v }), t("edit.form.discount_placeholder"), "%")}
+          </div>
+          <div className="grid gap-2 md:grid-cols-2">
+            {numberField(
+              t("edit.form.speed_limit"),
+              form.speed_limit,
+              (v) => set({ speed_limit: v }),
+              t("edit.form.speed_limit_placeholder"),
+              "Mbps",
+            )}
+            {numberField(
+              t("edit.form.device_limit"),
+              form.device_limit,
+              (v) => set({ device_limit: v }),
+              t("edit.form.device_limit_placeholder"),
+              "台",
+            )}
+          </div>
           <div className="flex flex-wrap items-center gap-6">
-            <div className="flex items-center gap-2">
-              <Switch checked={form.banned} onCheckedChange={(v: boolean) => setForm({ ...form, banned: v })} />
-              <span className="text-sm">{t("columns.status_text.banned", { defaultValue: "禁用" })}</span>
+            <div className="space-y-1.5">
+              <label className="text-sm font-medium leading-none">{t("edit.form.account_status")}</label>
+              <Switch checked={form.banned} onCheckedChange={(v: boolean) => set({ banned: v })} />
             </div>
             <div className="flex items-center gap-2">
-              <Switch checked={form.is_admin} onCheckedChange={(v: boolean) => setForm({ ...form, is_admin: v })} />
-              <span className="text-sm">{t("columns.is_admin", { defaultValue: "管理员" })}</span>
+              <Switch checked={form.is_admin} onCheckedChange={(v: boolean) => set({ is_admin: v })} />
+              <span className="text-sm">{t("edit.form.is_admin")}</span>
             </div>
             <div className="flex items-center gap-2">
-              <Switch checked={form.is_staff} onCheckedChange={(v: boolean) => setForm({ ...form, is_staff: v })} />
-              <span className="text-sm">{t("columns.is_staff", { defaultValue: "员工" })}</span>
+              <Switch checked={form.is_staff} onCheckedChange={(v: boolean) => set({ is_staff: v })} />
+              <span className="text-sm">{t("edit.form.is_staff")}</span>
             </div>
+          </div>
+          <div className="space-y-1.5">
+            <label className="text-sm font-medium leading-none">{t("edit.form.remarks")}</label>
+            <Textarea
+              className="h-24"
+              value={form.remarks}
+              placeholder={t("edit.form.remarks_placeholder")}
+              onChange={(e) => set({ remarks: e.target.value })}
+            />
           </div>
         </div>
         <DialogFooter className="gap-2">
-          <Button variant="ghost" onClick={() => setOpen(false)} disabled={busy}>
-            {t("common:cancel", { defaultValue: "取消" })}
+          <Button variant="outline" onClick={() => setOpen(false)} disabled={busy}>
+            {t("edit.form.cancel")}
           </Button>
-          <Button
-            disabled={busy}
-            onClick={async () => {
-              setBusy(true);
-              try {
-                await updateUser({
-                  id: form.id,
-                  email: form.email,
-                  transfer_enable: form.transfer_enable ? Math.round(Number(form.transfer_enable) * GB) : 0,
-                  banned: form.banned ? 1 : 0,
-                  is_admin: form.is_admin ? 1 : 0,
-                  is_staff: form.is_staff ? 1 : 0,
-                });
-                toast.success(t("messages.success", { defaultValue: "操作成功" }));
-                setOpen(false);
-                refetch();
-              } finally {
-                setBusy(false);
-              }
-            }}
-          >
-            {t("common:submit", { defaultValue: "提交" })}
+          <Button type="submit" disabled={busy} onClick={() => void submit()}>
+            {busy ? t("common:submitting", { defaultValue: "提交中..." }) : t("edit.form.submit")}
           </Button>
         </DialogFooter>
       </DialogContent>
@@ -1069,7 +1393,7 @@ export default function UserManage() {
               </DropdownMenuTrigger>
               <DropdownMenuContent align="end" className="w-44">
                 <DropdownMenuItem onSelect={(e) => e.preventDefault()}>
-                  <UserDialog
+                  <EditUserDrawer
                     refetch={refetch}
                     defaultValues={row.original}
                     trigger={

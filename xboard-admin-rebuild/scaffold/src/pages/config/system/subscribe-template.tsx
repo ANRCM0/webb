@@ -1,4 +1,4 @@
-import Editor from "@monaco-editor/react";
+import { MonacoEditor } from "@/components/ui/monaco-editor";
 import { LayoutBody } from "@/components/layout/layout";
 import { UserNav } from "@/components/layout/header-widgets";
 import { Field, SettingsSection } from "@/components/settings/settings";
@@ -61,7 +61,7 @@ export default function ConfigSystemSubscribeTemplate() {
                               label={t(`subscribe_template.${tab.key}.title`)}
                               description={t(`subscribe_template.${tab.key}.description`)}
                             >
-                              <Editor
+                              <MonacoEditor
                                 height="500px"
                                 defaultLanguage={tab.language}
                                 value={asString(values[fieldName(tab.key)])}

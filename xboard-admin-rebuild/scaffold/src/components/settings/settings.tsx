@@ -40,16 +40,19 @@ export function SettingsSection({
   );
 }
 
-/** 字段行：label + description + 控件（原件设置项统一为此布局） */
+/**
+ * 字段行：label + description + 控件。
+ * 原件设置类页面（safe/subscribe/invite/server/email/telegram/app/site）的字段容器为
+ * `<div className="space-y-2"><Label className="text-base"/><p className="text-[0.8rem]"/>
+ * <control/></div>`：无 padding，仅上下 8px gap。
+ */
 export function Field({
   label, description, children,
 }: { label: string; description?: string; children: React.ReactNode }) {
   return (
-    <div className="grid gap-2 py-3 md:grid-cols-[minmax(0,1fr)_minmax(0,360px)] md:items-center md:gap-6">
-      <div>
-        <Label>{label}</Label>
-        {description && <p className="mt-1 text-xs text-muted-foreground">{description}</p>}
-      </div>
+    <div className="space-y-2">
+      <Label className="text-base font-medium">{label}</Label>
+      {description && <p className="text-[0.8rem] text-muted-foreground">{description}</p>}
       <div>{children}</div>
     </div>
   );

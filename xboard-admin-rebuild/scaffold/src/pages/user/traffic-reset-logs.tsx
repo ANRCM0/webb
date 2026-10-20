@@ -26,6 +26,7 @@ import { Badge } from "@/components/ui/badge";
 import { Input } from "@/components/ui/input";
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import { DateRangePicker } from "@/components/ui/date-range-picker";
 import {
   SECURE,
   apiGet,
@@ -93,6 +94,23 @@ function triggerSourceClass(source?: string): string {
     default:
       return "bg-gray-100 text-gray-800 border-gray-200";
   }
+}
+
+function pad2(value: number): string {
+  return String(value).padStart(2, "0");
+}
+
+/** Date → "yyyy-MM-dd"（请求参数格式） */
+function formatDateParam(date: Date): string {
+  return `${date.getFullYear()}-${pad2(date.getMonth() + 1)}-${pad2(date.getDate())}`;
+}
+
+/** "yyyy-MM-dd" → Date（本地时区零点），非法值返回 undefined */
+function parseDateParam(value: string): Date | undefined {
+  const m = /^(\d{4})-(\d{2})-(\d{2})$/.exec(value);
+  if (!m) return undefined;
+  const date = new Date(Number(m[1]), Number(m[2]) - 1, Number(m[3]));
+  return Number.isNaN(date.getTime()) ? undefined : date;
 }
 
 export default function UserTrafficResetLogs() {
@@ -478,19 +496,14 @@ export default function UserTrafficResetLogs() {
               </SelectContent>
             </Select>
             <div className="flex items-center space-x-2">
-              <Input
-                type="date"
-                value={dateStart}
-                onChange={(e) => setDateStart(e.target.value)}
-                className="h-8 w-[140px]"
-                aria-label={t("traffic_reset_logs.filters.start_date", { defaultValue: "开始日期" })}
-              />
-              <Input
-                type="date"
-                value={dateEnd}
-                onChange={(e) => setDateEnd(e.target.value)}
-                className="h-8 w-[140px]"
-                aria-label={t("traffic_reset_logs.filters.end_date", { defaultValue: "结束日期" })}
+              <DateRangePicker
+                value={{ from: parseDateParam(dateStart), to: parseDateParam(dateEnd) }}
+                onChange={(next) => {
+                  setDateStart(next?.from ? formatDateParam(next.from) : "");
+                  setDateEnd(next?.to ? formatDateParam(next.to) : "");
+                }}
+                placeholder={t("traffic_reset_logs.filters.start_date", { defaultValue: "开始日期" })}
+                className="h-8 w-[220px]"
               />
               {(dateStart || dateEnd) && (
                 <Button variant="outline" size="sm" className="h-8" onClick={applyDateRange}>

@@ -119,7 +119,16 @@ export const asNumber = (value: unknown): number | null => {
   return null;
 };
 
-export const asBoolean = (value: unknown): boolean => value === true || value === 1 || value === "1";
+/**
+ * 原件 gZt 等表单把回填值里的 number 一律转成字符串（o.setValue(e, String(n))），
+ * 随后条件判断与 Switch 的 checked 直接用 JS truthy。这导致服务端返回 0 时
+ * 开关显示「开」且子字段仍渲染 —— 本重建镜像该 truthiness 语义以保持像素一致。
+ */
+export const asBoolean = (value: unknown): boolean => {
+  if (typeof value === "boolean") return value;
+  if (typeof value === "number") return value !== 0;
+  return String(value ?? "") !== "";
+};
 
 export const asStringArray = (value: unknown): string[] =>
   Array.isArray(value) ? value.filter((item): item is string => typeof item === "string") : [];
@@ -151,7 +160,12 @@ export function useSectionConfig(section: string, options: SectionConfigOptions 
     if (ready) return;
     const remote = data?.[section];
     if (!remote) return;
-    const next = hydrate ? hydrate({ ...remote }) : { ...remote };
+    /* 原件 gZt effect：number → String，使 truthy 判断与「数字绑定受控 input」行为一致 */
+    const normalized: SectionValues = {};
+    for (const [key, value] of Object.entries(remote)) {
+      normalized[key] = typeof value === "number" ? String(value) : value;
+    }
+    const next = hydrate ? hydrate({ ...normalized }) : { ...normalized };
     savedRef.current = next;
     apply(next);
     setReady(true);

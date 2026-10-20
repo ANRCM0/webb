@@ -17,7 +17,6 @@ import { Badge } from "@/components/ui/badge";
 import { Input } from "@/components/ui/input";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Layout, LayoutBody, LayoutHeader } from "@/components/layout/layout";
-import { } from "@/components/layout/header-widgets";
 import { cn } from "@/lib/utils";
 
 /**
@@ -168,8 +167,7 @@ export default function ConfigPluginMenuDemo() {
 
   return (
     <Layout>
-      <LayoutHeader>
-      </LayoutHeader>
+      <LayoutHeader />
       <LayoutBody className="flex flex-col" fixedHeight>
         <div className="mb-2 flex items-center justify-between space-y-2">
           <div>

@@ -342,12 +342,16 @@ export function ConfirmDialog({
   title,
   description,
   confirmText,
+  cancelText,
+  confirmVariant = "destructive",
   onConfirm,
   children,
 }: {
   title: string;
   description?: string;
   confirmText?: string;
+  cancelText?: string;
+  confirmVariant?: "default" | "destructive" | "outline" | "secondary" | "ghost" | "link";
   onConfirm: () => void | Promise<void>;
   children: React.ReactElement;
 }) {
@@ -364,10 +368,10 @@ export function ConfirmDialog({
         </DialogHeader>
         <DialogFooter className="gap-2">
           <Button variant="ghost" onClick={() => setOpen(false)} disabled={busy}>
-            {t("cancel", { defaultValue: "取消" })}
+            {cancelText ?? t("cancel", { defaultValue: "取消" })}
           </Button>
           <Button
-            variant="destructive"
+            variant={confirmVariant}
             disabled={busy}
             onClick={async () => {
               setBusy(true);

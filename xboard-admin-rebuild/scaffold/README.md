@@ -17,21 +17,21 @@ npm run build        # 产出 dist/（约 1.63 MB JS + 45 KB CSS）
 
 | 层 | 文件 | 行数 |
 | --- | --- | --- |
-| 页面（29 个路由） | 34 | 18,547 |
-| 共享层（ui/layout/data-table/settings/lib/api） | 34 | 1,787 |
+| 页面（29 个路由） | 36 | 23,131 |
+| 共享层（ui/layout/data-table/settings/lib/api） | 40 | 2,436 |
 
 ## 目录
 
 ```
 src/
 ├── components/
-│   ├── ui/            # 19 个 shadcn 原语（button/card/table/tabs/dialog/dropdown/select/…）
+│   ├── ui/            # 20 个 shadcn 原语（button/card/table/tabs/dialog/dropdown/select/… 含 monaco-editor.tsx 懒加载封装）
 │   ├── layout/        # layout.tsx（Layout / LayoutHeader / LayoutBody = 原件 eot/tot/not）
 │   │                  # app-shell.tsx、nav-config.ts、header-widgets.tsx（⌘K 搜索 / 主题 / 语言 / 用户）
 │   ├── data-table/    # DataTable + 列头 + 分页 + FilterBuilder（字段/操作符/单位）
 │   ├── settings/      # SettingsSection/Field/*Field/useConfig/useSaveConfig/SaveButton
 │   └── theme-provider.tsx
-├── lib/               # http.ts（axios + 拦截器）、i18n.ts（3 语）、query.ts、utils.ts
+├── lib/               # http.ts（axios + 拦截器）、i18n.ts（3 语）、query.ts、utils.ts、monaco.ts（离线 Monaco 配置）
 ├── api/index.ts       # 88 条端点，GET/POST 与原件一致（IL=GET / RL=POST）
 ├── locales/           # zh-CN / en-US / ru-RU（从产物逐字节还原）
 └── pages/             # 29 个路由页面
@@ -70,20 +70,37 @@ src/
 | 项 | 原件 | 重建 | 说明 |
 | --- | --- | --- | --- |
 | ~~设置页页签常驻~~ | 子页嵌在 `GGt` 的 `<Outlet/>` 内 | **已还原**：`config/system` 改为嵌套路由，子页只渲染内容，页签常驻 | — |
+| ~~机器详情抽屉~~ | `A3t` | **已还原**：信息卡 → 负载趋势(E3t)+负载卡(L3t) → Token 卡(I3t) → 安装命令卡(R3t) → 承载节点卡(M3t+O3t)，URL `?machine_id=` 深链 | — |
+| ~~日期区间选择~~ | Popover + 双月日历（`o$t`） | **已还原**：`DateRangePicker`（`calendar.tsx` + `date-range-picker.tsx`），已接入仪表盘概览/流量榜与流量重置日志筛选 | — |
+| ~~Monaco 资源~~ | 产物内同时有本地 worker 与 jsDelivr 默认路径 | **已还原**：`src/lib/monaco.ts` 懒加载；首次渲染 `<MonacoEditor/>`（订阅/邮件/主题配置）时才动态拉取 editor 核心 + 语言贡献（json/yaml/ini/html）+ editor/json/html/css worker（Vite `?worker` 本地打包） | 完全离线可用，无 CDN 依赖，首屏不再背 4MB |
+| ~~插件页布局~~ | 卡片网格（`u1t`，Card + 徽章 + 操作组） | **已还原**：类型页签（默认 feature）下逐卡片渲染 `PluginCard`，受保护「锁」图标、README 按钮、升级（红）／配置／启停／卸载／删除按钮与原件一致 | 工具条右为图标+标题，无 ⌘K 搜索（原件如此） |
+| ~~插件菜单/CRUD 演示页头部~~ | 均有 ⌘K 搜索 + 主题/语言/用户 | **已还原**：`<LayoutHeader/>` 统一渲染 | — |
+| ~~套餐弹窗~~ | `l6t` | **已还原**：名称/标签/分组/流量/限速/设备/容量/重置方式/价格(基础价联动+清空+周期网格)/说明(Markdown+模板+预览)/编辑态「强制更新」开关 | — |
+| ~~优惠券弹窗~~ | `I6t` | **已还原**：名称/自定义码/批量生成数量/类型(金额/百分比)/金额或百分比/有效期(双月日历+预设)/使用次数/单人次数/限制订阅套餐与周期 | — |
+| ~~用户编辑抽屉~~ | `K8t` | **已还原**：email/邀请人邮箱/手机号(国家码+号码,条件显示)/密码/余额/佣金余额/已用上下行(GB)/流量(GB)/到期时间(Calendar+当天/长期/1月/3月预设)/订阅计划/佣金类型(系统/循环/首次)/比例/折扣/限速/设备限制/管理员/员工/备注；提交仅发送变化字段，u/d/transfer_enable 按 GB→字节 | — |
 | 主题配置编辑器 | `configs[]` 逐字段表单（`k1t`） | Monaco 编辑整份 JSON | 回写同一份 `saveThemeConfig` |
 | 插件页布局 | 卡片网格（`u1t`） | 表格 + 开关 + 设置抽屉 | 功能等价 |
-| 日期区间选择 | Popover + 双月日历（`o$t`） | 原生 `<input type="date">` | 共享 UI 未包含 Calendar |
 | 工单附件 | 无（`reply` 只收 `{id,message}`） | 无 | 原件本就没有，蓝图里的 `upload` 是"上行流量"字段 |
-| 部分大弹窗 | 套餐 `l6t` 7.3KB / 用户抽屉 `K8t` 12.9KB / 优惠券 `I6t` | 精简可用版 | 字段与提交语义一致 |
-| 机器详情抽屉 | `A3t` | 未实现（保留概览条 + 列表） | — |
-| Monaco 资源 | 产物内同时有本地 worker 与 jsDelivr 默认路径 | `@monaco-editor/react` 默认 CDN | 离线部署需 `loader.config({ monaco })` + Vite worker |
+
+## 离线部署
+
+见 [docs/offline-deployment.md](docs/offline-deployment.md)（构建、Nginx/静态托管、`window.settings` 要求、常见问题）。
 
 ## 验收
 
 ```bash
 npx tsc --noEmit     # 0 error
-npx vite build       # 2664 modules, 1.63 MB JS / 45 KB CSS
+npx vite build       # 10872 modules；首屏入口 index 1.99 MB JS（gzip 591 KB）+ CSS 89 KB
+                     # Monaco 为懒加载 chunk（仅首次打开编辑器页面时拉取）：
+                     #   monaco-vs 4.06 MB（gzip 1.05 MB）+ monaco-json 7 KB + monaco-langs 11 KB
+                     #   worker：editor 276 KB / json 408 KB / html 714 KB / css 1.06 MB
+                     # 其它静态资源：codicon 153 KB ttf
 ```
+
+> Monaco 与原件一样采用本地化交付（无 jsDelivr CDN 依赖），但按需加载：
+> 常规页面不承担 4MB 核心；`vite.config.ts` 的 `monacoAliases` 与
+> `build.rollupOptions.output.manualChunks` 负责深路径映射与拆分。
+> 若需要退回 CDN 版，可改回 `@monaco-editor/react` 默认加载并移除别名。
 
 未做（本次范围外）：与真实 Xboard 后端联调、逐像素视觉回归、SSR/e2e 测试。
 
@@ -95,6 +112,23 @@ npx vite build       # 2664 modules, 1.63 MB JS / 45 KB CSS
 - 产物基线：`sha256(f04f09a9…)`，镜像内路径 `/www/public/assets/admin`
 
 ## 视觉回归（对原件逐路由像素比对）
+
+最近一次本地基线（40 组对比，1440×900，阈值 24）：
+
+| 范围 | 结果 |
+| --- | --- |
+| 全部页面/弹层 | 平均像素差 ≈3.5%，最接近 <0.5%（仪表盘、公告、知识库、支付、权限组、插件总览） |
+| 弹层/抽屉（9 组：公告/知识/套餐/优惠券/创建用户/添加节点/权限组/路由/机器详情） | 全部 ≤1.2%，与原件一致 |
+| 插件页 | 10.5% → **3.5%**（卡片网格已按 `u1t` 还原） |
+| 系统配置子页 | 5–6%，主要残留为字段行距微差与整页垂直偏移（已把 `Field` 改为与原件相同的 `space-y-2` 垂直堆叠） |
+| 插件 crud-demo | ~11%：结构已对齐（13 行、列宽、时间格式 `MM/dd/yyyy, HH:mm`、英文文案），残留差异来自两端演示数据随机（`Math.random()` 生成 requests，原件亦然，任意两次截图互不相同） |
+| 流量重置日志 | ~6.3%，单控件日期范围选择属已知偏离 |
+
+```bash
+# 重跑基线
+node tools/build-and-serve.mjs
+bash tools/regress.sh            # 31 条路由 + 9 组弹层
+```
 
 ```bash
 # 一个端口同时托管「原件 SPA」与「重建产物」+ 同一套确定性 fixture

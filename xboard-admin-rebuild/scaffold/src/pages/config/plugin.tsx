@@ -4,23 +4,25 @@ import { useQuery, useQueryClient } from "@tanstack/react-query";
 import {
   BookOpen,
   Loader2,
+  Lock,
   Package,
-  Pencil,
   Plug,
+  Power,
+  RefreshCw,
   Search,
+  Settings2,
   Trash2,
   Upload,
-  Wrench,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent } from "@/components/ui/card";
+import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Switch } from "@/components/ui/switch";
 import { Textarea } from "@/components/ui/textarea";
-import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
-import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Dialog, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { toast } from "@/components/ui/sonner";
@@ -28,6 +30,7 @@ import { Layout, LayoutBody, LayoutHeader } from "@/components/layout/layout";
 import { LangSwitch, ThemeSwitch, UserNav } from "@/components/layout/header-widgets";
 import { http } from "@/lib/http";
 import { cn } from "@/lib/utils";
+import { ConfirmDialog } from "@/pages/_b/shared";
 
 /**
  * 原件：`g1t`（offset 5,966,014）插件管理页 + `u1t`（插件卡）+ `bQt`（配置抽屉）+ `h1t`（骨架）。
@@ -122,7 +125,7 @@ export default function ConfigPlugin() {
   const queryClient = useQueryClient();
 
   const [search, setSearch] = React.useState("");
-  const [typeTab, setTypeTab] = React.useState("all");
+  const [typeTab, setTypeTab] = React.useState("feature");
   const [installFilter, setInstallFilter] = React.useState<"all" | "installed" | "available">("all");
   const [pendingCode, setPendingCode] = React.useState<string | null>(null);
 
@@ -132,9 +135,6 @@ export default function ConfigPlugin() {
   const fileRef = React.useRef<HTMLInputElement>(null);
   const [readme, setReadme] = React.useState<{ title: string; body: string } | null>(null);
   const [configCode, setConfigCode] = React.useState<string | null>(null);
-  const [confirmAction, setConfirmAction] = React.useState<{ code: string; action: "uninstall" | "delete" } | null>(
-    null,
-  );
 
   const { data: types } = useQuery<PluginType[]>({
     queryKey: ["pluginTypes"],
@@ -166,10 +166,6 @@ export default function ConfigPlugin() {
       return matchesSearch && matchesType && matchesInstalled;
     });
   }, [plugins, search, typeTab, installFilter]);
-
-  function typeLabel(type: string): string {
-    return types?.find((item) => item.value === type)?.label ?? type;
-  }
 
   /** 原件 O/M/A/P/V：install / upgrade / uninstall / enable-disable / delete */
   async function runMutation(code: string, action: "install" | "upgrade" | "uninstall" | "enable" | "disable" | "delete") {
@@ -221,17 +217,20 @@ export default function ConfigPlugin() {
 
   return (
     <Layout>
-      <LayoutHeader className="flex items-center justify-between">
-        <div className="flex items-center space-x-4">
-          <Plug className="h-6 w-6" />
-          <h1 className="text-2xl font-bold tracking-tight">{t("title")}</h1>
+      {/* 原件 g1t：tot（工具条）左为「图标 + 标题」，右为主题 / 语言 / 用户；本页无 ⌘K 搜索 */}
+      <div className="flex-none bg-background">
+        <div className="flex h-[var(--header-height)] items-center gap-4 p-4 md:px-8">
+          <div className="flex items-center space-x-4">
+            <Plug className="h-6 w-6" />
+            <h1 className="text-2xl font-bold tracking-tight">{t("title")}</h1>
+          </div>
+          <div className="ml-auto flex items-center gap-1">
+            <ThemeSwitch />
+            <LangSwitch />
+            <UserNav />
+          </div>
         </div>
-        <div className="flex items-center space-x-4">
-          <ThemeSwitch />
-          <LangSwitch />
-          <UserNav />
-        </div>
-      </LayoutHeader>
+      </div>
       <LayoutBody>
         <div className="mb-8 space-y-4">
           <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
@@ -266,8 +265,8 @@ export default function ConfigPlugin() {
                   window.location.hash = "#/config/plugin/crud-demo";
                 }}
               >
-                <Wrench className="mr-2 h-4 w-4" />
-                {t("button.crudDemo", { defaultValue: "CRUD 演示" })}
+                <Plug className="mr-2 h-4 w-4" />
+                {t("button.crudDemo", { defaultValue: "CRUD Demo" })}
               </Button>
               <Button
                 variant="outline"
@@ -277,8 +276,8 @@ export default function ConfigPlugin() {
                   window.location.hash = "#/config/plugin/menu-demo";
                 }}
               >
-                <Wrench className="mr-2 h-4 w-4" />
-                {t("button.menuDemo")}
+                <Plug className="mr-2 h-4 w-4" />
+                {t("button.menuDemo", { defaultValue: "Menu Demo" })}
               </Button>
               <Button variant="outline" className="shrink-0" size="sm" onClick={() => setUploadOpen(true)}>
                 <Upload className="mr-2 h-4 w-4" />
@@ -299,177 +298,71 @@ export default function ConfigPlugin() {
               ))}
               <TabsTrigger value="all">{t("tabs.all")}</TabsTrigger>
             </TabsList>
-          </Tabs>
-        </div>
-
-        <div className="rounded-md border">
-          <Table>
-            <TableHeader>
-              <TableRow>
-                <TableHead className="min-w-[220px]">{t("columns.name", { defaultValue: "插件" })}</TableHead>
-                <TableHead>{t("type.placeholder", { defaultValue: "类型" })}</TableHead>
-                <TableHead>{t("columns.version", { defaultValue: "版本" })}</TableHead>
-                <TableHead className="min-w-[240px]">{t("columns.description", { defaultValue: "描述" })}</TableHead>
-                <TableHead className="w-[110px]">{t("status.filter_placeholder", { defaultValue: "状态" })}</TableHead>
-                <TableHead className="w-[260px] text-right">{t("columns.actions", { defaultValue: "操作" })}</TableHead>
-              </TableRow>
-            </TableHeader>
-            <TableBody>
-              {isLoading && (
-                <TableRow>
-                  <TableCell colSpan={6} className="h-24 text-center text-muted-foreground">
-                    {t("common:loading")}
-                  </TableCell>
-                </TableRow>
-              )}
-              {!isLoading && filtered.length === 0 && (
-                <TableRow>
-                  <TableCell colSpan={6} className="h-24 text-center text-muted-foreground">
+            <TabsContent value="all" className="mt-6">
+              <div className="space-y-4">
+                {isLoading ? (
+                  <>
+                    <PluginCardSkeleton />
+                    <PluginCardSkeleton />
+                    <PluginCardSkeleton />
+                  </>
+                ) : filtered.length === 0 ? (
+                  <div className="rounded-md border py-16 text-center text-sm text-muted-foreground">
                     {t("common:table.noData")}
-                  </TableCell>
-                </TableRow>
-              )}
-              {filtered.map((plugin) => {
-                const busy = pendingCode === plugin.code;
-                return (
-                  <TableRow key={plugin.code}>
-                    <TableCell>
-                      <div className="flex min-w-0 flex-col gap-1">
-                        <div className="flex items-center gap-2">
-                          <span className="truncate text-sm font-semibold">{plugin.name}</span>
-                          <Badge variant="outline" className="border-primary/20 bg-primary/5 text-primary">
-                            {typeLabel(plugin.type)}
-                          </Badge>
-                          {plugin.is_protected && (
-                            <Badge variant="secondary" className="bg-amber-100 text-amber-700">
-                              {t("status.protected")}
-                            </Badge>
-                          )}
-                        </div>
-                        <code className="w-fit rounded bg-muted px-1 py-0.5 text-xs text-muted-foreground">
-                          {plugin.code}
-                        </code>
-                        <span className="text-xs text-muted-foreground">
-                          {t("author")}: {plugin.author}
-                        </span>
-                      </div>
-                    </TableCell>
-                    <TableCell className="text-sm">{plugin.type}</TableCell>
-                    <TableCell className="text-sm">
-                      v{plugin.version}
-                      {plugin.need_upgrade && (
-                        <Badge variant="destructive" className="ml-2 text-[10px]">
-                          {t("button.upgrade")}
-                        </Badge>
-                      )}
-                    </TableCell>
-                    <TableCell>
-                      <p
-                        className="overflow-hidden text-sm text-muted-foreground"
-                        style={{ display: "-webkit-box", WebkitLineClamp: 2, WebkitBoxOrient: "vertical" }}
-                      >
-                        {plugin.description}
-                      </p>
-                    </TableCell>
-                    <TableCell>
-                      {plugin.is_installed ? (
-                        <div className="flex items-center gap-2">
-                          <Switch
-                            checked={plugin.is_enabled}
-                            disabled={busy}
-                            aria-label={plugin.is_enabled ? t("button.disable") : t("button.enable")}
-                            onCheckedChange={(checked) =>
-                              void runMutation(plugin.code, checked ? "enable" : "disable")
-                            }
-                          />
-                          <span className="text-xs text-muted-foreground">
-                            {plugin.is_enabled ? t("status.enabled") : t("status.disabled")}
-                          </span>
-                        </div>
-                      ) : (
-                        <Badge variant="outline" className="border-muted-foreground/30 bg-muted/30 text-muted-foreground">
-                          {t("status.not_installed")}
-                        </Badge>
-                      )}
-                    </TableCell>
-                    <TableCell>
-                      <div className="flex items-center justify-end gap-1">
-                        {plugin.readme && (
-                          <Button
-                            variant="ghost"
-                            size="icon"
-                            className="h-8 w-8"
-                            title={t("button.readme")}
-                            onClick={() => setReadme({ title: plugin.name, body: plugin.readme })}
-                          >
-                            <BookOpen className="h-4 w-4" />
-                          </Button>
-                        )}
-                        {plugin.is_installed && Object.keys(plugin.config ?? {}).length > 0 && (
-                          <Button
-                            variant="ghost"
-                            size="icon"
-                            className="h-8 w-8"
-                            title={t("button.config")}
-                            onClick={() => setConfigCode(plugin.code)}
-                          >
-                            <Pencil className="h-4 w-4" />
-                          </Button>
-                        )}
-                        {plugin.is_installed ? (
-                          plugin.need_upgrade && (
-                            <Button
-                              variant="outline"
-                              size="sm"
-                              disabled={busy}
-                              onClick={() => void runMutation(plugin.code, "upgrade")}
-                            >
-                              {busy && <Loader2 className="mr-1 h-4 w-4 animate-spin" />}
-                              {t("button.upgrade")}
-                            </Button>
-                          )
-                        ) : (
-                          <Button
-                            variant="outline"
-                            size="sm"
-                            disabled={busy}
-                            onClick={() => void runMutation(plugin.code, "install")}
-                          >
-                            {busy && <Loader2 className="mr-1 h-4 w-4 animate-spin" />}
-                            {t("button.install")}
-                          </Button>
-                        )}
-                        {plugin.is_installed && !plugin.is_protected && (
-                          <Button
-                            variant="ghost"
-                            size="icon"
-                            className="h-8 w-8 text-muted-foreground hover:text-destructive"
-                            title={t("button.uninstall")}
-                            disabled={busy}
-                            onClick={() => setConfirmAction({ code: plugin.code, action: "uninstall" })}
-                          >
-                            <Trash2 className="h-4 w-4" />
-                          </Button>
-                        )}
-                        {plugin.can_be_deleted && (
-                          <Button
-                            variant="ghost"
-                            size="icon"
-                            className="h-8 w-8 text-muted-foreground hover:text-destructive"
-                            title={t("delete.button")}
-                            disabled={busy}
-                            onClick={() => setConfirmAction({ code: plugin.code, action: "delete" })}
-                          >
-                            <Package className="h-4 w-4" />
-                          </Button>
-                        )}
-                      </div>
-                    </TableCell>
-                  </TableRow>
-                );
-              })}
-            </TableBody>
-          </Table>
+                  </div>
+                ) : (
+                  filtered.map((plugin) => (
+                    <PluginCard
+                      key={plugin.code}
+                      plugin={plugin}
+                      typeInfo={types?.find((item) => item.value === plugin.type)}
+                      isLoading={pendingCode === plugin.code}
+                      onInstall={(code) => void runMutation(code, "install")}
+                      onUpgrade={(code) => void runMutation(code, "upgrade")}
+                      onUninstall={(code) => void runMutation(code, "uninstall")}
+                      onToggleEnable={(code, enabled) => void runMutation(code, enabled ? "disable" : "enable")}
+                      onOpenConfig={setConfigCode}
+                      onDelete={(code) => void runMutation(code, "delete")}
+                      onShowReadme={plugin.readme ? () => setReadme({ title: plugin.name, body: plugin.readme }) : undefined}
+                    />
+                  ))
+                )}
+              </div>
+            </TabsContent>
+            {(types ?? []).map((type) => (
+              <TabsContent key={type.value} value={type.value} className="mt-6">
+                <div className="space-y-4">
+                  {isLoading ? (
+                    <>
+                      <PluginCardSkeleton />
+                      <PluginCardSkeleton />
+                      <PluginCardSkeleton />
+                    </>
+                  ) : filtered.length === 0 ? (
+                    <div className="rounded-md border py-16 text-center text-sm text-muted-foreground">
+                      {t("common:table.noData")}
+                    </div>
+                  ) : (
+                    filtered.map((plugin) => (
+                      <PluginCard
+                        key={plugin.code}
+                        plugin={plugin}
+                        typeInfo={types?.find((item) => item.value === plugin.type)}
+                        isLoading={pendingCode === plugin.code}
+                        onInstall={(code) => void runMutation(code, "install")}
+                        onUpgrade={(code) => void runMutation(code, "upgrade")}
+                        onUninstall={(code) => void runMutation(code, "uninstall")}
+                        onToggleEnable={(code, enabled) => void runMutation(code, enabled ? "disable" : "enable")}
+                        onOpenConfig={setConfigCode}
+                        onDelete={(code) => void runMutation(code, "delete")}
+                        onShowReadme={plugin.readme ? () => setReadme({ title: plugin.name, body: plugin.readme }) : undefined}
+                      />
+                    ))
+                  )}
+                </div>
+              </TabsContent>
+            ))}
+          </Tabs>
         </div>
       </LayoutBody>
 
@@ -545,35 +438,6 @@ export default function ConfigPlugin() {
           <pre className="max-h-[60vh] overflow-y-auto whitespace-pre-wrap rounded-md bg-muted/50 p-4 text-xs leading-relaxed">
             {readme?.body}
           </pre>
-        </DialogContent>
-      </Dialog>
-
-      {/* 原件 hQt：卸载/删除确认 */}
-      <Dialog open={confirmAction !== null} onOpenChange={(open) => !open && setConfirmAction(null)}>
-        <DialogContent className="sm:max-w-[425px]">
-          <DialogHeader>
-            <DialogTitle>
-              {confirmAction?.action === "delete" ? t("delete.title") : t("uninstall.title")}
-            </DialogTitle>
-            <DialogDescription>
-              {confirmAction?.action === "delete" ? t("delete.description") : t("uninstall.description")}
-            </DialogDescription>
-          </DialogHeader>
-          <DialogFooter>
-            <Button variant="outline" onClick={() => setConfirmAction(null)}>
-              {t("config.cancel")}
-            </Button>
-            <Button
-              variant="destructive"
-              onClick={() => {
-                const pending = confirmAction;
-                setConfirmAction(null);
-                if (pending) void runMutation(pending.code, pending.action);
-              }}
-            >
-              {confirmAction?.action === "delete" ? t("delete.button") : t("uninstall.button")}
-            </Button>
-          </DialogFooter>
         </DialogContent>
       </Dialog>
 
@@ -782,14 +646,234 @@ const MESSAGES = {
   deleteError: "插件删除失败",
 } as const;
 
-/** 供卡片视图复用（原件 h1t 骨架，此处未使用但保留结构说明） */
+/* ------------------------------------------------------------------ *
+ * 原件 u1t：插件卡片（Card + 状态徽章 + 操作组）
+ * ------------------------------------------------------------------ */
+
+interface PluginCardProps {
+  plugin: PluginItem;
+  typeInfo?: PluginType;
+  isLoading: boolean;
+  onInstall: (code: string) => void;
+  onUpgrade: (code: string) => void;
+  onUninstall: (code: string) => void;
+  onToggleEnable: (code: string, enabled: boolean) => void;
+  onOpenConfig: (code: string) => void;
+  onDelete: (code: string) => void;
+  onShowReadme?: () => void;
+}
+
+function PluginCard({
+  plugin,
+  typeInfo,
+  isLoading,
+  onInstall,
+  onUpgrade,
+  onUninstall,
+  onToggleEnable,
+  onOpenConfig,
+  onDelete,
+  onShowReadme,
+}: PluginCardProps) {
+  const { t } = useTranslation(["plugin", "common"]);
+  return (
+    <TooltipProvider>
+    <Card className="group relative overflow-hidden transition-all hover:shadow-md">
+      <div className="p-4">
+        {/* 第一行：名称 + 类型/状态徽章 + 受保护/文档 */}
+        <div className="mb-2 flex items-center justify-between">
+          <div className="flex min-w-0 flex-1 items-center gap-2">
+            <h3 className="truncate text-base font-semibold">{plugin.name}</h3>
+            {typeInfo && (
+              <Badge variant="outline" className="border-primary/20 bg-primary/5 px-1.5 py-0.5 text-xs text-primary">
+                {typeInfo.label}
+              </Badge>
+            )}
+            {plugin.is_installed ? (
+              <Badge variant={plugin.is_enabled ? "default" : "outline"} className="px-1.5 py-0.5 text-xs">
+                {plugin.is_enabled ? t("status.enabled") : t("status.disabled")}
+              </Badge>
+            ) : (
+              <Badge
+                variant="outline"
+                className="border-muted-foreground/30 bg-muted/30 px-1.5 py-0.5 text-xs text-muted-foreground"
+              >
+                {t("status.not_installed")}
+              </Badge>
+            )}
+          </div>
+          <div className="flex flex-shrink-0 items-center gap-1.5">
+            {plugin.is_protected && (
+              <Tooltip>
+                <TooltipTrigger asChild>
+                  <div className="flex h-5 w-5 items-center justify-center rounded-full bg-amber-100 text-amber-600 dark:bg-amber-900/50 dark:text-amber-400">
+                    <Lock className="h-3 w-3" />
+                  </div>
+                </TooltipTrigger>
+                <TooltipContent>
+                  <p>{t("status.protected")}</p>
+                </TooltipContent>
+              </Tooltip>
+            )}
+            {plugin.readme && onShowReadme && (
+              <button
+                type="button"
+                onClick={onShowReadme}
+                className="flex h-5 w-5 items-center justify-center rounded-full text-muted-foreground transition-colors hover:bg-muted hover:text-primary"
+                title={t("button.readme")}
+              >
+                <BookOpen className="h-3 w-3" />
+              </button>
+            )}
+          </div>
+        </div>
+        {/* 第二行：代码 / 版本 / 作者 */}
+        <div className="mb-2 flex items-center gap-3 text-xs text-muted-foreground">
+          <div className="flex items-center gap-1">
+            <Plug className="h-3 w-3" />
+            <code className="rounded bg-muted px-1 py-0.5 text-xs">{plugin.code}</code>
+          </div>
+          <span>v{plugin.version}</span>
+          <span>
+            {t("author")}: {plugin.author}
+          </span>
+        </div>
+        <p
+          className="mb-3 overflow-hidden text-ellipsis text-sm text-muted-foreground"
+          style={{ display: "-webkit-box", WebkitLineClamp: 2, WebkitBoxOrient: "vertical" }}
+        >
+          {plugin.description}
+        </p>
+        {/* 操作区 */}
+        <div className="flex items-center justify-end gap-2">
+          {plugin.is_installed ? (
+            <>
+              {plugin.need_upgrade && (
+                <ConfirmDialog
+                  title={t("upgrade.title", { defaultValue: "升级插件" })}
+                  description={t("upgrade.description", { defaultValue: "确认升级此插件？" })}
+                  cancelText={t("common:cancel")}
+                  confirmText={t("upgrade.button", { defaultValue: "升级" })}
+                  confirmVariant="default"
+                  onConfirm={() => onUpgrade(plugin.code)}
+                >
+                  <Button
+                    variant="destructive"
+                    size="sm"
+                    disabled={isLoading}
+                    className="h-7 bg-red-600 px-2 text-xs text-white hover:bg-red-700"
+                  >
+                    <RefreshCw className="mr-1 h-3 w-3" />
+                    {t("button.upgrade")}
+                  </Button>
+                </ConfirmDialog>
+              )}
+              {plugin.config && Object.keys(plugin.config).length > 0 && (
+                <Button
+                  variant="outline"
+                  size="sm"
+                  onClick={() => onOpenConfig(plugin.code)}
+                  disabled={!plugin.is_enabled || isLoading}
+                  className="h-7 px-2 text-xs"
+                >
+                  <Settings2 className="mr-1 h-3 w-3" />
+                  {t("button.config")}
+                </Button>
+              )}
+              <Button
+                variant={plugin.is_enabled ? "destructive" : "default"}
+                size="sm"
+                onClick={() => onToggleEnable(plugin.code, plugin.is_enabled)}
+                disabled={isLoading}
+                className="h-7 px-2 text-xs"
+              >
+                <Power className="mr-1 h-3 w-3" />
+                {plugin.is_enabled ? t("button.disable") : t("button.enable")}
+              </Button>
+              <ConfirmDialog
+                title={t("uninstall.title", { defaultValue: "卸载插件" })}
+                description={t("uninstall.description", { defaultValue: "确认卸载此插件？" })}
+                cancelText={t("common:cancel")}
+                confirmText={t("uninstall.button", { defaultValue: "卸载" })}
+                onConfirm={() => onUninstall(plugin.code)}
+              >
+                <Button
+                  variant="outline"
+                  size="sm"
+                  className="h-7 px-2 text-xs text-muted-foreground hover:text-destructive"
+                  disabled={isLoading || plugin.is_enabled}
+                >
+                  <Trash2 className="mr-1 h-3 w-3" />
+                  {t("button.uninstall")}
+                </Button>
+              </ConfirmDialog>
+            </>
+          ) : (
+            <>
+              <Button
+                onClick={() => onInstall(plugin.code)}
+                disabled={isLoading}
+                size="sm"
+                className="h-7 px-3 text-xs"
+              >
+                {isLoading && <div className="mr-1 h-3 w-3 animate-spin rounded-full border border-current border-t-transparent" />}
+                {t("button.install")}
+              </Button>
+              {plugin.can_be_deleted !== false && (
+                <ConfirmDialog
+                  title={t("delete.title", { defaultValue: "删除插件" })}
+                  description={t("delete.description", { defaultValue: "确认删除此插件？" })}
+                  cancelText={t("common:cancel")}
+                  confirmText={t("delete.button", { defaultValue: "删除" })}
+                  onConfirm={() => onDelete(plugin.code)}
+                >
+                  <Button
+                    variant="ghost"
+                    size="sm"
+                    className="h-7 w-7 p-0 text-muted-foreground hover:text-destructive"
+                    disabled={isLoading}
+                  >
+                    <Trash2 className="h-3 w-3" />
+                  </Button>
+                </ConfirmDialog>
+              )}
+            </>
+          )}
+        </div>
+      </div>
+    </Card>
+    </TooltipProvider>
+  );
+}
+
+/** 原件 h1t：插件卡片骨架 */
 export function PluginCardSkeleton() {
   return (
     <Card>
-      <CardContent className="space-y-2 py-6">
-        <div className="h-6 w-[200px] animate-pulse rounded-md bg-muted" />
-        <div className="h-4 w-[300px] animate-pulse rounded-md bg-muted" />
-        <div className="h-8 w-[100px] animate-pulse rounded-md bg-muted" />
+      <CardHeader>
+        <div className="flex items-center justify-between">
+          <div className="space-y-2">
+            <div className="flex items-center gap-2">
+              <div className="h-6 w-[200px] animate-pulse rounded-md bg-muted" />
+              <div className="h-6 w-[80px] animate-pulse rounded-md bg-muted" />
+            </div>
+            <div className="flex items-center gap-4">
+              <div className="h-5 w-[120px] animate-pulse rounded-md bg-muted" />
+              <div className="h-5 w-[60px] animate-pulse rounded-md bg-muted" />
+            </div>
+          </div>
+        </div>
+        <div className="space-y-2 pt-2">
+          <div className="h-4 w-[300px] animate-pulse rounded-md bg-muted" />
+          <div className="h-4 w-[150px] animate-pulse rounded-md bg-muted" />
+        </div>
+      </CardHeader>
+      <CardContent>
+        <div className="flex justify-end space-x-2">
+          <div className="h-9 w-[100px] animate-pulse rounded-md bg-muted" />
+          <div className="h-9 w-[100px] animate-pulse rounded-md bg-muted" />
+          <div className="h-8 w-8 animate-pulse rounded-md bg-muted" />
+        </div>
       </CardContent>
     </Card>
   );

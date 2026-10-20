@@ -48,7 +48,7 @@ export default function ConfigSystem() {
           <aside className="sticky top-0 lg:w-1/5">
             <SystemNav />
           </aside>
-          <div className="w-full flex-1 p-1 pr-4">
+          <div className="w-full flex-1 pt-6 pr-4">
             <div className="pb-16">{isIndex ? <SiteSettingsContent /> : <Outlet />}</div>
           </div>
         </div>

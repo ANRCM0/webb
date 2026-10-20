@@ -13,7 +13,6 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { Dialog, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { DataTable } from "@/components/data-table/data-table";
 import { Layout, LayoutBody, LayoutHeader } from "@/components/layout/layout";
-import { } from "@/components/layout/header-widgets";
 import { toast } from "@/components/ui/sonner";
 
 /**
@@ -142,7 +141,7 @@ function seedRecords(): CrudRow[] {
     created_at: Math.floor(Date.now() / 1000) - 86400 * index }));
 }
 
-/** 原件 SS：秒级时间戳按 UTC+8 渲染 */
+/** 原件 SS：秒级时间戳按 UTC+8 渲染（date-fns `MM/dd/yyyy, HH:mm` 样式） */
 function formatDateTime(value: RowValue | null | undefined): string {
   if (value === null || value === undefined || value === "") return "";
   let seconds = typeof value === "string" ? Number.parseFloat(value) : Number(value);
@@ -150,10 +149,9 @@ function formatDateTime(value: RowValue | null | undefined): string {
   if (Math.floor(seconds).toString().length === 10) seconds = seconds * 1000;
   const shifted = new Date(seconds + 8 * 3600 * 1000);
   const pad = (n: number) => String(n).padStart(2, "0");
-  return [
-    `${shifted.getUTCFullYear()}-${pad(shifted.getUTCMonth() + 1)}-${pad(shifted.getUTCDate())}`,
-    `${pad(shifted.getUTCHours())}:${pad(shifted.getUTCMinutes())}:${pad(shifted.getUTCSeconds())}`,
-  ].join(" ");
+  return `${pad(shifted.getUTCMonth() + 1)}/${pad(shifted.getUTCDate())}/${shifted.getUTCFullYear()}, ${pad(
+    shifted.getUTCHours(),
+  )}:${pad(shifted.getUTCMinutes())}`;
 }
 
 /** 原件 w1t：演示延迟 */
@@ -245,8 +243,8 @@ export default function ConfigPluginCrudDemo() {
             return (
               <Badge variant={value ? "default" : "outline"}>
                 {value
-                  ? t("runtime.booleanTrue", { defaultValue: "是" })
-                  : t("runtime.booleanFalse", { defaultValue: "否" })}
+                  ? t("runtime.booleanTrue", { defaultValue: "Yes" })
+                  : t("runtime.booleanFalse", { defaultValue: "No" })}
               </Badge>
             );
           case "tag": {
@@ -277,7 +275,7 @@ export default function ConfigPluginCrudDemo() {
                 variant="ghost"
                 size="icon"
                 className="h-8 w-8"
-                aria-label={t("delete.button", { defaultValue: "删除" })}
+                aria-label={t("delete.button", { defaultValue: "Delete" })}
                 onClick={() => setDeleteTarget(row.original)}
               >
                 <Trash2 className="h-3.5 w-3.5 text-destructive" />
@@ -293,7 +291,7 @@ export default function ConfigPluginCrudDemo() {
   const table = useReactTable<CrudRow>({
     data,
     columns,
-    state: { sorting },
+    state: { sorting, pagination: { pageIndex: 0, pageSize: 12 } },
     onSortingChange: setSorting,
     getCoreRowModel: getCoreRowModel(),
     getFilteredRowModel: getFilteredRowModel(),
@@ -310,12 +308,12 @@ export default function ConfigPluginCrudDemo() {
       await save(row, isCreate);
       toast.success(
         isCreate
-          ? t("runtime.createSuccess", { defaultValue: "创建成功" })
-          : t("runtime.updateSuccess", { defaultValue: "更新成功" }),
+          ? t("runtime.createSuccess", { defaultValue: "Created successfully" })
+          : t("runtime.updateSuccess", { defaultValue: "Updated successfully" }),
       );
       setFormOpen(false);
     } catch {
-      toast.error(t("runtime.saveFailed", { defaultValue: "保存失败" }));
+      toast.error(t("runtime.saveFailed", { defaultValue: "Save failed" }));
     } finally {
       setSaving(false);
     }
@@ -323,8 +321,7 @@ export default function ConfigPluginCrudDemo() {
 
   return (
     <Layout>
-      <LayoutHeader>
-      </LayoutHeader>
+      <LayoutHeader />
       <LayoutBody className="flex flex-col" fixedHeight>
         <div className="mb-2 flex items-center justify-between space-y-2">
           <div>
@@ -346,7 +343,7 @@ export default function ConfigPluginCrudDemo() {
                   <div className="flex items-center justify-between gap-4">
                     {searchableKeys.length > 0 && (
                       <Input
-                        placeholder={t("runtime.searchPlaceholder", { defaultValue: "搜索..." })}
+                        placeholder={t("runtime.searchPlaceholder", { defaultValue: "Search..." })}
                         className="max-w-sm"
                         value={search}
                         onChange={(e) => setSearch(e.target.value)}
@@ -356,7 +353,7 @@ export default function ConfigPluginCrudDemo() {
                       {schema.actions.create && (
                         <Button size="sm" onClick={openCreate}>
                           <Plus className="mr-1 h-4 w-4" />
-                          {t("runtime.create", { defaultValue: "新建" })}
+                          {t("runtime.create", { defaultValue: "Create" })}
                         </Button>
                       )}
                     </div>
@@ -389,12 +386,12 @@ export default function ConfigPluginCrudDemo() {
           <DialogContent className="sm:max-w-[520px]">
             <DialogHeader>
               <DialogTitle>
-                {editing ? t("runtime.edit", { defaultValue: "编辑" }) : t("runtime.create", { defaultValue: "新建" })}
+                {editing ? t("runtime.edit", { defaultValue: "Edit" }) : t("runtime.create", { defaultValue: "Create" })}
               </DialogTitle>
               <DialogDescription>
                 {editing
-                  ? t("runtime.editDescription", { defaultValue: "修改下方字段后保存。" })
-                  : t("runtime.createDescription", { defaultValue: "填写下方字段以创建新记录。" })}
+                  ? t("runtime.editDescription", { defaultValue: "Modify the fields below and save." })
+                  : t("runtime.createDescription", { defaultValue: "Fill in the fields below to create a new record." })}
               </DialogDescription>
             </DialogHeader>
             <form onSubmit={submitForm} className="flex flex-col overflow-hidden">
@@ -411,10 +408,10 @@ export default function ConfigPluginCrudDemo() {
               </div>
               <DialogFooter className="mt-6 border-t pt-4">
                 <Button type="button" variant="ghost" size="sm" onClick={() => setFormOpen(false)} disabled={saving}>
-                  {t("config.cancel", { defaultValue: "取消" })}
+                  {t("config.cancel", { defaultValue: "Cancel" })}
                 </Button>
                 <Button type="submit" size="sm" disabled={saving}>
-                  {saving ? "保存中..." : "保存"}
+                  {saving ? "Saving..." : "Save"}
                 </Button>
               </DialogFooter>
             </form>
@@ -424,15 +421,15 @@ export default function ConfigPluginCrudDemo() {
         <Dialog open={deleteTarget !== null} onOpenChange={(open) => !open && setDeleteTarget(null)}>
           <DialogContent className="sm:max-w-[425px]">
             <DialogHeader>
-              <DialogTitle>{t("runtime.deleteRecordTitle", { defaultValue: "删除记录" })}</DialogTitle>
+              <DialogTitle>{t("runtime.deleteRecordTitle", { defaultValue: "Delete record" })}</DialogTitle>
               <DialogDescription>
                 {t("runtime.deleteRecordDescription", {
-                  defaultValue: "确定要删除这条记录吗？此操作无法撤销。" })}
+                  defaultValue: "Are you sure you want to delete this record? This action cannot be undone." })}
               </DialogDescription>
             </DialogHeader>
             <DialogFooter>
               <Button variant="outline" onClick={() => setDeleteTarget(null)}>
-                {t("runtime.cancel", { defaultValue: "取消" })}
+                {t("runtime.cancel", { defaultValue: "Cancel" })}
               </Button>
               <Button
                 variant="destructive"
@@ -441,12 +438,12 @@ export default function ConfigPluginCrudDemo() {
                   setDeleteTarget(null);
                   if (target) {
                     void remove(target[schema.id_field]).then(() =>
-                      toast.success(t("runtime.deleteSuccess", { defaultValue: "删除成功" })),
+                      toast.success(t("runtime.deleteSuccess", { defaultValue: "Deleted successfully" })),
                     );
                   }
                 }}
               >
-                {t("runtime.delete", { defaultValue: "删除" })}
+                {t("runtime.delete", { defaultValue: "Delete" })}
               </Button>
             </DialogFooter>
           </DialogContent>

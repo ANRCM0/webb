@@ -1,7 +1,7 @@
 import type { Icon } from "@tabler/icons-react";
 import {
   IconLayoutDashboard, IconSettings, IconPlug, IconBell, IconWallet, IconBook, IconServer,
-  IconKey, IconRoute, IconUsers, IconTicket, IconCreditCard, IconGift, IconHistory,
+  IconKey, IconRoute, IconUsers, IconTicket, IconCreditCard, IconGift,
   IconPalette, IconServer2, IconFileInvoice,
 } from "@tabler/icons-react";
 
@@ -44,7 +44,6 @@ export const navGroups: { label: string; items: NavItem[] }[] = [
     items: [
       { key: "userManagement", href: "/user/manage", icon: IconUsers },
       { key: "ticketManagement", href: "/user/ticket", icon: IconTicket },
-      { key: "trafficResetLogs", href: "/user/traffic-reset-logs", icon: IconHistory },
     ],
   },
 ];
