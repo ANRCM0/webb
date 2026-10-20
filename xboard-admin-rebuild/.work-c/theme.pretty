@@ -1,0 +1,141 @@
+{const{t:e}=jy("theme"),[t,n]=H.useState(null),[i,r]=H.useState(!1),[s,o]=H.useState(!1),[a,l]=H.useState(!1),[c,d]=H.useState(null),u=H.useRef(null),[h,g]=H.useState(0),{data:p,isLoading:m,refetch:f}=pC({queryKey:["themeList"],queryFn:async()=>{const{data:e}=await BL();return e}}),_=async t=>{t.name.endsWith(".zip")?(r(!0),HL(t).then(()=>{gE.success("主题上传成功"),o(!1),f()}).finally(()=>{r(!1),u.current&&(u.current.value="")})):gE.error(e("upload.error.format"))},v=e=>{e.preventDefault(),e.stopPropagation(),"dragenter"===e.type||"dragover"===e.type?l(!0):"dragleave"===e.type&&l(!1)};return 
+Q.jsxs(eot,{children:[
+
+Q.jsxs(tot,{
+  className:"flex items-center justify-between",children:[
+
+Q.jsx(Eut,{}),
+Q.jsxs("div",{
+  className:"flex items-center space-x-4",children:[
+
+Q.jsx(Lut,{}),
+Q.jsx(sht,{})]})]}),
+Q.jsxs(not,{
+  className:"",children:[
+
+Q.jsxs("header",{
+  className:"mb-8",children:[
+
+Q.jsx("div",{
+  className:"mb-2",children:
+Q.jsx("h1",{
+  className:"text-2xl font-bold tracking-tight",children:e("title")})}),
+Q.jsxs("div",{
+  className:"flex items-center justify-between",children:[
+
+Q.jsx("div",{
+  className:"text-muted-foreground",children:e("description")}),
+Q.jsxs(Lf,{onClick:()=>o(!0),variant:"outline",
+  className:"ml-4 shrink-0",size:"sm",children:[
+
+Q.jsx(Ilt,{
+  className:"mr-2 h-4 w-4"}),e("upload.button")]})]})]}),
+Q.jsx("section",{
+  className:"grid gap-6 md:grid-cols-1 lg:grid-cols-2 xl:grid-cols-3",children:m?
+Q.jsxs(Q.Fragment,{children:[
+
+Q.jsx(N1t,{}),
+Q.jsx(N1t,{})]}):p?.themes&&Object.entries(p.themes).map(([i,r])=>
+Q.jsx(s8e,{
+  className:"group relative overflow-hidden transition-all hover:shadow-md",style:{backgroundImage:r.background_url?`url(${r.background_url})`:"none",backgroundSize:"cover",backgroundPosition:"center"},children:
+Q.jsxs("div",{
+  className:Im("relative z-10 h-full transition-colors",r.background_url?"group-hover:from-background/98 bg-gradient-to-t from-background/95 via-background/80 to-background/60 backdrop-blur-[1px] group-hover:via-background/90 group-hover:to-background/70":"bg-background"),children:[
+!!r.can_delete&&
+Q.jsx("div",{
+  className:"absolute right-2 top-2",children:
+Q.jsx(hQt,{title:e("card.delete.title"),description:e("card.delete.description"),confirmText:e("card.delete.button"),variant:"destructive",onConfirm:async()=>{i!==p?.active?(n(i),zL(i).then(()=>{gE.success("主题删除成功"),f()}).finally(()=>{n(null)})):gE.error(e("card.delete.error.active"))},children:
+Q.jsx(Lf,{disabled:t===i,loading:t===i,variant:"ghost",size:"icon",
+  className:"h-8 w-8 text-muted-foreground hover:text-destructive",children:
+Q.jsx(Nlt,{
+  className:"h-4 w-4"})})})}),
+Q.jsxs(o8e,{children:[
+
+Q.jsx(a8e,{children:r.name}),
+Q.jsx(l8e,{children:
+Q.jsxs("div",{
+  className:"space-y-2",children:[
+
+Q.jsx("div",{children:r.description}),r.version&&
+Q.jsx("div",{
+  className:"text-sm text-muted-foreground",children:e("card.version",{version:r.version})})]})})]}),
+Q.jsxs(c8e,{
+  className:"flex items-center justify-end space-x-3",children:[
+r.images&&Array.isArray(r.images)&&r.images.length>0&&
+Q.jsx(Lf,{variant:"outline",size:"icon",
+  className:"h-8 w-8",onClick:()=>{return e=r.name,t=r.images,g(0),void d({name:e,images:t});var e,t},children:
+Q.jsx(Yat,{
+  className:"h-4 w-4"})}),
+Q.jsx(k1t,{themeKey:i,themeInfo:r}),
+Q.jsx(Lf,{onClick:()=>(async e=>{n(e),kT.updateSystemConfig({frontend_theme:e}).then(()=>{gE.success("主题切换成功"),f()}).finally(()=>{n(null)})})(i),disabled:t===i||i===p.active,loading:t===i,variant:i===p.active?"secondary":"default",children:i===p.active?e("card.currentTheme"):e("card.activateTheme")})]})]})},i))}),
+Q.jsx(htt,{open:s,onOpenChange:o,children:
+Q.jsxs(ptt,{
+  className:"sm:max-w-md",children:[
+
+Q.jsxs(mtt,{children:[
+
+Q.jsx(_tt,{children:e("upload.title")}),
+Q.jsx(vtt,{children:e("upload.description")})]}),
+Q.jsxs("div",{
+  className:Im("relative mt-4 flex h-64 flex-col items-center justify-center rounded-lg border-2 border-dashed border-muted-foreground/25 px-5 py-10 text-center transition-colors",a&&"border-primary/50 bg-muted/50"),onDragEnter:v,onDragLeave:v,onDragOver:v,onDrop:e=>{e.preventDefault(),e.stopPropagation(),l(!1),e.dataTransfer.files&&e.dataTransfer.files[0]&&_(e.dataTransfer.files[0])},children:[
+
+Q.jsx("input",{type:"file",ref:u,
+  className:"hidden",accept:".zip",onChange:e=>{
+const t=e.target.files?.[0];t&&_(t)}}),i?
+Q.jsxs("div",{
+  className:"flex flex-col items-center space-y-2",children:[
+
+Q.jsx("div",{
+  className:"h-10 w-10 animate-spin rounded-full border-b-2 border-primary"}),
+Q.jsx("div",{
+  className:"text-sm text-muted-foreground",children:e("upload.uploading")})]}):
+Q.jsx(Q.Fragment,{children:
+Q.jsxs("div",{
+  className:"flex flex-col items-center space-y-4",children:[
+
+Q.jsx("div",{
+  className:"rounded-full border-2 border-muted-foreground/25 p-3",children:
+Q.jsx(Ilt,{
+  className:"h-6 w-6 text-muted-foreground/50"})}),
+Q.jsxs("div",{
+  className:"space-y-2",children:[
+
+Q.jsxs("div",{
+  className:"text-sm font-medium",children:[
+e("upload.dragText")," ",
+Q.jsx("button",{type:"button",onClick:()=>u.current?.click(),
+  className:"mx-1 text-primary hover:underline",children:e("upload.clickText")})]}),
+Q.jsx("div",{
+  className:"text-xs text-muted-foreground",children:e("upload.supportText")})]})]})})]})]})}),
+Q.jsx(htt,{open:!!c,onOpenChange:e=>{e||(d(null),g(0))},children:
+Q.jsxs(ptt,{
+  className:"max-w-4xl",children:[
+
+Q.jsxs(mtt,{children:[
+
+Q.jsxs(_tt,{children:[
+c?.name," ",e("preview.title")]}),
+Q.jsx(vtt,{
+  className:"text-center",children:c&&e("preview.imageCount",{current:h+1,total:c.images.length})})]}),
+Q.jsxs("div",{
+  className:"relative",children:[
+
+Q.jsx("div",{
+  className:"aspect-[16/9] overflow-hidden rounded-lg border bg-muted",children:c?.images[h]&&
+Q.jsx("img",{src:c.images[h],alt:`${c.name} 预览图 ${h+1}`,
+  className:"h-full w-full object-contain"})}),c&&c.images.length>1&&
+Q.jsxs(Q.Fragment,{children:[
+
+Q.jsx(Lf,{variant:"outline",size:"icon",
+  className:"absolute left-4 top-1/2 h-8 w-8 -translate-y-1/2 rounded-full bg-background/80 hover:bg-background",onClick:()=>{c&&g(e=>0===e?c.images.length-1:e-1)},children:
+Q.jsx(xat,{
+  className:"h-4 w-4"})}),
+Q.jsx(Lf,{variant:"outline",size:"icon",
+  className:"absolute right-4 top-1/2 h-8 w-8 -translate-y-1/2 rounded-full bg-background/80 hover:bg-background",onClick:()=>{c&&g(e=>e===c.images.length-1?0:e+1)},children:
+Q.jsx(wat,{
+  className:"h-4 w-4"})})]})]}),c&&c.images.length>1&&
+Q.jsx("div",{
+  className:"mt-4 flex gap-2 overflow-x-auto pb-2",children:c.images.map((e,t)=>
+Q.jsx("button",{onClick:()=>g(t),
+  className:Im("relative h-16 w-16 flex-shrink-0 overflow-hidden rounded-md border-2",h===t?"border-primary":"border-transparent"),children:
+Q.jsx("img",{src:e,alt:`缩略图 ${t+1}`,
+  className:"h-full w-full object-cover"})},t))})]})})]})]})}

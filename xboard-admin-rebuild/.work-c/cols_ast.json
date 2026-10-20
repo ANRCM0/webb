@@ -1,0 +1,1299 @@
+[
+ {
+  "arrStart": 5738671,
+  "arrEnd": 5740142,
+  "owner": {
+   "name": "y",
+   "kind": "const",
+   "start": 5738655
+  },
+  "cols": [
+   {
+    "id": "failed_at",
+    "size": null,
+    "min": null,
+    "max": null,
+    "title": null,
+    "off": 5738684
+   },
+   {
+    "id": "queue",
+    "size": null,
+    "min": null,
+    "max": null,
+    "title": null,
+    "off": 5739073
+   },
+   {
+    "id": "name",
+    "size": null,
+    "min": null,
+    "max": null,
+    "title": null,
+    "off": 5739178
+   },
+   {
+    "id": "exception",
+    "size": null,
+    "min": null,
+    "max": null,
+    "title": null,
+    "off": 5739496
+   },
+   {
+    "id": "actions",
+    "size": 80,
+    "min": null,
+    "max": null,
+    "title": null,
+    "off": 5739895
+   }
+  ]
+ },
+ {
+  "arrStart": 5860572,
+  "arrEnd": 5863720,
+  "owner": {
+   "name": "pQt",
+   "kind": "const",
+   "start": 5860533
+  },
+  "cols": [
+   {
+    "id": "drag-handle",
+    "size": 40,
+    "min": null,
+    "max": null,
+    "title": null,
+    "off": 5860573
+   },
+   {
+    "id": "id",
+    "size": 60,
+    "min": null,
+    "max": null,
+    "title": null,
+    "off": 5860736
+   },
+   {
+    "id": "enable",
+    "size": 100,
+    "min": null,
+    "max": null,
+    "title": null,
+    "off": 5861010
+   },
+   {
+    "id": "name",
+    "size": 200,
+    "min": null,
+    "max": null,
+    "title": null,
+    "off": 5861276
+   },
+   {
+    "id": "payment",
+    "size": 200,
+    "min": null,
+    "max": null,
+    "title": null,
+    "off": 5861557
+   },
+   {
+    "id": "notify_url",
+    "size": 3000,
+    "min": null,
+    "max": null,
+    "title": null,
+    "off": 5861847
+   },
+   {
+    "id": "actions",
+    "size": 100,
+    "min": null,
+    "max": null,
+    "title": null,
+    "off": 5862758
+   }
+  ]
+ },
+ {
+  "arrStart": 5981148,
+  "arrEnd": null,
+  "owner": {
+   "name": "N",
+   "kind": "const",
+   "start": 5980329
+  },
+  "cols": [
+   {
+    "id": "actions",
+    "size": 100,
+    "min": null,
+    "max": null,
+    "title": null,
+    "off": 5981148
+   }
+  ]
+ },
+ {
+  "arrStart": 6048372,
+  "arrEnd": 6050466,
+  "owner": {
+   "name": "q2t",
+   "kind": "const",
+   "start": 6048361
+  },
+  "cols": [
+   {
+    "id": "drag-handle",
+    "size": 40,
+    "min": null,
+    "max": null,
+    "title": null,
+    "off": 6048373
+   },
+   {
+    "id": "id",
+    "size": 60,
+    "min": null,
+    "max": null,
+    "title": "table.columns.id",
+    "off": 6048572
+   },
+   {
+    "id": "show",
+    "size": 100,
+    "min": null,
+    "max": null,
+    "title": "table.columns.show",
+    "off": 6048846
+   },
+   {
+    "id": "title",
+    "size": 6000,
+    "min": null,
+    "max": null,
+    "title": "table.columns.title",
+    "off": 6049155
+   },
+   {
+    "id": "actions",
+    "size": 100,
+    "min": null,
+    "max": null,
+    "title": "table.columns.actions",
+    "off": 6049439
+   }
+  ]
+ },
+ {
+  "arrStart": 6060597,
+  "arrEnd": 6062920,
+  "owner": {
+   "name": "e4t",
+   "kind": "const",
+   "start": 6060558
+  },
+  "cols": [
+   {
+    "id": "drag-handle",
+    "size": 40,
+    "min": null,
+    "max": null,
+    "title": null,
+    "off": 6060598
+   },
+   {
+    "id": "id",
+    "size": 70,
+    "min": null,
+    "max": null,
+    "title": null,
+    "off": 6060761
+   },
+   {
+    "id": "show",
+    "size": 100,
+    "min": null,
+    "max": null,
+    "title": null,
+    "off": 6061029
+   },
+   {
+    "id": "title",
+    "size": 600,
+    "min": null,
+    "max": null,
+    "title": null,
+    "off": 6061339
+   },
+   {
+    "id": "category",
+    "size": 1800,
+    "min": null,
+    "max": null,
+    "title": null,
+    "off": 6061604
+   },
+   {
+    "id": "actions",
+    "size": 100,
+    "min": null,
+    "max": null,
+    "title": null,
+    "off": 6061843
+   }
+  ]
+ },
+ {
+  "arrStart": 6232239,
+  "arrEnd": 6237702,
+  "owner": {
+   "name": "Z5t",
+   "kind": "const",
+   "start": 6232226
+  },
+  "cols": [
+   {
+    "id": "select",
+    "size": 40,
+    "min": null,
+    "max": null,
+    "title": null,
+    "off": 6232240
+   },
+   {
+    "id": "id",
+    "size": 50,
+    "min": null,
+    "max": null,
+    "title": "columns.nodeId",
+    "off": 6232678
+   },
+   {
+    "id": "show",
+    "size": 50,
+    "min": null,
+    "max": null,
+    "title": "columns.show",
+    "off": 6232840
+   },
+   {
+    "id": "name",
+    "size": 260,
+    "min": null,
+    "max": null,
+    "title": "columns.node",
+    "off": 6233008
+   },
+   {
+    "id": "machine",
+    "size": 200,
+    "min": null,
+    "max": null,
+    "title": "columns.deployment.title",
+    "off": 6233935
+   },
+   {
+    "id": "host",
+    "size": null,
+    "min": null,
+    "max": null,
+    "title": "columns.address",
+    "off": 6234492
+   },
+   {
+    "id": "online",
+    "size": 80,
+    "min": null,
+    "max": null,
+    "title": "columns.onlineUsers.title",
+    "off": 6234665
+   },
+   {
+    "id": "rate",
+    "size": 80,
+    "min": null,
+    "max": null,
+    "title": "columns.rate.title",
+    "off": 6235040
+   },
+   {
+    "id": "group_ids",
+    "size": null,
+    "min": null,
+    "max": null,
+    "title": "columns.groups.title",
+    "off": 6235318
+   },
+   {
+    "id": "type",
+    "size": 100,
+    "min": null,
+    "max": null,
+    "title": "columns.type",
+    "off": 6236032
+   },
+   {
+    "id": "traffic",
+    "size": 120,
+    "min": null,
+    "max": null,
+    "title": "columns.traffic.title",
+    "off": 6236356
+   },
+   {
+    "id": "actions",
+    "size": 50,
+    "min": null,
+    "max": null,
+    "title": "columns.actions",
+    "off": 6237526
+   }
+  ]
+ },
+ {
+  "arrStart": 6255729,
+  "arrEnd": 6258963,
+  "owner": {
+   "name": "h3t",
+   "kind": "const",
+   "start": 6255716
+  },
+  "cols": [
+   {
+    "id": "name",
+    "size": 360,
+    "min": null,
+    "max": null,
+    "title": "columns.name",
+    "off": 6255730
+   },
+   {
+    "id": "status",
+    "size": 110,
+    "min": null,
+    "max": null,
+    "title": "columns.status",
+    "off": 6256049
+   },
+   {
+    "id": "load",
+    "size": 210,
+    "min": null,
+    "max": null,
+    "title": "columns.load",
+    "off": 6256720
+   },
+   {
+    "id": "relation",
+    "size": 220,
+    "min": null,
+    "max": null,
+    "title": "columns.nodes",
+    "off": 6256860
+   },
+   {
+    "id": "last_seen",
+    "size": 140,
+    "min": null,
+    "max": null,
+    "title": "columns.lastSeen",
+    "off": 6257020
+   },
+   {
+    "id": "actions",
+    "size": 132,
+    "min": null,
+    "max": null,
+    "title": "columns.actions",
+    "off": 6257501
+   }
+  ]
+ },
+ {
+  "arrStart": 6288646,
+  "arrEnd": 6290816,
+  "owner": {
+   "name": "H3t",
+   "kind": "const",
+   "start": 6288635
+  },
+  "cols": [
+   {
+    "id": "id",
+    "size": null,
+    "min": null,
+    "max": null,
+    "title": "columns.id",
+    "off": 6288647
+   },
+   {
+    "id": "name",
+    "size": null,
+    "min": null,
+    "max": null,
+    "title": "columns.name",
+    "off": 6288885
+   },
+   {
+    "id": "users_count",
+    "size": null,
+    "min": null,
+    "max": null,
+    "title": "columns.usersCount",
+    "off": 6289126
+   },
+   {
+    "id": "server_count",
+    "size": 8000,
+    "min": null,
+    "max": null,
+    "title": "columns.serverCount",
+    "off": 6289440
+   },
+   {
+    "id": "actions",
+    "size": null,
+    "min": null,
+    "max": null,
+    "title": "columns.actions",
+    "off": 6289766
+   }
+  ]
+ },
+ {
+  "arrStart": 6297333,
+  "arrEnd": 6300095,
+  "owner": {
+   "name": "Z3t",
+   "kind": "const",
+   "start": 6296686
+  },
+  "cols": [
+   {
+    "id": "id",
+    "size": null,
+    "min": null,
+    "max": null,
+    "title": "columns.id",
+    "off": 6297334
+   },
+   {
+    "id": "remarks",
+    "size": null,
+    "min": null,
+    "max": null,
+    "title": "columns.remarks",
+    "off": 6297588
+   },
+   {
+    "id": "action_value",
+    "size": 300,
+    "min": null,
+    "max": null,
+    "title": "columns.action_value.title",
+    "off": 6297897
+   },
+   {
+    "id": "action",
+    "size": 9000,
+    "min": null,
+    "max": null,
+    "title": "columns.action",
+    "off": 6298618
+   },
+   {
+    "id": "actions",
+    "size": null,
+    "min": null,
+    "max": null,
+    "title": null,
+    "off": 6299060
+   }
+  ]
+ },
+ {
+  "arrStart": 6303642,
+  "arrEnd": 6309074,
+  "owner": {
+   "name": "n6t",
+   "kind": "const",
+   "start": 6303631
+  },
+  "cols": [
+   {
+    "id": "drag-handle",
+    "size": 40,
+    "min": null,
+    "max": null,
+    "title": null,
+    "off": 6303643
+   },
+   {
+    "id": "id",
+    "size": null,
+    "min": null,
+    "max": null,
+    "title": "plan.columns.id",
+    "off": 6303792
+   },
+   {
+    "id": "show",
+    "size": null,
+    "min": null,
+    "max": null,
+    "title": "plan.columns.show",
+    "off": 6304051
+   },
+   {
+    "id": "sell",
+    "size": null,
+    "min": null,
+    "max": null,
+    "title": "plan.columns.sell",
+    "off": 6304319
+   },
+   {
+    "id": "renew",
+    "size": null,
+    "min": null,
+    "max": null,
+    "title": "plan.columns.renew",
+    "off": 6304587
+   },
+   {
+    "id": "name",
+    "size": 900,
+    "min": null,
+    "max": null,
+    "title": "plan.columns.name",
+    "off": 6304899
+   },
+   {
+    "id": "users_count",
+    "size": 120,
+    "min": null,
+    "max": null,
+    "title": "plan.columns.stats",
+    "off": 6305216
+   },
+   {
+    "id": "group",
+    "size": null,
+    "min": null,
+    "max": null,
+    "title": "plan.columns.group",
+    "off": 6306801
+   },
+   {
+    "id": "prices",
+    "size": 9000,
+    "min": null,
+    "max": null,
+    "title": "plan.columns.price",
+    "off": 6307304
+   },
+   {
+    "id": "actions",
+    "size": null,
+    "min": null,
+    "max": null,
+    "title": "plan.columns.actions",
+    "off": 6308897
+   }
+  ]
+ },
+ {
+  "arrStart": 6335652,
+  "arrEnd": 6341387,
+  "owner": {
+   "name": "N6t",
+   "kind": "const",
+   "start": 6335641
+  },
+  "cols": [
+   {
+    "id": "trade_no",
+    "size": null,
+    "min": null,
+    "max": null,
+    "title": "table.columns.tradeNo",
+    "off": 6335653
+   },
+   {
+    "id": "type",
+    "size": null,
+    "min": null,
+    "max": null,
+    "title": "table.columns.type",
+    "off": 6336262
+   },
+   {
+    "id": "plan.name",
+    "size": null,
+    "min": null,
+    "max": null,
+    "title": "table.columns.plan",
+    "off": 6336728
+   },
+   {
+    "id": "period",
+    "size": null,
+    "min": null,
+    "max": null,
+    "title": "table.columns.period",
+    "off": 6337069
+   },
+   {
+    "id": "total_amount",
+    "size": null,
+    "min": null,
+    "max": null,
+    "title": "table.columns.amount",
+    "off": 6337474
+   },
+   {
+    "id": "status",
+    "size": null,
+    "min": null,
+    "max": null,
+    "title": "table.columns.status",
+    "off": 6337809
+   },
+   {
+    "id": "commission_balance",
+    "size": null,
+    "min": null,
+    "max": null,
+    "title": "table.columns.commission",
+    "off": 6339362
+   },
+   {
+    "id": "commission_status",
+    "size": null,
+    "min": null,
+    "max": null,
+    "title": "table.columns.commissionStatus",
+    "off": 6339699
+   },
+   {
+    "id": "created_at",
+    "size": null,
+    "min": null,
+    "max": null,
+    "title": "table.columns.createdAt",
+    "off": 6341094
+   }
+  ]
+ },
+ {
+  "arrStart": 6359124,
+  "arrEnd": 6361053,
+  "owner": {
+   "name": "P6t",
+   "kind": "const",
+   "start": 6359113
+  },
+  "cols": [
+   {
+    "id": "id",
+    "size": null,
+    "min": null,
+    "max": null,
+    "title": "table.columns.id",
+    "off": 6359125
+   },
+   {
+    "id": "show",
+    "size": null,
+    "min": null,
+    "max": null,
+    "title": "table.columns.show",
+    "off": 6359284
+   },
+   {
+    "id": "name",
+    "size": 800,
+    "min": null,
+    "max": null,
+    "title": "table.columns.name",
+    "off": 6359532
+   },
+   {
+    "id": "type",
+    "size": null,
+    "min": null,
+    "max": null,
+    "title": "table.columns.type",
+    "off": 6359763
+   },
+   {
+    "id": "code",
+    "size": null,
+    "min": null,
+    "max": null,
+    "title": "table.columns.code",
+    "off": 6359974
+   },
+   {
+    "id": "limit_use",
+    "size": null,
+    "min": null,
+    "max": null,
+    "title": "table.columns.limitUse",
+    "off": 6360159
+   },
+   {
+    "id": "limit_use_with_user",
+    "size": null,
+    "min": null,
+    "max": null,
+    "title": "table.columns.limitUseWithUser",
+    "off": 6360414
+   },
+   {
+    "id": "#",
+    "size": 8000,
+    "min": null,
+    "max": null,
+    "title": "table.columns.validity",
+    "off": 6360705
+   },
+   {
+    "id": "actions",
+    "size": null,
+    "min": null,
+    "max": null,
+    "title": "table.columns.actions",
+    "off": 6360877
+   }
+  ]
+ },
+ {
+  "arrStart": 6365621,
+  "arrEnd": 6367244,
+  "owner": {
+   "name": "U6t",
+   "kind": "const",
+   "start": 6365610
+  },
+  "cols": [
+   {
+    "id": "id",
+    "size": null,
+    "min": null,
+    "max": null,
+    "title": "template.table.columns.id",
+    "off": 6365622
+   },
+   {
+    "id": "status",
+    "size": null,
+    "min": null,
+    "max": null,
+    "title": "template.table.columns.status",
+    "off": 6365790
+   },
+   {
+    "id": "name",
+    "size": 300,
+    "min": null,
+    "max": null,
+    "title": "template.table.columns.name",
+    "off": 6365977
+   },
+   {
+    "id": "type",
+    "size": null,
+    "min": null,
+    "max": null,
+    "title": "template.table.columns.type",
+    "off": 6366217
+   },
+   {
+    "id": "rewards",
+    "size": null,
+    "min": null,
+    "max": null,
+    "title": "template.table.columns.rewards",
+    "off": 6366423
+   },
+   {
+    "id": "sort",
+    "size": null,
+    "min": null,
+    "max": null,
+    "title": "template.table.columns.sort",
+    "off": 6366630
+   },
+   {
+    "id": "created_at",
+    "size": null,
+    "min": null,
+    "max": null,
+    "title": "template.table.columns.created_at",
+    "off": 6366824
+   },
+   {
+    "id": "actions",
+    "size": null,
+    "min": null,
+    "max": null,
+    "title": "template.table.columns.actions",
+    "off": 6367064
+   }
+  ]
+ },
+ {
+  "arrStart": 6396137,
+  "arrEnd": 6398289,
+  "owner": {
+   "name": "e8t",
+   "kind": "const",
+   "start": 6396126
+  },
+  "cols": [
+   {
+    "id": "id",
+    "size": null,
+    "min": null,
+    "max": null,
+    "title": "code.table.columns.id",
+    "off": 6396138
+   },
+   {
+    "id": "code",
+    "size": null,
+    "min": null,
+    "max": null,
+    "title": "code.table.columns.code",
+    "off": 6396285
+   },
+   {
+    "id": "template_name",
+    "size": null,
+    "min": null,
+    "max": null,
+    "title": "code.table.columns.template_name",
+    "off": 6396708
+   },
+   {
+    "id": "status",
+    "size": null,
+    "min": null,
+    "max": null,
+    "title": "code.table.columns.status",
+    "off": 6396825
+   },
+   {
+    "id": "expires_at",
+    "size": null,
+    "min": null,
+    "max": null,
+    "title": "code.table.columns.expires_at",
+    "off": 6397473
+   },
+   {
+    "id": "usage_count",
+    "size": null,
+    "min": null,
+    "max": null,
+    "title": "code.table.columns.usage_count",
+    "off": 6397692
+   },
+   {
+    "id": "max_usage",
+    "size": null,
+    "min": null,
+    "max": null,
+    "title": "code.table.columns.max_usage",
+    "off": 6397884
+   },
+   {
+    "id": "created_at",
+    "size": null,
+    "min": null,
+    "max": null,
+    "title": "code.table.columns.created_at",
+    "off": 6398070
+   }
+  ]
+ },
+ {
+  "arrStart": 6399325,
+  "arrEnd": 6400098,
+  "owner": {
+   "name": "n8t",
+   "kind": "const",
+   "start": 6399318
+  },
+  "cols": [
+   {
+    "id": "id",
+    "size": null,
+    "min": null,
+    "max": null,
+    "title": null,
+    "off": 6399326
+   },
+   {
+    "id": "code",
+    "size": null,
+    "min": null,
+    "max": null,
+    "title": null,
+    "off": 6399474
+   },
+   {
+    "id": "user_email",
+    "size": null,
+    "min": null,
+    "max": null,
+    "title": null,
+    "off": 6399648
+   },
+   {
+    "id": "template_name",
+    "size": null,
+    "min": null,
+    "max": null,
+    "title": null,
+    "off": 6399760
+   },
+   {
+    "id": "created_at",
+    "size": null,
+    "min": null,
+    "max": null,
+    "title": null,
+    "off": 6399878
+   }
+  ]
+ },
+ {
+  "arrStart": 6426372,
+  "arrEnd": 6427529,
+  "owner": {
+   "name": "N8t",
+   "kind": "const",
+   "start": 6426368
+  },
+  "cols": [
+   {
+    "id": "record_at",
+    "size": null,
+    "min": null,
+    "max": null,
+    "title": null,
+    "off": 6426373
+   },
+   {
+    "id": "u",
+    "size": null,
+    "min": null,
+    "max": null,
+    "title": null,
+    "off": 6426583
+   },
+   {
+    "id": "d",
+    "size": null,
+    "min": null,
+    "max": null,
+    "title": null,
+    "off": 6426855
+   },
+   {
+    "id": "server_rate",
+    "size": null,
+    "min": null,
+    "max": null,
+    "title": null,
+    "off": 6427124
+   },
+   {
+    "id": "total",
+    "size": null,
+    "min": null,
+    "max": null,
+    "title": null,
+    "off": 6427355
+   }
+  ]
+ },
+ {
+  "arrStart": 6451004,
+  "arrEnd": 6460783,
+  "owner": {
+   "name": "H8t",
+   "kind": "const",
+   "start": 6450987
+  },
+  "cols": [
+   {
+    "id": "select",
+    "size": 40,
+    "min": null,
+    "max": null,
+    "title": null,
+    "off": 6451005
+   },
+   {
+    "id": "is_admin",
+    "size": 0,
+    "min": null,
+    "max": null,
+    "title": null,
+    "off": 6451443
+   },
+   {
+    "id": "is_staff",
+    "size": 0,
+    "min": null,
+    "max": null,
+    "title": null,
+    "off": 6451623
+   },
+   {
+    "id": "id",
+    "size": null,
+    "min": null,
+    "max": null,
+    "title": null,
+    "off": 6451803
+   },
+   {
+    "id": "email",
+    "size": null,
+    "min": null,
+    "max": null,
+    "title": null,
+    "off": 6451990
+   },
+   {
+    "id": "online_count",
+    "size": null,
+    "min": null,
+    "max": null,
+    "title": null,
+    "off": 6452162
+   },
+   {
+    "id": "banned",
+    "size": null,
+    "min": null,
+    "max": null,
+    "title": null,
+    "off": 6452934
+   },
+   {
+    "id": "plan_id",
+    "size": null,
+    "min": null,
+    "max": null,
+    "title": null,
+    "off": 6453449
+   },
+   {
+    "id": "group_id",
+    "size": null,
+    "min": null,
+    "max": null,
+    "title": null,
+    "off": 6453684
+   },
+   {
+    "id": "total_used",
+    "size": null,
+    "min": null,
+    "max": null,
+    "title": null,
+    "off": 6454147
+   },
+   {
+    "id": "transfer_enable",
+    "size": null,
+    "min": null,
+    "max": null,
+    "title": null,
+    "off": 6455108
+   },
+   {
+    "id": "expired_at",
+    "size": null,
+    "min": null,
+    "max": null,
+    "title": null,
+    "off": 6455334
+   },
+   {
+    "id": "balance",
+    "size": null,
+    "min": null,
+    "max": null,
+    "title": null,
+    "off": 6456674
+   },
+   {
+    "id": "commission_balance",
+    "size": null,
+    "min": null,
+    "max": null,
+    "title": null,
+    "off": 6457039
+   },
+   {
+    "id": "created_at",
+    "size": 1000,
+    "min": null,
+    "max": null,
+    "title": null,
+    "off": 6457429
+   },
+   {
+    "id": "actions",
+    "size": null,
+    "min": null,
+    "max": null,
+    "title": null,
+    "off": 6457629
+   }
+  ]
+ },
+ {
+  "arrStart": 6480365,
+  "arrEnd": 6483354,
+  "owner": {
+   "name": "i9t",
+   "kind": "const",
+   "start": 6480350
+  },
+  "cols": [
+   {
+    "id": "id",
+    "size": null,
+    "min": null,
+    "max": null,
+    "title": "columns.id",
+    "off": 6480366
+   },
+   {
+    "id": "subject",
+    "size": 4000,
+    "min": null,
+    "max": null,
+    "title": "columns.subject",
+    "off": 6480556
+   },
+   {
+    "id": "level",
+    "size": null,
+    "min": null,
+    "max": null,
+    "title": "columns.level",
+    "off": 6480924
+   },
+   {
+    "id": "status",
+    "size": null,
+    "min": null,
+    "max": null,
+    "title": "columns.status",
+    "off": 6481365
+   },
+   {
+    "id": "updated_at",
+    "size": null,
+    "min": null,
+    "max": null,
+    "title": "columns.updated_at",
+    "off": 6481806
+   },
+   {
+    "id": "created_at",
+    "size": null,
+    "min": null,
+    "max": null,
+    "title": "columns.created_at",
+    "off": 6482135
+   },
+   {
+    "id": "actions",
+    "size": null,
+    "min": null,
+    "max": null,
+    "title": "columns.actions",
+    "off": 6482384
+   }
+  ]
+ },
+ {
+  "arrStart": 6511862,
+  "arrEnd": 6516911,
+  "owner": {
+   "name": "C9t",
+   "kind": "const",
+   "start": 6510949
+  },
+  "cols": [
+   {
+    "id": "id",
+    "size": 60,
+    "min": null,
+    "max": null,
+    "title": null,
+    "off": 6511863
+   },
+   {
+    "id": "user_email",
+    "size": 100,
+    "min": null,
+    "max": null,
+    "title": null,
+    "off": 6512163
+   },
+   {
+    "id": "trigger_source",
+    "size": 120,
+    "min": null,
+    "max": null,
+    "title": null,
+    "off": 6512748
+   },
+   {
+    "id": "reset_type",
+    "size": 120,
+    "min": null,
+    "max": null,
+    "title": null,
+    "off": 6514072
+   },
+   {
+    "id": "old_traffic",
+    "size": 120,
+    "min": null,
+    "max": null,
+    "title": null,
+    "off": 6514512
+   },
+   {
+    "id": "reset_time",
+    "size": 140,
+    "min": null,
+    "max": null,
+    "title": null,
+    "off": 6515653
+   },
+   {
+    "id": "created_at",
+    "size": 1400,
+    "min": null,
+    "max": null,
+    "title": null,
+    "off": 6516280
+   }
+  ]
+ }
+]

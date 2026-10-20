@@ -1,0 +1,88 @@
+{const{t:e}=jy("giftCard"),[t,n]=H.useState("templates");return 
+Q.jsxs(eot,{children:[
+
+Q.jsxs(tot,{children:[
+
+Q.jsx(Eut,{}),
+Q.jsxs("div",{
+  className:"ml-auto flex items-center space-x-4",children:[
+
+Q.jsx(Lut,{}),
+Q.jsx(sht,{})]})]}),
+Q.jsxs(not,{
+  className:"flex flex-col",fixedHeight:!0,children:[
+
+Q.jsx("div",{
+  className:"mb-6 flex items-center justify-between space-y-2",children:
+Q.jsxs("div",{children:[
+
+Q.jsx("h2",{
+  className:"text-2xl font-bold tracking-tight",children:e("title")}),
+Q.jsx("p",{
+  className:"text-muted-foreground mt-2",children:e("description")})]})}),
+Q.jsxs(rw,{value:t,onValueChange:n,
+  className:"flex-1",children:[
+
+Q.jsxs(sw,{
+  className:"grid w-full grid-cols-4",children:[
+
+Q.jsx(ow,{value:"templates",children:e("tabs.templates")}),
+Q.jsx(ow,{value:"codes",children:e("tabs.codes")}),
+Q.jsx(ow,{value:"usages",children:e("tabs.usages")}),
+Q.jsx(ow,{value:"statistics",children:e("tabs.statistics")})]}),
+Q.jsx(aw,{value:"templates",
+  className:"mt-6 flex-1",children:
+Q.jsxs("div",{
+  className:"space-y-4",children:[
+
+Q.jsx("div",{
+  className:"flex items-center justify-between",children:
+Q.jsxs("div",{children:[
+
+Q.jsx("h3",{
+  className:"text-lg font-medium",children:e("template.title")}),
+Q.jsx("p",{
+  className:"text-sm text-muted-foreground",children:e("template.description")})]})}),
+Q.jsx(Y6t,{})]})}),
+Q.jsx(aw,{value:"codes",
+  className:"mt-6 flex-1",children:
+Q.jsxs("div",{
+  className:"space-y-4",children:[
+
+Q.jsx("div",{
+  className:"flex items-center justify-between",children:
+Q.jsxs("div",{children:[
+
+Q.jsx("h3",{
+  className:"text-lg font-medium",children:e("code.title")}),
+Q.jsx("p",{
+  className:"text-sm text-muted-foreground",children:e("code.description")})]})}),
+Q.jsx(t8t,{})]})}),
+Q.jsx(aw,{value:"usages",
+  className:"mt-6 flex-1",children:
+Q.jsxs("div",{
+  className:"space-y-4",children:[
+
+Q.jsx("div",{
+  className:"flex items-center justify-between",children:
+Q.jsxs("div",{children:[
+
+Q.jsx("h3",{
+  className:"text-lg font-medium",children:e("usage.title")}),
+Q.jsx("p",{
+  className:"text-sm text-muted-foreground",children:e("usage.description")})]})}),
+Q.jsx(i8t,{})]})}),
+Q.jsx(aw,{value:"statistics",
+  className:"mt-6 flex-1",children:
+Q.jsxs("div",{
+  className:"space-y-4",children:[
+
+Q.jsx("div",{
+  className:"flex items-center justify-between",children:
+Q.jsxs("div",{children:[
+
+Q.jsx("h3",{
+  className:"text-lg font-medium",children:e("statistics.title")}),
+Q.jsx("p",{
+  className:"text-sm text-muted-foreground",children:e("statistics.description")})]})}),
+Q.jsx(r8t,{})]})})]})]})]})}

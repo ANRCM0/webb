@@ -1,0 +1,330 @@
+[
+ {
+  "depth": 0,
+  "seg": "/sign-in",
+  "ref": "Jst",
+  "kind": "module",
+  "offset": 4401059,
+  "full": "/sign-in"
+ },
+ {
+  "depth": 1,
+  "seg": "/",
+  "ref": "sct",
+  "kind": "module",
+  "offset": 4401285,
+  "full": "/"
+ },
+ {
+  "depth": 2,
+  "seg": "(index)",
+  "ref": "$Gt",
+  "kind": "module",
+  "offset": 4401438,
+  "full": "/"
+ },
+ {
+  "depth": 2,
+  "seg": "config",
+  "ref": null,
+  "kind": null,
+  "offset": 4401604,
+  "full": "/config"
+ },
+ {
+  "depth": 3,
+  "seg": "system",
+  "ref": "GGt",
+  "kind": "module",
+  "offset": 4401655,
+  "full": "/config/system"
+ },
+ {
+  "depth": 4,
+  "seg": "(index)",
+  "ref": "dZt",
+  "kind": "module",
+  "offset": 4401835,
+  "full": "/config/system/"
+ },
+ {
+  "depth": 4,
+  "seg": "safe",
+  "ref": "pZt",
+  "kind": "module",
+  "offset": 4402001,
+  "full": "/config/system/safe"
+ },
+ {
+  "depth": 4,
+  "seg": "subscribe",
+  "ref": "vZt",
+  "kind": "module",
+  "offset": 4402170,
+  "full": "/config/system/subscribe"
+ },
+ {
+  "depth": 4,
+  "seg": "invite",
+  "ref": "wZt",
+  "kind": "module",
+  "offset": 4402344,
+  "full": "/config/system/invite"
+ },
+ {
+  "depth": 4,
+  "seg": "frontend",
+  "ref": "NZt",
+  "kind": "module",
+  "offset": 4402515,
+  "full": "/config/system/frontend"
+ },
+ {
+  "depth": 4,
+  "seg": "server",
+  "ref": "IZt",
+  "kind": "module",
+  "offset": 4402688,
+  "full": "/config/system/server"
+ },
+ {
+  "depth": 4,
+  "seg": "email",
+  "ref": "xYt",
+  "kind": "module",
+  "offset": 4402859,
+  "full": "/config/system/email"
+ },
+ {
+  "depth": 4,
+  "seg": "telegram",
+  "ref": "kYt",
+  "kind": "module",
+  "offset": 4403029,
+  "full": "/config/system/telegram"
+ },
+ {
+  "depth": 4,
+  "seg": "APP",
+  "ref": "DYt",
+  "kind": "module",
+  "offset": 4403202,
+  "full": "/config/system/APP"
+ },
+ {
+  "depth": 4,
+  "seg": "subscribe-template",
+  "ref": "WQe",
+  "kind": "element",
+  "offset": 4403370,
+  "full": "/config/system/subscribe-template"
+ },
+ {
+  "depth": 3,
+  "seg": "payment",
+  "ref": "_Qt",
+  "kind": "module",
+  "offset": 4403422,
+  "full": "/config/payment"
+ },
+ {
+  "depth": 3,
+  "seg": "plugin",
+  "ref": "g1t",
+  "kind": "module",
+  "offset": 4403594,
+  "full": "/config/plugin"
+ },
+ {
+  "depth": 3,
+  "seg": "plugin/menu-demo",
+  "ref": "f1t",
+  "kind": "module",
+  "offset": 4403765,
+  "full": "/config/plugin/menu-demo"
+ },
+ {
+  "depth": 3,
+  "seg": "plugin/crud-demo",
+  "ref": "C1t",
+  "kind": "module",
+  "offset": 4403946,
+  "full": "/config/plugin/crud-demo"
+ },
+ {
+  "depth": 3,
+  "seg": "theme",
+  "ref": "E1t",
+  "kind": "module",
+  "offset": 4404127,
+  "full": "/config/theme"
+ },
+ {
+  "depth": 3,
+  "seg": "notice",
+  "ref": "G2t",
+  "kind": "module",
+  "offset": 4404297,
+  "full": "/config/notice"
+ },
+ {
+  "depth": 3,
+  "seg": "knowledge",
+  "ref": "n4t",
+  "kind": "module",
+  "offset": 4404468,
+  "full": "/config/knowledge"
+ },
+ {
+  "depth": 2,
+  "seg": "plugins/:pluginCode/*",
+  "ref": "r4t",
+  "kind": "module",
+  "offset": 4404644,
+  "full": "/plugins/:pluginCode/*"
+ },
+ {
+  "depth": 2,
+  "seg": "server",
+  "ref": null,
+  "kind": null,
+  "offset": 4404830,
+  "full": "/server"
+ },
+ {
+  "depth": 3,
+  "seg": "manage",
+  "ref": "J5t",
+  "kind": "module",
+  "offset": 4404881,
+  "full": "/server/manage"
+ },
+ {
+  "depth": 3,
+  "seg": "machine",
+  "ref": "B3t",
+  "kind": "module",
+  "offset": 4405052,
+  "full": "/server/machine"
+ },
+ {
+  "depth": 3,
+  "seg": "group",
+  "ref": "U3t",
+  "kind": "module",
+  "offset": 4405224,
+  "full": "/server/group"
+ },
+ {
+  "depth": 3,
+  "seg": "route",
+  "ref": "Y3t",
+  "kind": "module",
+  "offset": 4405394,
+  "full": "/server/route"
+ },
+ {
+  "depth": 2,
+  "seg": "finance",
+  "ref": null,
+  "kind": null,
+  "offset": 4405566,
+  "full": "/finance"
+ },
+ {
+  "depth": 3,
+  "seg": "plan",
+  "ref": "d6t",
+  "kind": "module",
+  "offset": 4405618,
+  "full": "/finance/plan"
+ },
+ {
+  "depth": 3,
+  "seg": "order",
+  "ref": "L6t",
+  "kind": "module",
+  "offset": 4405787,
+  "full": "/finance/order"
+ },
+ {
+  "depth": 3,
+  "seg": "coupon",
+  "ref": "B6t",
+  "kind": "module",
+  "offset": 4405957,
+  "full": "/finance/coupon"
+ },
+ {
+  "depth": 3,
+  "seg": "gift-card",
+  "ref": "s8t",
+  "kind": "module",
+  "offset": 4406128,
+  "full": "/finance/gift-card"
+ },
+ {
+  "depth": 2,
+  "seg": "user",
+  "ref": null,
+  "kind": null,
+  "offset": 4406304,
+  "full": "/user"
+ },
+ {
+  "depth": 3,
+  "seg": "manage",
+  "ref": "Y8t",
+  "kind": "module",
+  "offset": 4406353,
+  "full": "/user/manage"
+ },
+ {
+  "depth": 3,
+  "seg": "ticket",
+  "ref": "x9t",
+  "kind": "module",
+  "offset": 4406524,
+  "full": "/user/ticket"
+ },
+ {
+  "depth": 3,
+  "seg": "traffic-reset-logs",
+  "ref": "N9t",
+  "kind": "module",
+  "offset": 4406695,
+  "full": "/user/traffic-reset-logs"
+ },
+ {
+  "depth": 0,
+  "seg": "/500",
+  "ref": null,
+  "kind": null,
+  "offset": 4406884,
+  "full": "/500"
+ },
+ {
+  "depth": 0,
+  "seg": "/404",
+  "ref": null,
+  "kind": null,
+  "offset": 4406911,
+  "full": "/404"
+ },
+ {
+  "depth": 0,
+  "seg": "/503",
+  "ref": null,
+  "kind": null,
+  "offset": 4406938,
+  "full": "/503"
+ },
+ {
+  "depth": 0,
+  "seg": "*",
+  "ref": null,
+  "kind": null,
+  "offset": 4407555,
+  "full": "/*"
+ }
+]

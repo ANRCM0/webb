@@ -1,0 +1,16 @@
+{
+ "markers": {
+  "Button": 3,
+  "Badge": 1,
+  "Dialog/AlertDialog/Sheet": 3,
+  "Tooltip": 1,
+  "Drawer(vaul)": 49,
+  "Command(cmdk)": 1,
+  "Toaster(sonner)": 85,
+  "Calendar(day-picker)": 6,
+  "Checkbox": 1,
+  "Switch": 1,
+  "Slider": 1
+ },
+ "tokens": null
+}

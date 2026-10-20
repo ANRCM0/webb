@@ -1,0 +1,48 @@
+{const[e,t]=H.useState(!1),{t:n}=jy("auth"),i=n("signIn.resetPassword.command");return 
+Q.jsxs(Q.Fragment,{children:[
+
+Q.jsxs("div",{
+  className:"container relative flex min-h-svh flex-col items-center justify-center bg-primary-foreground px-4 py-8 lg:max-w-none lg:px-0",children:[
+
+Q.jsx("div",{
+  className:"absolute right-4 top-4 md:right-8 md:top-8",children:
+Q.jsx(Qst,{})}),
+Q.jsxs("div",{
+  className:"mx-auto flex w-full flex-col justify-center space-y-6 sm:w-[350px] md:w-[420px] lg:p-8",children:[
+
+Q.jsxs("div",{
+  className:"flex flex-col space-y-2 text-center",children:[
+
+Q.jsx("h1",{
+  className:"text-2xl font-bold sm:text-3xl",children:window?.settings?.title}),
+Q.jsx("p",{
+  className:"text-sm text-muted-foreground",children:window?.settings?.description})]}),
+Q.jsxs(s8e,{
+  className:"p-4 sm:p-6",children:[
+
+Q.jsxs("div",{
+  className:"flex flex-col space-y-2 text-left",children:[
+
+Q.jsx("h1",{
+  className:"text-xl font-semibold tracking-tight sm:text-2xl",children:n("signIn.title")}),
+Q.jsx("p",{
+  className:"text-sm text-muted-foreground",children:n("signIn.description")})]}),
+Q.jsx(g8e,{onForgotPassword:()=>t(!0)})]})]})]}),
+Q.jsx(htt,{open:e,onOpenChange:t,children:
+Q.jsx(ptt,{
+  className:"max-w-[90vw] sm:max-w-lg",children:
+Q.jsxs(mtt,{children:[
+
+Q.jsx(_tt,{children:n("signIn.resetPassword.title")}),
+Q.jsx(vtt,{children:n("signIn.resetPassword.description")}),
+Q.jsx("div",{
+  className:"mt-4",children:
+Q.jsxs("div",{
+  className:"relative",children:[
+
+Q.jsx("pre",{
+  className:"max-w-full overflow-x-auto rounded-md bg-secondary p-4 pr-12 text-sm",children:i}),
+Q.jsx(xtt,{variant:"ghost",size:"icon",
+  className:"absolute right-2 top-2 h-8 w-8 hover:bg-secondary-foreground/10",onClick:()=>IS(i).then(()=>{gE.success(n("common:copy.success"))}),children:
+Q.jsx(Jm,{
+  className:"h-4 w-4"})})]})})]})})})]})}

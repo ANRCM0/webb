@@ -1,0 +1,169 @@
+{
+const e=function(){let{matches:e}=H.useContext(eg),t=e[e.length-1];return t?t.params:{}}(),t=sg(),n=lC(),{t:i}=jy("plugin"),r=e.pluginCode??"",s=(e["*"]??"").replace(/^\/+/,""),{data:o,isLoading:a,refetch:l}=Ult(),c=o?.find(e=>e.code===r),d=!!c?.config&&Object.keys(c.config).length>0,u=function(e,t){return"settings"===e&&t?"settings":"overview"}(s,d),h=function(e,t){
+const n=Klt(t);return n&&e?.admin_menus?.length&&e.admin_menus.find(e=>Klt(e.path)===n)||null}(c,s),g=function(e,t){return e?.admin_crud&&t?e.admin_crud[t]??null:null}(c,s),p=!(h||g||s&&"settings"!==s),m=!(!s||h||g||"settings"===s&&d),f=H.useMemo(()=>c?.readme?function(e){return new d1t({html:!1,linkify:!1}).render(e||"")}(c.readme):"",[c?.readme]),_=g?.title||h?.title||c?.name||r||i("title"),v=g?.description||h?.description||c?.description||i("runtime.pageDescription",{defaultValue:"Inspect plugin metadata, documentation, and configuration."});return 
+Q.jsxs(eot,{children:[
+
+Q.jsxs(tot,{children:[
+
+Q.jsx(Eut,{}),
+Q.jsxs("div",{
+  className:"ml-auto flex items-center space-x-4",children:[
+
+Q.jsx(Lut,{}),
+Q.jsx(sht,{})]})]}),
+Q.jsxs(not,{
+  className:"flex flex-col",fixedHeight:!0,children:[
+
+Q.jsx("div",{
+  className:"mb-2 flex items-center justify-between space-y-2",children:
+Q.jsxs("div",{children:[
+
+Q.jsxs("div",{
+  className:"flex items-center gap-2",children:[
+
+Q.jsx("h2",{
+  className:"text-2xl font-bold tracking-tight",children:_}),c?.version&&
+Q.jsxs(nKt,{variant:"outline",children:[
+"v",c.version]}),h?.label&&
+Q.jsx(nKt,{variant:"outline",children:h.label})]}),
+Q.jsx("p",{
+  className:"mt-1 text-muted-foreground",children:v})]})}),
+Q.jsx("div",{
+  className:"-mx-4 flex-1 overflow-auto px-4 py-2",children:a?
+Q.jsxs("div",{
+  className:"space-y-4",children:[
+
+Q.jsx(q$t,{
+  className:"h-10 w-64"}),
+Q.jsx(q$t,{
+  className:"h-40 w-full"}),
+Q.jsx(q$t,{
+  className:"h-64 w-full"})]}):c?c.is_enabled?g?
+Q.jsx(i4t,{schema:g,pluginCode:r},`${r}:${s}`):h?
+Q.jsxs(s8e,{children:[
+
+Q.jsx(o8e,{children:
+Q.jsx(a8e,{children:h.title})}),
+Q.jsxs(c8e,{
+  className:"space-y-4",children:[
+
+Q.jsx("p",{
+  className:"text-sm text-muted-foreground",children:h.description||i("runtime.pluginMenuPageDescription",{defaultValue:"This page is contributed by the plugin. Custom rendering will be available in a future version."})}),
+Q.jsx("div",{
+  className:"rounded-lg border bg-muted/30 p-4 text-sm",children:
+Q.jsxs("div",{
+  className:"space-y-1 text-muted-foreground",children:[
+
+Q.jsxs("div",{children:[
+
+Q.jsx("span",{
+  className:"font-medium text-foreground",children:"Plugin:"})," ",c.name]}),
+Q.jsxs("div",{children:[
+
+Q.jsx("span",{
+  className:"font-medium text-foreground",children:"Path:"})," ",
+Q.jsx("code",{children:Glt(c.code,h.path)})]})]})}),
+Q.jsx(Lf,{onClick:()=>t(`/plugins/${c.code}`),children:i("runtime.backToOverview",{defaultValue:"Back to overview"})})]})]}):m?
+Q.jsxs(s8e,{children:[
+
+Q.jsx(o8e,{children:
+Q.jsx(a8e,{children:i("runtime.pageNotFoundTitle",{defaultValue:"Plugin page not found"})})}),
+Q.jsxs(c8e,{
+  className:"space-y-4",children:[
+
+Q.jsx("p",{
+  className:"text-sm text-muted-foreground",children:i("runtime.pageNotFoundDescription",{defaultValue:"This plugin page is not available in the current runtime fallback mode."})}),
+Q.jsx(Lf,{onClick:()=>t(`/plugins/${c.code}`),children:i("runtime.backToOverview",{defaultValue:"Back to overview"})})]})]}):p?
+Q.jsxs(rw,{value:u,onValueChange:e=>{r&&t("settings"!==e?`/plugins/${r}`:`/plugins/${r}/settings`)},
+  className:"space-y-6",children:[
+
+Q.jsxs(sw,{children:[
+
+Q.jsx(ow,{value:"overview",children:i("runtime.overview",{defaultValue:"Overview"})}),d&&
+Q.jsx(ow,{value:"settings",children:i("runtime.settings",{defaultValue:"Settings"})})]}),
+Q.jsxs(aw,{value:"overview",
+  className:"space-y-6",children:[
+
+Q.jsxs(s8e,{children:[
+
+Q.jsx(o8e,{children:
+Q.jsx(a8e,{children:i("runtime.metadataTitle",{defaultValue:"Plugin metadata"})})}),
+Q.jsxs(c8e,{
+  className:"grid gap-3 text-sm md:grid-cols-2",children:[
+
+Q.jsxs("div",{children:[
+
+Q.jsxs("span",{
+  className:"font-medium",children:[
+i("author",{defaultValue:"Author"}),":"]})," ",c.author]}),
+Q.jsxs("div",{children:[
+
+Q.jsx("span",{
+  className:"font-medium",children:"Code:"})," ",
+Q.jsx("code",{children:c.code})]}),
+Q.jsxs("div",{children:[
+
+Q.jsxs("span",{
+  className:"font-medium",children:[
+i("runtime.version",{defaultValue:"Version"}),":"]})," ",c.version]}),
+Q.jsxs("div",{children:[
+
+Q.jsxs("span",{
+  className:"font-medium",children:[
+i("runtime.status",{defaultValue:"Status"}),":"]})," ",c.is_enabled?i("status.enabled",{defaultValue:"Enabled"}):i("status.disabled",{defaultValue:"Disabled"})]})]})]}),c.admin_menus?.length?
+Q.jsxs(s8e,{children:[
+
+Q.jsx(o8e,{children:
+Q.jsx(a8e,{children:i("runtime.menuDeclarationTitle",{defaultValue:"Declared plugin menus"})})}),
+Q.jsx(c8e,{
+  className:"space-y-3",children:c.admin_menus.map(e=>
+Q.jsxs("div",{
+  className:"rounded-lg border bg-muted/20 p-4 text-sm",children:[
+
+Q.jsxs("div",{
+  className:"flex items-center gap-2",children:[
+
+Q.jsx("span",{
+  className:"font-medium",children:e.title}),e.label&&
+Q.jsx(nKt,{variant:"outline",children:e.label})]}),
+Q.jsx("div",{
+  className:"mt-2 text-muted-foreground",children:
+Q.jsx("code",{children:Glt(c.code,e.path)})})]},e.id))})]}):null,
+Q.jsxs(s8e,{children:[
+
+Q.jsx(o8e,{children:
+Q.jsx(a8e,{children:i("readme.title",{defaultValue:"Plugin documentation"})})}),
+Q.jsx(c8e,{children:c.readme?
+Q.jsx("div",{
+  className:"markdown-body max-h-[70vh] overflow-y-auto",dangerouslySetInnerHTML:{__html:f}}):
+Q.jsx("p",{
+  className:"text-sm text-muted-foreground",children:i("runtime.noReadme",{defaultValue:"This plugin did not provide runtime documentation."})})})]})]}),d&&
+Q.jsx(aw,{value:"settings",children:
+Q.jsxs(s8e,{children:[
+
+Q.jsx(o8e,{children:
+Q.jsx(a8e,{children:i("config.title",{defaultValue:"Configuration"})})}),
+Q.jsx(c8e,{children:
+Q.jsx(bQt,{pluginName:c.code,onClose:()=>t(`/plugins/${c.code}`),onSuccess:()=>{Promise.all([l(),n.invalidateQueries({queryKey:Wlt})])}})})]})})]}):null:
+Q.jsxs(s8e,{children:[
+
+Q.jsx(o8e,{children:
+Q.jsx(a8e,{children:i("runtime.disabledTitle",{defaultValue:"Plugin is disabled"})})}),
+Q.jsxs(c8e,{
+  className:"space-y-4",children:[
+
+Q.jsx("p",{
+  className:"text-sm text-muted-foreground",children:i("runtime.disabledDescription",{defaultValue:"Enable this plugin from plugin management before opening its admin pages."})}),
+Q.jsx(Lf,{asChild:!0,children:
+Q.jsx(jg,{to:"/config/plugin",children:i("runtime.backToManager",{defaultValue:"Back to plugin management"})})})]})]}):
+Q.jsxs(s8e,{children:[
+
+Q.jsx(o8e,{children:
+Q.jsx(a8e,{children:i("runtime.notFoundTitle",{defaultValue:"Plugin not found"})})}),
+Q.jsxs(c8e,{
+  className:"space-y-4",children:[
+
+Q.jsx("p",{
+  className:"text-sm text-muted-foreground",children:i("runtime.notFoundDescription",{defaultValue:"The requested plugin could not be found or is no longer available."})}),
+Q.jsx(Lf,{asChild:!0,children:
+Q.jsx(jg,{to:"/config/plugin",children:i("runtime.backToManager",{defaultValue:"Back to plugin management"})})})]})]})})]})]})}

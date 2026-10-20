@@ -1,0 +1,143 @@
+{const{t:e}=jy("plugin"),t=lC(),[n,i]=H.useState(null),[r,s]=H.useState(!1),[o,a]=H.useState(null),[l,c]=H.useState(""),[d,u]=H.useState("feature"),[h,g]=H.useState("all"),[p,m]=H.useState(!1),[f,_]=H.useState(!1),[v,b]=H.useState(!1),y=H.useRef(null),[x,w]=H.useState(!1),[C,S]=H.useState(""),{data:k,isLoading:N}=pC({queryKey:["pluginTypes"],queryFn:async()=>{const{data:e}=await ET.getPluginTypes();return e}}),{data:E,isLoading:L,refetch:D}=Ult(),T=E?.filter(e=>e.name.toLowerCase().includes(l.toLowerCase())||e.description.toLowerCase().includes(l.toLowerCase())||e.code.toLowerCase().includes(l.toLowerCase())),I=()=>{if(!T)return[];let e=T;return"all"!==d&&(e=e.filter(e=>e.type===d)),"installed"===h?e=e.filter(e=>e.is_installed):"available"===h&&(e=e.filter(e=>!e.is_installed)),e},R=e=>k?.find(t=>t.value===e),O=async n=>{i(n),ET.installPlugin(n).then(()=>{gE.success(e("messages.installSuccess")),D(),t.invalidateQueries({queryKey:Wlt})}).catch(t=>{gE.error(t.message||e("messages.installError"))}).finally(()=>{i(null)})},M=async n=>{i(n),ET.upgradePlugin(n).then(()=>{gE.success(e("messages.upgradeSuccess")),D(),t.invalidateQueries({queryKey:Wlt})}).catch(t=>{gE.error(t.message||e("messages.upgradeError"))}).finally(()=>{i(null)})},A=async n=>{i(n),ET.uninstallPlugin(n).then(()=>{gE.success(e("messages.uninstallSuccess")),D(),t.invalidateQueries({queryKey:Wlt})}).catch(t=>{gE.error(t.message||e("messages.uninstallError"))}).finally(()=>{i(null)})},P=async(n,r)=>{i(n);(r?ET.disablePlugin:ET.enablePlugin)(n).then(()=>{gE.success(e(r?"messages.disableSuccess":"messages.enableSuccess")),D(),t.invalidateQueries({queryKey:Wlt})}).catch(t=>{gE.error(t.message||e(r?"messages.disableError":"messages.enableError"))}).finally(()=>{i(null)})},j=e=>{a(e),s(!0)},F=async n=>{n.name.endsWith(".zip")?(m(!0),ET.uploadPlugin(n).then(()=>{gE.success(e("messages.uploadSuccess")),_(!1),D(),t.invalidateQueries({queryKey:Wlt})}).catch(t=>{gE.error(t.message||e("messages.uploadError"))}).finally(()=>{m(!1),y.current&&(y.current.value="")})):gE.error(e("upload.error.format"))},B=e=>{e.preventDefault(),e.stopPropagation(),"dragenter"===e.type||"dragover"===e.type?b(!0):"dragleave"===e.type&&b(!1)},V=async n=>{i(n),ET.deletePlugin(n).then(()=>{gE.success(e("messages.deleteSuccess")),D(),t.invalidateQueries({queryKey:Wlt})}).catch(t=>{gE.error(t.message||e("messages.deleteError"))}).finally(()=>{i(null)})};return 
+Q.jsxs(eot,{children:[
+
+Q.jsxs(tot,{
+  className:"flex items-center justify-between",children:[
+
+Q.jsxs("div",{
+  className:"flex items-center space-x-4",children:[
+
+Q.jsx(rlt,{
+  className:"h-6 w-6"}),
+Q.jsx("h1",{
+  className:"text-2xl font-bold tracking-tight",children:e("title")})]}),
+Q.jsxs("div",{
+  className:"flex items-center space-x-4",children:[
+
+Q.jsx(Lut,{}),
+Q.jsx(sht,{})]})]}),
+Q.jsxs(not,{children:[
+
+Q.jsxs("div",{
+  className:"mb-8 space-y-4",children:[
+
+Q.jsxs("div",{
+  className:"flex flex-col gap-4 md:flex-row md:items-center md:justify-between",children:[
+
+Q.jsxs("div",{
+  className:"relative max-w-sm flex-1",children:[
+
+Q.jsx(glt,{
+  className:"absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground"}),
+Q.jsx(u8e,{placeholder:e("search.placeholder"),value:l,onChange:e=>c(e.target.value),
+  className:"pl-9"})]}),
+Q.jsxs("div",{
+  className:"flex items-center gap-4",children:[
+
+Q.jsxs(yzt,{value:h,onValueChange:g,children:[
+
+Q.jsx(Czt,{
+  className:"w-[140px]",children:
+Q.jsx(wzt,{placeholder:e("status.filter_placeholder",{defaultValue:"安装状态"})})}),
+Q.jsxs(Nzt,{children:[
+
+Q.jsx(Lzt,{value:"all",children:e("status.all",{defaultValue:"全部状态"})}),
+Q.jsx(Lzt,{value:"installed",children:e("status.installed",{defaultValue:"已安装"})}),
+Q.jsx(Lzt,{value:"available",children:e("status.available",{defaultValue:"可安装"})})]})]}),
+Q.jsxs(Lf,{variant:"outline",
+  className:"shrink-0",size:"sm",onClick:()=>window.location.hash="#/config/plugin/crud-demo",children:[
+
+Q.jsx(rlt,{
+  className:"mr-2 h-4 w-4"}),e("button.crudDemo",{defaultValue:"CRUD Demo"})]}),
+Q.jsxs(Lf,{variant:"outline",
+  className:"shrink-0",size:"sm",onClick:()=>window.location.hash="#/config/plugin/menu-demo",children:[
+
+Q.jsx(rlt,{
+  className:"mr-2 h-4 w-4"}),e("button.menuDemo",{defaultValue:"Menu Demo"})]}),
+Q.jsxs(Lf,{onClick:()=>_(!0),variant:"outline",
+  className:"shrink-0",size:"sm",children:[
+
+Q.jsx(Ilt,{
+  className:"mr-2 h-4 w-4"}),e("upload.button")]})]})]}),
+Q.jsxs(rw,{value:d,onValueChange:u,
+  className:"w-full",children:[
+
+Q.jsxs(sw,{children:[
+k?.map(e=>
+Q.jsx(ow,{value:e.value,children:
+Q.jsx("div",{
+  className:"flex items-center gap-2",children:
+Q.jsx("span",{children:e.label})})},e.value)),
+Q.jsx(ow,{value:"all",children:e("tabs.all")})]}),
+Q.jsx(aw,{value:"all",
+  className:"mt-6",children:
+Q.jsx("div",{
+  className:"space-y-4",children:L||N?
+Q.jsxs(Q.Fragment,{children:[
+
+Q.jsx(h1t,{}),
+Q.jsx(h1t,{}),
+Q.jsx(h1t,{})]}):I().map(e=>
+Q.jsx(u1t,{plugin:e,typeInfo:R(e.type),onInstall:O,onUpgrade:M,onUninstall:A,onToggleEnable:P,onOpenConfig:j,onDelete:V,isLoading:n===e.code,onShowReadme:e.readme?()=>{S(e.readme),w(!0)}:void 0},e.code))})}),k?.map(e=>
+Q.jsx(aw,{value:e.value,
+  className:"mt-6",children:
+Q.jsx("div",{
+  className:"space-y-4",children:I().map(e=>
+Q.jsx(u1t,{plugin:e,typeInfo:R(e.type),onInstall:O,onUpgrade:M,onUninstall:A,onToggleEnable:P,onOpenConfig:j,onDelete:V,isLoading:n===e.code,onShowReadme:e.readme?()=>{S(e.readme),w(!0)}:void 0},e.code))})},e.value))]})]}),
+Q.jsx(htt,{open:r,onOpenChange:s,children:
+Q.jsxs(ptt,{
+  className:"sm:max-w-lg",children:[
+
+Q.jsxs(mtt,{children:[
+
+Q.jsxs(_tt,{children:[
+E?.find(e=>e.code===o)?.name," ",e("config.title")]}),
+Q.jsx(vtt,{children:e("config.description")})]}),o&&
+Q.jsx(bQt,{pluginName:o,onClose:()=>s(!1),onSuccess:()=>{s(!1),D(),t.invalidateQueries({queryKey:Wlt})}})]})}),
+Q.jsx(htt,{open:f,onOpenChange:_,children:
+Q.jsxs(ptt,{
+  className:"sm:max-w-md",children:[
+
+Q.jsxs(mtt,{children:[
+
+Q.jsx(_tt,{children:e("upload.title")}),
+Q.jsx(vtt,{children:e("upload.description")})]}),
+Q.jsxs("div",{
+  className:Im("relative mt-4 flex h-64 flex-col items-center justify-center rounded-lg border-2 border-dashed border-muted-foreground/25 px-5 py-10 text-center transition-colors",v&&"border-primary/50 bg-muted/50"),onDragEnter:B,onDragLeave:B,onDragOver:B,onDrop:e=>{e.preventDefault(),e.stopPropagation(),b(!1),e.dataTransfer.files&&e.dataTransfer.files[0]&&F(e.dataTransfer.files[0])},children:[
+
+Q.jsx("input",{type:"file",ref:y,
+  className:"hidden",accept:".zip",onChange:e=>{
+const t=e.target.files?.[0];t&&F(t)}}),p?
+Q.jsxs("div",{
+  className:"flex flex-col items-center space-y-2",children:[
+
+Q.jsx("div",{
+  className:"h-10 w-10 animate-spin rounded-full border-b-2 border-primary"}),
+Q.jsx("div",{
+  className:"text-sm text-muted-foreground",children:e("upload.uploading")})]}):
+Q.jsx(Q.Fragment,{children:
+Q.jsxs("div",{
+  className:"flex flex-col items-center space-y-4",children:[
+
+Q.jsx("div",{
+  className:"rounded-full border-2 border-muted-foreground/25 p-3",children:
+Q.jsx(Ilt,{
+  className:"h-6 w-6 text-muted-foreground/50"})}),
+Q.jsxs("div",{
+  className:"space-y-2",children:[
+
+Q.jsxs("div",{
+  className:"text-sm font-medium",children:[
+e("upload.dragText")," ",
+Q.jsx("button",{type:"button",onClick:()=>y.current?.click(),
+  className:"mx-1 text-primary hover:underline",children:e("upload.clickText")})]}),
+Q.jsx("div",{
+  className:"text-xs text-muted-foreground",children:e("upload.supportText")})]})]})})]})]})}),
+Q.jsx(htt,{open:x,onOpenChange:w,children:
+Q.jsxs(ptt,{
+  className:"max-w-2xl",children:[
+
+Q.jsx(mtt,{children:
+Q.jsx(_tt,{children:e("readme.title",{defaultValue:"插件文档"})})}),
+Q.jsx("div",{
+  className:"markdown-body max-h-[60vh] overflow-y-auto",dangerouslySetInnerHTML:{__html:(e=>new d1t({html:!1,linkify:!1}).render(e||""))(C)}})]})})]})]})}

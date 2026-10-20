@@ -1,0 +1,4 @@
+route	slug	orig_bytes	app_bytes	changed_pct	mean_delta
+/config/notice	config_notice	104910	107416	8.30	4.99
+/server/manage	server_manage	180396	179339	15.45	8.57
+/user/manage	user_manage	125774	146807	9.78	5.88

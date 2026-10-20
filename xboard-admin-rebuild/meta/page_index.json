@@ -1,0 +1,466 @@
+[
+ {
+  "route": "/sign-in",
+  "component": "Jst",
+  "kind": "module",
+  "ns": [
+   "auth"
+  ],
+  "own": [
+   "xtt",
+   "vtt",
+   "s8e",
+   "ptt"
+  ],
+  "shell": 0,
+  "offset": 5059854
+ },
+ {
+  "route": "/",
+  "component": "$Gt",
+  "kind": "module",
+  "ns": [],
+  "own": [
+   "UGt",
+   "$$t",
+   "uqt",
+   "eKt"
+  ],
+  "shell": 6,
+  "offset": 5748402
+ },
+ {
+  "route": "/",
+  "component": "$Gt",
+  "kind": "module",
+  "ns": [],
+  "own": [
+   "UGt",
+   "$$t",
+   "uqt",
+   "eKt"
+  ],
+  "shell": 6,
+  "offset": 5748402
+ },
+ {
+  "route": "/config/system",
+  "component": "GGt",
+  "kind": "module",
+  "ns": [
+   "settings"
+  ],
+  "own": [
+   "vg",
+   "qGt",
+   "$f"
+  ],
+  "shell": 6,
+  "offset": 5751233
+ },
+ {
+  "route": "/config/system/",
+  "component": "dZt",
+  "kind": "module",
+  "ns": [
+   "settings"
+  ],
+  "own": [
+   "cZt",
+   "$f"
+  ],
+  "shell": 0,
+  "offset": 5761946
+ },
+ {
+  "route": "/config/system/safe",
+  "component": "pZt",
+  "kind": "module",
+  "ns": [
+   "settings"
+  ],
+  "own": [
+   "gZt",
+   "$f"
+  ],
+  "shell": 0,
+  "offset": 5774728
+ },
+ {
+  "route": "/config/system/subscribe",
+  "component": "vZt",
+  "kind": "module",
+  "ns": [
+   "settings"
+  ],
+  "own": [
+   "_Zt",
+   "$f"
+  ],
+  "shell": 0,
+  "offset": 5781886
+ },
+ {
+  "route": "/config/system/invite",
+  "component": "wZt",
+  "kind": "module",
+  "ns": [
+   "settings"
+  ],
+  "own": [
+   "xZt",
+   "$f"
+  ],
+  "shell": 0,
+  "offset": 5789652
+ },
+ {
+  "route": "/config/system/frontend",
+  "component": "NZt",
+  "kind": "module",
+  "ns": [],
+  "own": [
+   "kZt",
+   "$f"
+  ],
+  "shell": 0,
+  "offset": 5792395
+ },
+ {
+  "route": "/config/system/server",
+  "component": "IZt",
+  "kind": "module",
+  "ns": [
+   "settings"
+  ],
+  "own": [
+   "TZt",
+   "$f"
+  ],
+  "shell": 0,
+  "offset": 5797649
+ },
+ {
+  "route": "/config/system/email",
+  "component": "xYt",
+  "kind": "module",
+  "ns": [
+   "settings"
+  ],
+  "own": [
+   "bYt",
+   "MZt",
+   "rw",
+   "ow"
+  ],
+  "shell": 0,
+  "offset": 5818567
+ },
+ {
+  "route": "/config/system/telegram",
+  "component": "kYt",
+  "kind": "module",
+  "ns": [
+   "settings"
+  ],
+  "own": [
+   "SYt",
+   "$f"
+  ],
+  "shell": 0,
+  "offset": 5823426
+ },
+ {
+  "route": "/config/system/APP",
+  "component": "DYt",
+  "kind": "module",
+  "ns": [
+   "settings"
+  ],
+  "own": [
+   "LYt",
+   "$f"
+  ],
+  "shell": 0,
+  "offset": 5827105
+ },
+ {
+  "route": "/config/system/subscribe-template",
+  "component": "WQe",
+  "kind": "element",
+  "ns": [
+   "settings"
+  ],
+  "own": [
+   "VQe",
+   "$f"
+  ],
+  "shell": 0,
+  "offset": 4400706
+ },
+ {
+  "route": "/config/payment",
+  "component": "_Qt",
+  "kind": "module",
+  "ns": [
+   "payment"
+  ],
+  "own": [
+   "fQt"
+  ],
+  "shell": 6,
+  "offset": 5866421
+ },
+ {
+  "route": "/config/plugin",
+  "component": "g1t",
+  "kind": "module",
+  "ns": [
+   "plugin"
+  ],
+  "own": [
+   "yzt",
+   "wzt",
+   "vtt",
+   "u8e"
+  ],
+  "shell": 5,
+  "offset": 5966018
+ },
+ {
+  "route": "/config/plugin/menu-demo",
+  "component": "f1t",
+  "kind": "module",
+  "ns": [
+   "plugin"
+  ],
+  "own": [
+   "yzt",
+   "wzt",
+   "u8e",
+   "s8e"
+  ],
+  "shell": 6,
+  "offset": 5974393
+ },
+ {
+  "route": "/config/plugin/crud-demo",
+  "component": "C1t",
+  "kind": "module",
+  "ns": [],
+  "own": [
+   "v1t",
+   "s8e",
+   "o8e",
+   "nKt"
+  ],
+  "shell": 6,
+  "offset": 5986621
+ },
+ {
+  "route": "/config/theme",
+  "component": "E1t",
+  "kind": "module",
+  "ns": [
+   "theme"
+  ],
+  "own": [
+   "xat",
+   "wat",
+   "vtt",
+   "s8e"
+  ],
+  "shell": 6,
+  "offset": 5990402
+ },
+ {
+  "route": "/config/notice",
+  "component": "G2t",
+  "kind": "module",
+  "ns": [
+   "notice"
+  ],
+  "own": [
+   "K2t"
+  ],
+  "shell": 6,
+  "offset": 6052168
+ },
+ {
+  "route": "/config/knowledge",
+  "component": "n4t",
+  "kind": "module",
+  "ns": [
+   "knowledge"
+  ],
+  "own": [
+   "t4t"
+  ],
+  "shell": 6,
+  "offset": 6064439
+ },
+ {
+  "route": "/plugins/:pluginCode/*",
+  "component": "r4t",
+  "kind": "module",
+  "ns": [
+   "plugin"
+  ],
+  "own": [
+   "s8e",
+   "rw",
+   "q$t",
+   "ow"
+  ],
+  "shell": 6,
+  "offset": 6066007
+ },
+ {
+  "route": "/server/manage",
+  "component": "J5t",
+  "kind": "module",
+  "ns": [
+   "server"
+  ],
+  "own": [
+   "X5t"
+  ],
+  "shell": 6,
+  "offset": 6242245
+ },
+ {
+  "route": "/server/machine",
+  "component": "B3t",
+  "kind": "module",
+  "ns": [
+   "machine"
+  ],
+  "own": [
+   "F3t"
+  ],
+  "shell": 6,
+  "offset": 6286633
+ },
+ {
+  "route": "/server/group",
+  "component": "U3t",
+  "kind": "module",
+  "ns": [
+   "group"
+  ],
+  "own": [
+   "z3t"
+  ],
+  "shell": 6,
+  "offset": 6291513
+ },
+ {
+  "route": "/server/route",
+  "component": "Y3t",
+  "kind": "module",
+  "ns": [
+   "route"
+  ],
+  "own": [
+   "G3t"
+  ],
+  "shell": 6,
+  "offset": 6299974
+ },
+ {
+  "route": "/finance/plan",
+  "component": "d6t",
+  "kind": "module",
+  "ns": [
+   "subscribe"
+  ],
+  "own": [
+   "c6t"
+  ],
+  "shell": 6,
+  "offset": 6320121
+ },
+ {
+  "route": "/finance/order",
+  "component": "L6t",
+  "kind": "module",
+  "ns": [
+   "order"
+  ],
+  "own": [
+   "E6t"
+  ],
+  "shell": 6,
+  "offset": 6342596
+ },
+ {
+  "route": "/finance/coupon",
+  "component": "B6t",
+  "kind": "module",
+  "ns": [
+   "coupon"
+  ],
+  "own": [
+   "F6t"
+  ],
+  "shell": 6,
+  "offset": 6362347
+ },
+ {
+  "route": "/finance/gift-card",
+  "component": "s8t",
+  "kind": "module",
+  "ns": [
+   "giftCard"
+  ],
+  "own": [
+   "t8t",
+   "Y6t",
+   "i8t",
+   "r8t"
+  ],
+  "shell": 6,
+  "offset": 6401831
+ },
+ {
+  "route": "/user/manage",
+  "component": "Y8t",
+  "kind": "module",
+  "ns": [
+   "user"
+  ],
+  "own": [
+   "G8t"
+  ],
+  "shell": 6,
+  "offset": 6476931
+ },
+ {
+  "route": "/user/ticket",
+  "component": "x9t",
+  "kind": "module",
+  "ns": [
+   "ticket"
+  ],
+  "own": [
+   "y9t",
+   "U8t",
+   "K8t"
+  ],
+  "shell": 6,
+  "offset": 6500641
+ },
+ {
+  "route": "/user/traffic-reset-logs",
+  "component": "N9t",
+  "kind": "module",
+  "ns": [
+   "user"
+  ],
+  "own": [
+   "S9t"
+  ],
+  "shell": 6,
+  "offset": 6518366
+ }
+]

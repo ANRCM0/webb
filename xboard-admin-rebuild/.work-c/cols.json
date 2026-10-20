@@ -1,0 +1,53 @@
+[
+ {
+  "arrStart": 5738671,
+  "arrEnd": 5740141,
+  "n": 5,
+  "owner": {
+   "n": "UGt",
+   "i": 5738141
+  },
+  "cols": [
+   {
+    "id": "failed_at",
+    "size": null,
+    "min": null,
+    "max": null,
+    "title": null,
+    "off": 5738684
+   },
+   {
+    "id": "queue",
+    "size": null,
+    "min": null,
+    "max": null,
+    "title": null,
+    "off": 5739073
+   },
+   {
+    "id": "name",
+    "size": null,
+    "min": null,
+    "max": null,
+    "title": null,
+    "off": 5739178
+   },
+   {
+    "id": "exception",
+    "size": null,
+    "min": null,
+    "max": null,
+    "title": null,
+    "off": 5739496
+   },
+   {
+    "id": "actions",
+    "size": 80,
+    "min": null,
+    "max": null,
+    "title": null,
+    "off": 5739895
+   }
+  ]
+ }
+]

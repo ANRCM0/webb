@@ -1,0 +1,211 @@
+{
+ "router": "hash",
+ "shell": "AppShell(auth guard)",
+ "routes": [
+  {
+   "depth": 0,
+   "path": "/sign-in",
+   "kind": "route"
+  },
+  {
+   "depth": 1,
+   "path": "/",
+   "kind": "route"
+  },
+  {
+   "depth": 2,
+   "path": "",
+   "kind": "index"
+  },
+  {
+   "depth": 2,
+   "path": "config",
+   "kind": "route"
+  },
+  {
+   "depth": 3,
+   "path": "system",
+   "kind": "route"
+  },
+  {
+   "depth": 4,
+   "path": "",
+   "kind": "index"
+  },
+  {
+   "depth": 4,
+   "path": "safe",
+   "kind": "route"
+  },
+  {
+   "depth": 4,
+   "path": "subscribe",
+   "kind": "route"
+  },
+  {
+   "depth": 4,
+   "path": "invite",
+   "kind": "route"
+  },
+  {
+   "depth": 4,
+   "path": "frontend",
+   "kind": "route"
+  },
+  {
+   "depth": 4,
+   "path": "server",
+   "kind": "route"
+  },
+  {
+   "depth": 4,
+   "path": "email",
+   "kind": "route"
+  },
+  {
+   "depth": 4,
+   "path": "telegram",
+   "kind": "route"
+  },
+  {
+   "depth": 4,
+   "path": "APP",
+   "kind": "route"
+  },
+  {
+   "depth": 4,
+   "path": "subscribe-template",
+   "kind": "route"
+  },
+  {
+   "depth": 3,
+   "path": "payment",
+   "kind": "route"
+  },
+  {
+   "depth": 3,
+   "path": "plugin",
+   "kind": "route"
+  },
+  {
+   "depth": 3,
+   "path": "plugin/menu-demo",
+   "kind": "route"
+  },
+  {
+   "depth": 3,
+   "path": "plugin/crud-demo",
+   "kind": "route"
+  },
+  {
+   "depth": 3,
+   "path": "theme",
+   "kind": "route"
+  },
+  {
+   "depth": 3,
+   "path": "notice",
+   "kind": "route"
+  },
+  {
+   "depth": 3,
+   "path": "knowledge",
+   "kind": "route"
+  },
+  {
+   "depth": 2,
+   "path": "plugins/:pluginCode/*",
+   "kind": "route"
+  },
+  {
+   "depth": 2,
+   "path": "server",
+   "kind": "route"
+  },
+  {
+   "depth": 3,
+   "path": "manage",
+   "kind": "route"
+  },
+  {
+   "depth": 3,
+   "path": "machine",
+   "kind": "route"
+  },
+  {
+   "depth": 3,
+   "path": "group",
+   "kind": "route"
+  },
+  {
+   "depth": 3,
+   "path": "route",
+   "kind": "route"
+  },
+  {
+   "depth": 2,
+   "path": "finance",
+   "kind": "route"
+  },
+  {
+   "depth": 3,
+   "path": "plan",
+   "kind": "route"
+  },
+  {
+   "depth": 3,
+   "path": "order",
+   "kind": "route"
+  },
+  {
+   "depth": 3,
+   "path": "coupon",
+   "kind": "route"
+  },
+  {
+   "depth": 3,
+   "path": "gift-card",
+   "kind": "route"
+  },
+  {
+   "depth": 2,
+   "path": "user",
+   "kind": "route"
+  },
+  {
+   "depth": 3,
+   "path": "manage",
+   "kind": "route"
+  },
+  {
+   "depth": 3,
+   "path": "ticket",
+   "kind": "route"
+  },
+  {
+   "depth": 3,
+   "path": "traffic-reset-logs",
+   "kind": "route"
+  },
+  {
+   "depth": 0,
+   "path": "/500",
+   "kind": "route"
+  },
+  {
+   "depth": 0,
+   "path": "/404",
+   "kind": "route"
+  },
+  {
+   "depth": 0,
+   "path": "/503",
+   "kind": "route"
+  },
+  {
+   "depth": 0,
+   "path": "*",
+   "kind": "route"
+  }
+ ]
+}

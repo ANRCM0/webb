@@ -1,0 +1,1967 @@
+[
+ {
+  "path": "/sign-in",
+  "offset": 4401059,
+  "module": "Jst",
+  "component": "Jst",
+  "body_bytes": 1775,
+  "namespaces": [
+   "auth"
+  ],
+  "api": [],
+  "hooks": {
+   "useState": 1,
+   "useEffect": 0,
+   "useMemo": 0,
+   "useCallback": 0,
+   "useRef": 0
+  },
+  "jsx_top": [
+   [
+    "Q",
+    1
+   ],
+   [
+    "Qst",
+    1
+   ],
+   [
+    "s8e",
+    1
+   ],
+   [
+    "g8e",
+    1
+   ],
+   [
+    "htt",
+    1
+   ],
+   [
+    "ptt",
+    1
+   ],
+   [
+    "mtt",
+    1
+   ],
+   [
+    "_tt",
+    1
+   ],
+   [
+    "vtt",
+    1
+   ],
+   [
+    "xtt",
+    1
+   ],
+   [
+    "Jm",
+    1
+   ]
+  ],
+  "class_count": 16,
+  "classes_sample": [
+   "container relative flex min-h-svh flex-col items-center justify-center bg-primary-foreground px-4 py-8 lg:max-w-none lg:px-0",
+   "absolute right-4 top-4 md:right-8 md:top-8",
+   "mx-auto flex w-full flex-col justify-center space-y-6 sm:w-[350px] md:w-[420px] lg:p-8",
+   "flex flex-col space-y-2 text-center",
+   "text-2xl font-bold sm:text-3xl",
+   "text-sm text-muted-foreground"
+  ],
+  "i18n_keys": [
+   "signIn.description",
+   "signIn.resetPassword.command",
+   "signIn.resetPassword.description",
+   "signIn.resetPassword.title",
+   "signIn.title"
+  ],
+  "i18n_key_count": 5
+ },
+ {
+  "path": "/",
+  "offset": 4401285,
+  "module": "sct",
+  "component": "sct",
+  "body_bytes": 445,
+  "namespaces": [],
+  "api": [],
+  "hooks": {
+   "useState": 0,
+   "useEffect": 1,
+   "useMemo": 0,
+   "useCallback": 0,
+   "useRef": 0
+  },
+  "jsx_top": [
+   [
+    "rct",
+    1
+   ],
+   [
+    "vg",
+    1
+   ]
+  ],
+  "class_count": 1,
+  "classes_sample": [
+   "relative h-full overflow-hidden bg-background"
+  ],
+  "i18n_keys": [],
+  "i18n_key_count": 0
+ },
+ {
+  "path": "(index)",
+  "offset": 4401438,
+  "module": "$Gt",
+  "component": "$Gt",
+  "body_bytes": 521,
+  "namespaces": [],
+  "api": [],
+  "hooks": {
+   "useState": 0,
+   "useEffect": 0,
+   "useMemo": 0,
+   "useCallback": 0,
+   "useRef": 0
+  },
+  "jsx_top": [
+   [
+    "eot",
+    1
+   ],
+   [
+    "tot",
+    1
+   ],
+   [
+    "Eut",
+    1
+   ],
+   [
+    "Lut",
+    1
+   ],
+   [
+    "sht",
+    1
+   ],
+   [
+    "not",
+    1
+   ],
+   [
+    "uqt",
+    1
+   ],
+   [
+    "eKt",
+    1
+   ],
+   [
+    "UGt",
+    1
+   ]
+  ],
+  "class_count": 5,
+  "classes_sample": [
+   "flex items-center",
+   "text-2xl font-bold tracking-tight md:text-3xl",
+   "ml-auto flex items-center space-x-4",
+   "space-y-6",
+   "grid gap-6"
+  ],
+  "i18n_keys": [],
+  "i18n_key_count": 0
+ },
+ {
+  "path": "system",
+  "offset": 4401655,
+  "module": "GGt",
+  "component": "GGt",
+  "body_bytes": 861,
+  "namespaces": [
+   "settings"
+  ],
+  "api": [],
+  "hooks": {
+   "useState": 0,
+   "useEffect": 0,
+   "useMemo": 0,
+   "useCallback": 0,
+   "useRef": 0
+  },
+  "jsx_top": [
+   [
+    "eot",
+    1
+   ],
+   [
+    "tot",
+    1
+   ],
+   [
+    "Eut",
+    1
+   ],
+   [
+    "Lut",
+    1
+   ],
+   [
+    "sht",
+    1
+   ],
+   [
+    "not",
+    1
+   ],
+   [
+    "qGt",
+    1
+   ],
+   [
+    "vg",
+    1
+   ]
+  ],
+  "class_count": 10,
+  "classes_sample": [
+   "ml-auto flex items-center space-x-4",
+   "flex flex-col",
+   "space-y-2",
+   "text-2xl font-bold tracking-tight md:text-3xl",
+   "text-muted-foreground",
+   "my-6"
+  ],
+  "i18n_keys": [],
+  "i18n_key_count": 0
+ },
+ {
+  "path": "(index)",
+  "offset": 4401835,
+  "module": "dZt",
+  "component": "dZt",
+  "body_bytes": 294,
+  "namespaces": [
+   "settings"
+  ],
+  "api": [],
+  "hooks": {
+   "useState": 0,
+   "useEffect": 0,
+   "useMemo": 0,
+   "useCallback": 0,
+   "useRef": 0
+  },
+  "jsx_top": [
+   [
+    "cZt",
+    1
+   ]
+  ],
+  "class_count": 3,
+  "classes_sample": [
+   "space-y-6",
+   "text-lg font-medium",
+   "text-sm text-muted-foreground"
+  ],
+  "i18n_keys": [
+   "site.description",
+   "site.title"
+  ],
+  "i18n_key_count": 2
+ },
+ {
+  "path": "safe",
+  "offset": 4402001,
+  "module": "pZt",
+  "component": "pZt",
+  "body_bytes": 294,
+  "namespaces": [
+   "settings"
+  ],
+  "api": [],
+  "hooks": {
+   "useState": 0,
+   "useEffect": 0,
+   "useMemo": 0,
+   "useCallback": 0,
+   "useRef": 0
+  },
+  "jsx_top": [
+   [
+    "gZt",
+    1
+   ]
+  ],
+  "class_count": 3,
+  "classes_sample": [
+   "space-y-6",
+   "text-lg font-medium",
+   "text-sm text-muted-foreground"
+  ],
+  "i18n_keys": [
+   "safe.description",
+   "safe.title"
+  ],
+  "i18n_key_count": 2
+ },
+ {
+  "path": "subscribe",
+  "offset": 4402170,
+  "module": "vZt",
+  "component": "vZt",
+  "body_bytes": 304,
+  "namespaces": [
+   "settings"
+  ],
+  "api": [],
+  "hooks": {
+   "useState": 0,
+   "useEffect": 0,
+   "useMemo": 0,
+   "useCallback": 0,
+   "useRef": 0
+  },
+  "jsx_top": [
+   [
+    "_Zt",
+    1
+   ]
+  ],
+  "class_count": 3,
+  "classes_sample": [
+   "space-y-6",
+   "text-lg font-medium",
+   "text-sm text-muted-foreground"
+  ],
+  "i18n_keys": [
+   "subscribe.description",
+   "subscribe.title"
+  ],
+  "i18n_key_count": 2
+ },
+ {
+  "path": "invite",
+  "offset": 4402344,
+  "module": "wZt",
+  "component": "wZt",
+  "body_bytes": 298,
+  "namespaces": [
+   "settings"
+  ],
+  "api": [],
+  "hooks": {
+   "useState": 0,
+   "useEffect": 0,
+   "useMemo": 0,
+   "useCallback": 0,
+   "useRef": 0
+  },
+  "jsx_top": [
+   [
+    "xZt",
+    1
+   ]
+  ],
+  "class_count": 3,
+  "classes_sample": [
+   "space-y-6",
+   "text-lg font-medium",
+   "text-sm text-muted-foreground"
+  ],
+  "i18n_keys": [
+   "invite.description",
+   "invite.title"
+  ],
+  "i18n_key_count": 2
+ },
+ {
+  "path": "frontend",
+  "offset": 4402515,
+  "module": "NZt",
+  "component": "NZt",
+  "body_bytes": 276,
+  "namespaces": [],
+  "api": [],
+  "hooks": {
+   "useState": 0,
+   "useEffect": 0,
+   "useMemo": 0,
+   "useCallback": 0,
+   "useRef": 0
+  },
+  "jsx_top": [
+   [
+    "kZt",
+    1
+   ]
+  ],
+  "class_count": 3,
+  "classes_sample": [
+   "space-y-6",
+   "text-lg font-medium",
+   "text-sm text-muted-foreground"
+  ],
+  "i18n_keys": [],
+  "i18n_key_count": 0
+ },
+ {
+  "path": "server",
+  "offset": 4402688,
+  "module": "IZt",
+  "component": "IZt",
+  "body_bytes": 298,
+  "namespaces": [
+   "settings"
+  ],
+  "api": [],
+  "hooks": {
+   "useState": 0,
+   "useEffect": 0,
+   "useMemo": 0,
+   "useCallback": 0,
+   "useRef": 0
+  },
+  "jsx_top": [
+   [
+    "TZt",
+    1
+   ]
+  ],
+  "class_count": 3,
+  "classes_sample": [
+   "space-y-6",
+   "text-lg font-medium",
+   "text-sm text-muted-foreground"
+  ],
+  "i18n_keys": [
+   "server.description",
+   "server.title"
+  ],
+  "i18n_key_count": 2
+ },
+ {
+  "path": "email",
+  "offset": 4402859,
+  "module": "xYt",
+  "component": "xYt",
+  "body_bytes": 638,
+  "namespaces": [
+   "settings"
+  ],
+  "api": [],
+  "hooks": {
+   "useState": 0,
+   "useEffect": 0,
+   "useMemo": 0,
+   "useCallback": 0,
+   "useRef": 0
+  },
+  "jsx_top": [
+   [
+    "ow",
+    2
+   ],
+   [
+    "aw",
+    2
+   ],
+   [
+    "rw",
+    1
+   ],
+   [
+    "sw",
+    1
+   ],
+   [
+    "MZt",
+    1
+   ],
+   [
+    "bYt",
+    1
+   ]
+  ],
+  "class_count": 6,
+  "classes_sample": [
+   "space-y-6",
+   "text-lg font-medium",
+   "text-sm text-muted-foreground",
+   "w-full",
+   "mt-4",
+   "mt-4"
+  ],
+  "i18n_keys": [
+   "email.description",
+   "email.tab_settings",
+   "email.tab_templates",
+   "email.title"
+  ],
+  "i18n_key_count": 4
+ },
+ {
+  "path": "telegram",
+  "offset": 4403029,
+  "module": "kYt",
+  "component": "kYt",
+  "body_bytes": 302,
+  "namespaces": [
+   "settings"
+  ],
+  "api": [],
+  "hooks": {
+   "useState": 0,
+   "useEffect": 0,
+   "useMemo": 0,
+   "useCallback": 0,
+   "useRef": 0
+  },
+  "jsx_top": [
+   [
+    "SYt",
+    1
+   ]
+  ],
+  "class_count": 3,
+  "classes_sample": [
+   "space-y-6",
+   "text-lg font-medium",
+   "text-sm text-muted-foreground"
+  ],
+  "i18n_keys": [
+   "telegram.description",
+   "telegram.title"
+  ],
+  "i18n_key_count": 2
+ },
+ {
+  "path": "APP",
+  "offset": 4403202,
+  "module": "DYt",
+  "component": "DYt",
+  "body_bytes": 292,
+  "namespaces": [
+   "settings"
+  ],
+  "api": [],
+  "hooks": {
+   "useState": 0,
+   "useEffect": 0,
+   "useMemo": 0,
+   "useCallback": 0,
+   "useRef": 0
+  },
+  "jsx_top": [
+   [
+    "LYt",
+    1
+   ]
+  ],
+  "class_count": 3,
+  "classes_sample": [
+   "space-y-6",
+   "text-lg font-medium",
+   "text-sm text-muted-foreground"
+  ],
+  "i18n_keys": [
+   "app.description",
+   "app.title"
+  ],
+  "i18n_key_count": 2
+ },
+ {
+  "path": "subscribe-template",
+  "offset": 4403370,
+  "module": "WQe",
+  "component": "WQe",
+  "body_bytes": 336,
+  "namespaces": [
+   "settings"
+  ],
+  "api": [],
+  "hooks": {
+   "useState": 0,
+   "useEffect": 0,
+   "useMemo": 0,
+   "useCallback": 0,
+   "useRef": 0
+  },
+  "jsx_top": [
+   [
+    "VQe",
+    1
+   ]
+  ],
+  "class_count": 3,
+  "classes_sample": [
+   "space-y-6",
+   "text-lg font-medium",
+   "text-sm text-muted-foreground"
+  ],
+  "i18n_keys": [
+   "subscribe_template.description",
+   "subscribe_template.title"
+  ],
+  "i18n_key_count": 2
+ },
+ {
+  "path": "payment",
+  "offset": 4403422,
+  "module": "_Qt",
+  "component": "_Qt",
+  "body_bytes": 702,
+  "namespaces": [
+   "payment"
+  ],
+  "api": [],
+  "hooks": {
+   "useState": 0,
+   "useEffect": 0,
+   "useMemo": 0,
+   "useCallback": 0,
+   "useRef": 0
+  },
+  "jsx_top": [
+   [
+    "eot",
+    1
+   ],
+   [
+    "tot",
+    1
+   ],
+   [
+    "Eut",
+    1
+   ],
+   [
+    "Lut",
+    1
+   ],
+   [
+    "sht",
+    1
+   ],
+   [
+    "not",
+    1
+   ],
+   [
+    "fQt",
+    1
+   ]
+  ],
+  "class_count": 7,
+  "classes_sample": [
+   "flex items-center justify-between",
+   "flex items-center space-x-4",
+   "mb-2 flex items-center justify-between space-y-2",
+   "mb-2",
+   "text-2xl font-bold tracking-tight",
+   "text-muted-foreground"
+  ],
+  "i18n_keys": [],
+  "i18n_key_count": 0
+ },
+ {
+  "path": "plugin",
+  "offset": 4403594,
+  "module": "g1t",
+  "component": "g1t",
+  "body_bytes": 7620,
+  "namespaces": [
+   "plugin"
+  ],
+  "api": [
+   "/config/plugin"
+  ],
+  "hooks": {
+   "useState": 11,
+   "useEffect": 0,
+   "useMemo": 0,
+   "useCallback": 0,
+   "useRef": 1
+  },
+  "jsx_top": [
+   [
+    "rlt",
+    3
+   ],
+   [
+    "Lzt",
+    3
+   ],
+   [
+    "Lf",
+    3
+   ],
+   [
+    "h1t",
+    3
+   ],
+   [
+    "htt",
+    3
+   ],
+   [
+    "ptt",
+    3
+   ],
+   [
+    "mtt",
+    3
+   ],
+   [
+    "_tt",
+    3
+   ],
+   [
+    "Ilt",
+    2
+   ],
+   [
+    "ow",
+    2
+   ],
+   [
+    "aw",
+    2
+   ],
+   [
+    "Q",
+    2
+   ]
+  ],
+  "class_count": 39,
+  "classes_sample": [
+   "flex items-center justify-between",
+   "flex items-center space-x-4",
+   "h-6 w-6",
+   "text-2xl font-bold tracking-tight",
+   "flex items-center space-x-4",
+   "mb-8 space-y-4"
+  ],
+  "i18n_keys": [
+   "button.crudDemo",
+   "button.menuDemo",
+   "config.description",
+   "config.title",
+   "messages.deleteError",
+   "messages.deleteSuccess",
+   "messages.installError",
+   "messages.installSuccess",
+   "messages.uninstallError",
+   "messages.uninstallSuccess",
+   "messages.upgradeError",
+   "messages.upgradeSuccess",
+   "messages.uploadError",
+   "messages.uploadSuccess",
+   "readme.title",
+   "search.placeholder",
+   "status.all",
+   "status.available",
+   "status.filter_placeholder",
+   "status.installed",
+   "tabs.all",
+   "upload.button",
+   "upload.clickText",
+   "upload.description",
+   "upload.dragText"
+  ],
+  "i18n_key_count": 29
+ },
+ {
+  "path": "plugin/menu-demo",
+  "offset": 4403765,
+  "module": "f1t",
+  "component": "f1t",
+  "body_bytes": 4876,
+  "namespaces": [
+   "plugin"
+  ],
+  "api": [],
+  "hooks": {
+   "useState": 1,
+   "useEffect": 0,
+   "useMemo": 1,
+   "useCallback": 0,
+   "useRef": 0
+  },
+  "jsx_top": [
+   [
+    "s8e",
+    3
+   ],
+   [
+    "o8e",
+    3
+   ],
+   [
+    "a8e",
+    3
+   ],
+   [
+    "c8e",
+    3
+   ],
+   [
+    "u8e",
+    3
+   ],
+   [
+    "Lf",
+    2
+   ],
+   [
+    "eot",
+    1
+   ],
+   [
+    "tot",
+    1
+   ],
+   [
+    "Eut",
+    1
+   ],
+   [
+    "Lut",
+    1
+   ],
+   [
+    "sht",
+    1
+   ],
+   [
+    "not",
+    1
+   ]
+  ],
+  "class_count": 36,
+  "classes_sample": [
+   "ml-auto flex items-center space-x-4",
+   "flex flex-col",
+   "mb-2 flex items-center justify-between space-y-2",
+   "text-2xl font-bold tracking-tight",
+   "mt-2 text-muted-foreground",
+   "-mx-4 flex-1 overflow-auto px-4 py-1"
+  ],
+  "i18n_keys": [
+   "runtime.addMenu",
+   "runtime.menuCrudDescription",
+   "runtime.menuCrudTitle",
+   "runtime.menuIcon",
+   "runtime.menuLabel",
+   "runtime.menuPath",
+   "runtime.menuTitle",
+   "runtime.noDeclaredMenus",
+   "runtime.previewEmpty",
+   "runtime.sidebarPreviewDescription",
+   "runtime.sidebarPreviewTitle",
+   "runtime.unnamedMenu"
+  ],
+  "i18n_key_count": 12
+ },
+ {
+  "path": "plugin/crud-demo",
+  "offset": 4403946,
+  "module": "C1t",
+  "component": "C1t",
+  "body_bytes": 1497,
+  "namespaces": [],
+  "api": [],
+  "hooks": {
+   "useState": 1,
+   "useEffect": 0,
+   "useMemo": 0,
+   "useCallback": 2,
+   "useRef": 0
+  },
+  "jsx_top": [
+   [
+    "eot",
+    1
+   ],
+   [
+    "tot",
+    1
+   ],
+   [
+    "Eut",
+    1
+   ],
+   [
+    "Lut",
+    1
+   ],
+   [
+    "sht",
+    1
+   ],
+   [
+    "not",
+    1
+   ],
+   [
+    "v1t",
+    1
+   ],
+   [
+    "s8e",
+    1
+   ],
+   [
+    "o8e",
+    1
+   ],
+   [
+    "a8e",
+    1
+   ],
+   [
+    "nKt",
+    1
+   ],
+   [
+    "c8e",
+    1
+   ]
+  ],
+  "class_count": 12,
+  "classes_sample": [
+   "ml-auto flex items-center space-x-4",
+   "flex flex-col",
+   "mb-2 flex items-center justify-between space-y-2",
+   "text-2xl font-bold tracking-tight",
+   "mt-2 text-muted-foreground",
+   "-mx-4 flex-1 overflow-auto px-4 py-1"
+  ],
+  "i18n_keys": [],
+  "i18n_key_count": 0
+ },
+ {
+  "path": "theme",
+  "offset": 4404127,
+  "module": "E1t",
+  "component": "E1t",
+  "body_bytes": 6594,
+  "namespaces": [
+   "theme"
+  ],
+  "api": [],
+  "hooks": {
+   "useState": 6,
+   "useEffect": 0,
+   "useMemo": 0,
+   "useCallback": 0,
+   "useRef": 1
+  },
+  "jsx_top": [
+   [
+    "Lf",
+    6
+   ],
+   [
+    "Q",
+    3
+   ],
+   [
+    "Ilt",
+    2
+   ],
+   [
+    "N1t",
+    2
+   ],
+   [
+    "htt",
+    2
+   ],
+   [
+    "ptt",
+    2
+   ],
+   [
+    "mtt",
+    2
+   ],
+   [
+    "_tt",
+    2
+   ],
+   [
+    "vtt",
+    2
+   ],
+   [
+    "eot",
+    1
+   ],
+   [
+    "tot",
+    1
+   ],
+   [
+    "Eut",
+    1
+   ]
+  ],
+  "class_count": 42,
+  "classes_sample": [
+   "flex items-center justify-between",
+   "flex items-center space-x-4",
+   "mb-8",
+   "mb-2",
+   "text-2xl font-bold tracking-tight",
+   "flex items-center justify-between"
+  ],
+  "i18n_keys": [
+   "card.activateTheme",
+   "card.currentTheme",
+   "card.delete.button",
+   "card.delete.description",
+   "card.delete.error.active",
+   "card.delete.title",
+   "card.version",
+   "preview.imageCount",
+   "preview.title",
+   "upload.button",
+   "upload.clickText",
+   "upload.description",
+   "upload.dragText",
+   "upload.error.format",
+   "upload.supportText",
+   "upload.title",
+   "upload.uploading"
+  ],
+  "i18n_key_count": 17
+ },
+ {
+  "path": "notice",
+  "offset": 4404297,
+  "module": "G2t",
+  "component": "G2t",
+  "body_bytes": 735,
+  "namespaces": [
+   "notice"
+  ],
+  "api": [],
+  "hooks": {
+   "useState": 0,
+   "useEffect": 0,
+   "useMemo": 0,
+   "useCallback": 0,
+   "useRef": 0
+  },
+  "jsx_top": [
+   [
+    "eot",
+    1
+   ],
+   [
+    "tot",
+    1
+   ],
+   [
+    "Eut",
+    1
+   ],
+   [
+    "Lut",
+    1
+   ],
+   [
+    "sht",
+    1
+   ],
+   [
+    "not",
+    1
+   ],
+   [
+    "K2t",
+    1
+   ]
+  ],
+  "class_count": 8,
+  "classes_sample": [
+   "flex items-center justify-between",
+   "flex items-center space-x-4",
+   "flex flex-col",
+   "mb-2 flex items-center justify-between space-y-2",
+   "mb-2",
+   "text-2xl font-bold tracking-tight"
+  ],
+  "i18n_keys": [],
+  "i18n_key_count": 0
+ },
+ {
+  "path": "knowledge",
+  "offset": 4404468,
+  "module": "n4t",
+  "component": "n4t",
+  "body_bytes": 664,
+  "namespaces": [
+   "knowledge"
+  ],
+  "api": [],
+  "hooks": {
+   "useState": 0,
+   "useEffect": 0,
+   "useMemo": 0,
+   "useCallback": 0,
+   "useRef": 0
+  },
+  "jsx_top": [
+   [
+    "eot",
+    1
+   ],
+   [
+    "tot",
+    1
+   ],
+   [
+    "Eut",
+    1
+   ],
+   [
+    "Lut",
+    1
+   ],
+   [
+    "sht",
+    1
+   ],
+   [
+    "not",
+    1
+   ],
+   [
+    "t4t",
+    1
+   ]
+  ],
+  "class_count": 6,
+  "classes_sample": [
+   "ml-auto flex items-center space-x-4",
+   "flex flex-col",
+   "mb-2 flex items-center justify-between space-y-2",
+   "text-2xl font-bold tracking-tight mb-2",
+   "text-muted-foreground",
+   "-mx-4 flex-1 overflow-auto px-4 py-1 lg:flex-row lg:space-x-12 lg:space-y-0"
+  ],
+  "i18n_keys": [],
+  "i18n_key_count": 0
+ },
+ {
+  "path": "plugins/:pluginCode/*",
+  "offset": 4404644,
+  "module": "r4t",
+  "component": "r4t",
+  "body_bytes": 6862,
+  "namespaces": [
+   "plugin"
+  ],
+  "api": [
+   "/config/plugin"
+  ],
+  "hooks": {
+   "useState": 0,
+   "useEffect": 0,
+   "useMemo": 1,
+   "useCallback": 0,
+   "useRef": 0
+  },
+  "jsx_top": [
+   [
+    "s8e",
+    8
+   ],
+   [
+    "o8e",
+    8
+   ],
+   [
+    "a8e",
+    8
+   ],
+   [
+    "c8e",
+    8
+   ],
+   [
+    "Lf",
+    4
+   ],
+   [
+    "nKt",
+    3
+   ],
+   [
+    "q",
+    3
+   ],
+   [
+    "ow",
+    2
+   ],
+   [
+    "aw",
+    2
+   ],
+   [
+    "jg",
+    2
+   ],
+   [
+    "eot",
+    1
+   ],
+   [
+    "tot",
+    1
+   ]
+  ],
+  "class_count": 37,
+  "classes_sample": [
+   "ml-auto flex items-center space-x-4",
+   "flex flex-col",
+   "mb-2 flex items-center justify-between space-y-2",
+   "flex items-center gap-2",
+   "text-2xl font-bold tracking-tight",
+   "mt-1 text-muted-foreground"
+  ],
+  "i18n_keys": [
+   "config.title",
+   "readme.title",
+   "runtime.backToManager",
+   "runtime.backToOverview",
+   "runtime.disabledDescription",
+   "runtime.disabledTitle",
+   "runtime.menuDeclarationTitle",
+   "runtime.metadataTitle",
+   "runtime.noReadme",
+   "runtime.notFoundDescription",
+   "runtime.notFoundTitle",
+   "runtime.overview",
+   "runtime.pageDescription",
+   "runtime.pageNotFoundDescription",
+   "runtime.pageNotFoundTitle",
+   "runtime.pluginMenuPageDescription",
+   "runtime.settings",
+   "runtime.status",
+   "runtime.version",
+   "status.disabled",
+   "status.enabled"
+  ],
+  "i18n_key_count": 21
+ },
+ {
+  "path": "manage",
+  "offset": 4404881,
+  "module": "J5t",
+  "component": "J5t",
+  "body_bytes": 675,
+  "namespaces": [
+   "server"
+  ],
+  "api": [],
+  "hooks": {
+   "useState": 0,
+   "useEffect": 0,
+   "useMemo": 0,
+   "useCallback": 0,
+   "useRef": 0
+  },
+  "jsx_top": [
+   [
+    "eot",
+    1
+   ],
+   [
+    "tot",
+    1
+   ],
+   [
+    "Eut",
+    1
+   ],
+   [
+    "Lut",
+    1
+   ],
+   [
+    "sht",
+    1
+   ],
+   [
+    "not",
+    1
+   ],
+   [
+    "X5t",
+    1
+   ]
+  ],
+  "class_count": 6,
+  "classes_sample": [
+   "ml-auto flex items-center space-x-4",
+   "flex flex-col",
+   "mb-2 flex items-center justify-between space-y-2",
+   "text-2xl font-bold tracking-tight",
+   "text-muted-foreground mt-2",
+   "-mx-4 flex-1 overflow-auto px-4 py-1 lg:flex-row lg:space-x-12 lg:space-y-0"
+  ],
+  "i18n_keys": [
+   "manage.description",
+   "manage.title"
+  ],
+  "i18n_key_count": 2
+ },
+ {
+  "path": "machine",
+  "offset": 4405052,
+  "module": "B3t",
+  "component": "B3t",
+  "body_bytes": 662,
+  "namespaces": [
+   "machine"
+  ],
+  "api": [],
+  "hooks": {
+   "useState": 0,
+   "useEffect": 0,
+   "useMemo": 0,
+   "useCallback": 0,
+   "useRef": 0
+  },
+  "jsx_top": [
+   [
+    "eot",
+    1
+   ],
+   [
+    "tot",
+    1
+   ],
+   [
+    "Eut",
+    1
+   ],
+   [
+    "Lut",
+    1
+   ],
+   [
+    "sht",
+    1
+   ],
+   [
+    "not",
+    1
+   ],
+   [
+    "F3t",
+    1
+   ]
+  ],
+  "class_count": 6,
+  "classes_sample": [
+   "ml-auto flex items-center space-x-4",
+   "flex flex-col",
+   "mb-2 flex items-center justify-between space-y-2",
+   "text-2xl font-bold tracking-tight",
+   "mt-2 text-muted-foreground",
+   "-mx-4 flex-1 overflow-auto px-4 py-1 lg:flex-row lg:space-x-12 lg:space-y-0"
+  ],
+  "i18n_keys": [],
+  "i18n_key_count": 0
+ },
+ {
+  "path": "group",
+  "offset": 4405224,
+  "module": "U3t",
+  "component": "U3t",
+  "body_bytes": 660,
+  "namespaces": [
+   "group"
+  ],
+  "api": [],
+  "hooks": {
+   "useState": 0,
+   "useEffect": 0,
+   "useMemo": 0,
+   "useCallback": 0,
+   "useRef": 0
+  },
+  "jsx_top": [
+   [
+    "eot",
+    1
+   ],
+   [
+    "tot",
+    1
+   ],
+   [
+    "Eut",
+    1
+   ],
+   [
+    "Lut",
+    1
+   ],
+   [
+    "sht",
+    1
+   ],
+   [
+    "not",
+    1
+   ],
+   [
+    "z3t",
+    1
+   ]
+  ],
+  "class_count": 6,
+  "classes_sample": [
+   "ml-auto flex items-center space-x-4",
+   "flex flex-col",
+   "mb-2 flex items-center justify-between space-y-2",
+   "text-2xl font-bold tracking-tight",
+   "mt-2 text-muted-foreground",
+   "-mx-4 flex-1 overflow-auto px-4 py-1 lg:flex-row lg:space-x-12 lg:space-y-0"
+  ],
+  "i18n_keys": [],
+  "i18n_key_count": 0
+ },
+ {
+  "path": "route",
+  "offset": 4405394,
+  "module": "Y3t",
+  "component": "Y3t",
+  "body_bytes": 843,
+  "namespaces": [
+   "route"
+  ],
+  "api": [],
+  "hooks": {
+   "useState": 2,
+   "useEffect": 1,
+   "useMemo": 0,
+   "useCallback": 0,
+   "useRef": 0
+  },
+  "jsx_top": [
+   [
+    "eot",
+    1
+   ],
+   [
+    "tot",
+    1
+   ],
+   [
+    "Eut",
+    1
+   ],
+   [
+    "Lut",
+    1
+   ],
+   [
+    "sht",
+    1
+   ],
+   [
+    "not",
+    1
+   ],
+   [
+    "G3t",
+    1
+   ]
+  ],
+  "class_count": 6,
+  "classes_sample": [
+   "ml-auto flex items-center space-x-4",
+   "flex flex-col",
+   "mb-2 flex items-center justify-between space-y-2",
+   "text-2xl font-bold tracking-tight",
+   "mt-2 text-muted-foreground",
+   "-mx-4 flex-1 overflow-auto px-4 py-1 lg:flex-row lg:space-x-12 lg:space-y-0"
+  ],
+  "i18n_keys": [],
+  "i18n_key_count": 0
+ },
+ {
+  "path": "plan",
+  "offset": 4405618,
+  "module": "d6t",
+  "component": "d6t",
+  "body_bytes": 679,
+  "namespaces": [
+   "subscribe"
+  ],
+  "api": [],
+  "hooks": {
+   "useState": 0,
+   "useEffect": 0,
+   "useMemo": 0,
+   "useCallback": 0,
+   "useRef": 0
+  },
+  "jsx_top": [
+   [
+    "eot",
+    1
+   ],
+   [
+    "tot",
+    1
+   ],
+   [
+    "Eut",
+    1
+   ],
+   [
+    "Lut",
+    1
+   ],
+   [
+    "sht",
+    1
+   ],
+   [
+    "not",
+    1
+   ],
+   [
+    "c6t",
+    1
+   ]
+  ],
+  "class_count": 6,
+  "classes_sample": [
+   "ml-auto flex items-center space-x-4",
+   "flex flex-col",
+   "mb-2 flex items-center justify-between space-y-2",
+   "text-2xl font-bold tracking-tight",
+   "mt-2 text-muted-foreground",
+   "-mx-4 flex-1 overflow-auto px-4 py-1 lg:flex-row lg:space-x-12 lg:space-y-0"
+  ],
+  "i18n_keys": [
+   "plan.page.description",
+   "plan.title"
+  ],
+  "i18n_key_count": 2
+ },
+ {
+  "path": "order",
+  "offset": 4405787,
+  "module": "L6t",
+  "component": "L6t",
+  "body_bytes": 660,
+  "namespaces": [
+   "order"
+  ],
+  "api": [],
+  "hooks": {
+   "useState": 0,
+   "useEffect": 0,
+   "useMemo": 0,
+   "useCallback": 0,
+   "useRef": 0
+  },
+  "jsx_top": [
+   [
+    "eot",
+    1
+   ],
+   [
+    "tot",
+    1
+   ],
+   [
+    "Eut",
+    1
+   ],
+   [
+    "Lut",
+    1
+   ],
+   [
+    "sht",
+    1
+   ],
+   [
+    "not",
+    1
+   ],
+   [
+    "E6t",
+    1
+   ]
+  ],
+  "class_count": 6,
+  "classes_sample": [
+   "ml-auto flex items-center space-x-4",
+   "flex flex-col",
+   "mb-2 flex items-center justify-between space-y-2",
+   "text-2xl font-bold tracking-tight",
+   "text-muted-foreground mt-2",
+   "-mx-4 flex-1 overflow-auto px-4 py-1 lg:flex-row lg:space-x-12 lg:space-y-0"
+  ],
+  "i18n_keys": [],
+  "i18n_key_count": 0
+ },
+ {
+  "path": "coupon",
+  "offset": 4405957,
+  "module": "B6t",
+  "component": "B6t",
+  "body_bytes": 661,
+  "namespaces": [
+   "coupon"
+  ],
+  "api": [],
+  "hooks": {
+   "useState": 0,
+   "useEffect": 0,
+   "useMemo": 0,
+   "useCallback": 0,
+   "useRef": 0
+  },
+  "jsx_top": [
+   [
+    "eot",
+    1
+   ],
+   [
+    "tot",
+    1
+   ],
+   [
+    "Eut",
+    1
+   ],
+   [
+    "Lut",
+    1
+   ],
+   [
+    "sht",
+    1
+   ],
+   [
+    "not",
+    1
+   ],
+   [
+    "F6t",
+    1
+   ]
+  ],
+  "class_count": 6,
+  "classes_sample": [
+   "ml-auto flex items-center space-x-4",
+   "flex flex-col",
+   "mb-2 flex items-center justify-between space-y-2",
+   "text-2xl font-bold tracking-tight",
+   "text-muted-foreground mt-2",
+   "-mx-4 flex-1 overflow-auto px-4 py-1 lg:flex-row lg:space-x-12 lg:space-y-0"
+  ],
+  "i18n_keys": [],
+  "i18n_key_count": 0
+ },
+ {
+  "path": "gift-card",
+  "offset": 4406128,
+  "module": "s8t",
+  "component": "s8t",
+  "body_bytes": 2454,
+  "namespaces": [
+   "giftCard"
+  ],
+  "api": [],
+  "hooks": {
+   "useState": 1,
+   "useEffect": 0,
+   "useMemo": 0,
+   "useCallback": 0,
+   "useRef": 0
+  },
+  "jsx_top": [
+   [
+    "ow",
+    4
+   ],
+   [
+    "aw",
+    4
+   ],
+   [
+    "eot",
+    1
+   ],
+   [
+    "tot",
+    1
+   ],
+   [
+    "Eut",
+    1
+   ],
+   [
+    "Lut",
+    1
+   ],
+   [
+    "sht",
+    1
+   ],
+   [
+    "not",
+    1
+   ],
+   [
+    "rw",
+    1
+   ],
+   [
+    "sw",
+    1
+   ],
+   [
+    "Y6t",
+    1
+   ],
+   [
+    "t8t",
+    1
+   ]
+  ],
+  "class_count": 27,
+  "classes_sample": [
+   "ml-auto flex items-center space-x-4",
+   "flex flex-col",
+   "mb-6 flex items-center justify-between space-y-2",
+   "text-2xl font-bold tracking-tight",
+   "text-muted-foreground mt-2",
+   "flex-1"
+  ],
+  "i18n_keys": [
+   "code.description",
+   "code.title",
+   "statistics.description",
+   "statistics.title",
+   "tabs.codes",
+   "tabs.statistics",
+   "tabs.templates",
+   "tabs.usages",
+   "template.description",
+   "template.title",
+   "usage.description",
+   "usage.title"
+  ],
+  "i18n_key_count": 12
+ },
+ {
+  "path": "manage",
+  "offset": 4406353,
+  "module": "Y8t",
+  "component": "Y8t",
+  "body_bytes": 716,
+  "namespaces": [
+   "user"
+  ],
+  "api": [],
+  "hooks": {
+   "useState": 0,
+   "useEffect": 0,
+   "useMemo": 0,
+   "useCallback": 0,
+   "useRef": 0
+  },
+  "jsx_top": [
+   [
+    "eot",
+    1
+   ],
+   [
+    "tot",
+    1
+   ],
+   [
+    "Eut",
+    1
+   ],
+   [
+    "Lut",
+    1
+   ],
+   [
+    "sht",
+    1
+   ],
+   [
+    "not",
+    1
+   ],
+   [
+    "G8t",
+    1
+   ]
+  ],
+  "class_count": 7,
+  "classes_sample": [
+   "ml-auto flex items-center space-x-4",
+   "flex flex-col",
+   "mb-2 flex items-center justify-between space-y-2",
+   "text-2xl font-bold tracking-tight",
+   "mt-2 text-muted-foreground",
+   "-mx-4 flex-1 overflow-auto px-4 py-1 lg:flex-row lg:space-x-12 lg:space-y-0"
+  ],
+  "i18n_keys": [
+   "manage.description",
+   "manage.title"
+  ],
+  "i18n_key_count": 2
+ },
+ {
+  "path": "ticket",
+  "offset": 4406524,
+  "module": "x9t",
+  "component": "x9t",
+  "body_bytes": 719,
+  "namespaces": [
+   "ticket"
+  ],
+  "api": [],
+  "hooks": {
+   "useState": 0,
+   "useEffect": 0,
+   "useMemo": 0,
+   "useCallback": 0,
+   "useRef": 0
+  },
+  "jsx_top": [
+   [
+    "U8t",
+    1
+   ],
+   [
+    "eot",
+    1
+   ],
+   [
+    "tot",
+    1
+   ],
+   [
+    "Eut",
+    1
+   ],
+   [
+    "Lut",
+    1
+   ],
+   [
+    "sht",
+    1
+   ],
+   [
+    "not",
+    1
+   ],
+   [
+    "y9t",
+    1
+   ],
+   [
+    "K8t",
+    1
+   ]
+  ],
+  "class_count": 6,
+  "classes_sample": [
+   "ml-auto flex items-center space-x-4",
+   "flex flex-col",
+   "mb-2 flex items-center justify-between space-y-2",
+   "text-2xl font-bold tracking-tight",
+   "mt-2 text-muted-foreground",
+   "-mx-4 flex-1 overflow-auto px-4 py-1 lg:flex-row lg:space-x-12 lg:space-y-0"
+  ],
+  "i18n_keys": [],
+  "i18n_key_count": 0
+ },
+ {
+  "path": "traffic-reset-logs",
+  "offset": 4406695,
+  "module": "N9t",
+  "component": "N9t",
+  "body_bytes": 836,
+  "namespaces": [
+   "user"
+  ],
+  "api": [],
+  "hooks": {
+   "useState": 0,
+   "useEffect": 0,
+   "useMemo": 0,
+   "useCallback": 0,
+   "useRef": 0
+  },
+  "jsx_top": [
+   [
+    "eot",
+    1
+   ],
+   [
+    "tot",
+    1
+   ],
+   [
+    "Eut",
+    1
+   ],
+   [
+    "Lut",
+    1
+   ],
+   [
+    "sht",
+    1
+   ],
+   [
+    "not",
+    1
+   ],
+   [
+    "S9t",
+    1
+   ]
+  ],
+  "class_count": 9,
+  "classes_sample": [
+   "hidden md:block",
+   "ml-auto flex items-center space-x-4",
+   "flex flex-col",
+   "mb-4 space-y-2 md:mb-2 md:flex md:items-center md:justify-between md:space-y-0",
+   "space-y-1",
+   "text-xl font-bold tracking-tight md:text-2xl"
+  ],
+  "i18n_keys": [
+   "traffic_reset_logs.description",
+   "traffic_reset_logs.title"
+  ],
+  "i18n_key_count": 2
+ }
+]

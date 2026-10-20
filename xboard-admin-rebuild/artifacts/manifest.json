@@ -1,0 +1,34 @@
+{
+  "upstream": "https://github.com/cedar2025/Xboard",
+  "upstream_commit": "4f48e61a2cbc6db5338872b6bdb45ef954ec1256",
+  "image": "ghcr.io/cedar2025/xboard:latest",
+  "image_index_digest": "sha256:896e4926e0d7f18d223d58770590c74ab6f05ecb21f1b74ef5357ed20f44c676",
+  "image_manifest_digest_amd64": "sha256:3a432c8e3fd243f70afd885e3d4898343d0371971007def6c5f8e7b46991c0cf",
+  "image_layer_admin": "sha256:999bf9b3fed5e09868f18909926939f655be4aa6291611f089e43b4c59107f8c",
+  "admin_dist_submodule": "public/assets/admin @ ef5f43da335092cbff8fdf0ad7ff9b4d92d7d0d7",
+  "bundle": {
+    "path": "public/assets/admin/assets/index-CEIYH7i8.js",
+    "sha256": "f04f09a95bfdb04fa5132e336bf87c364d4e360cb95774872ff18eb69e9bcd77",
+    "bytes": 6534570
+  },
+  "css": {
+    "path": "public/assets/admin/assets/index-DiYa-_z_.css",
+    "sha256": "d9f2c763c5021270b391fd52a16598b8e229445013b417de7057ae4b50ac2962",
+    "bytes": 283863
+  },
+  "detected_stack": {
+    "react": "18.3.1",
+    "react_router": "6.30.2",
+    "monaco": "0.55.1",
+    "tailwind": "3.4.x",
+    "icons": "lucide-react 0.400.0 + @tabler/icons-react"
+  },
+  "fidelity_baseline": {
+    "pages_avg_changed_pixels": "4.51%",
+    "modals_avg": "0.77%",
+    "best": "/ 0.79%",
+    "worst": "/config/plugin/crud-demo 11.37%",
+    "viewport": "1440x900",
+    "metric": "changed pixel ratio (>24/765 channel delta)"
+  }
+}

@@ -1,0 +1,131 @@
+{
+ "base": "/api/v2/{secure_path}",
+ "modules": {
+  "config": [
+   "/config/fetch?key=",
+   "/config/getEmailTemplate",
+   "/config/knowledge",
+   "/config/notice",
+   "/config/payment",
+   "/config/plugin",
+   "/config/save",
+   "/config/setTelegramWebhook",
+   "/config/system",
+   "/config/testSendMail",
+   "/config/theme"
+  ],
+  "coupon": [
+   "/coupon/drop",
+   "/coupon/fetch",
+   "/coupon/generate",
+   "/coupon/update"
+  ],
+  "fulfilled": [
+   "/fulfilled"
+  ],
+  "gift-card": [
+   "/gift-card/codes",
+   "/gift-card/create-template",
+   "/gift-card/delete-template",
+   "/gift-card/generate-codes",
+   "/gift-card/statistics",
+   "/gift-card/templates",
+   "/gift-card/toggle-code",
+   "/gift-card/update-template",
+   "/gift-card/usages"
+  ],
+  "knowledge": [
+   "/knowledge/drop",
+   "/knowledge/fetch",
+   "/knowledge/fetch?id=",
+   "/knowledge/save",
+   "/knowledge/show",
+   "/knowledge/sort"
+  ],
+  "order": [
+   "/order/assign",
+   "/order/cancel",
+   "/order/detail",
+   "/order/fetch",
+   "/order/paid",
+   "/order/update"
+  ],
+  "payment": [
+   "/payment/drop",
+   "/payment/fetch",
+   "/payment/getPaymentForm",
+   "/payment/getPaymentMethods",
+   "/payment/save",
+   "/payment/show",
+   "/payment/sort"
+  ],
+  "pending": [
+   "/pending"
+  ],
+  "plan": [
+   "/plan/drop",
+   "/plan/fetch",
+   "/plan/save",
+   "/plan/sort",
+   "/plan/update"
+  ],
+  "rejected": [
+   "/rejected"
+  ],
+  "server": [
+   "/server/group",
+   "/server/group/drop",
+   "/server/group/fetch",
+   "/server/group/save",
+   "/server/machine",
+   "/server/machine/drop",
+   "/server/machine/fetch",
+   "/server/machine/getToken",
+   "/server/machine/history",
+   "/server/machine/installCommand",
+   "/server/machine/nodes",
+   "/server/machine/resetToken",
+   "/server/machine/save",
+   "/server/manage",
+   "/server/manage/batchDelete",
+   "/server/manage/batchResetTraffic",
+   "/server/manage/batchUpdate",
+   "/server/manage/copy",
+   "/server/manage/drop",
+   "/server/manage/generateEchKey",
+   "/server/manage/getNodes",
+   "/server/manage/resetTraffic",
+   "/server/manage/save",
+   "/server/manage/sort",
+   "/server/manage/update",
+   "/server/route",
+   "/server/route/drop",
+   "/server/route/fetch",
+   "/server/route/save"
+  ],
+  "stat": [
+   "/stat/getOrder",
+   "/stat/getStats",
+   "/stat/getTrafficRank"
+  ],
+  "theme": [
+   "/theme/delete",
+   "/theme/getThemeConfig",
+   "/theme/getThemes",
+   "/theme/saveThemeConfig",
+   "/theme/upload"
+  ],
+  "ticket": [
+   "/ticket/close",
+   "/ticket/fetch",
+   "/ticket/fetch?id=",
+   "/ticket/reply"
+  ],
+  "user": [
+   "/user/info",
+   "/user/manage",
+   "/user/ticket"
+  ]
+ },
+ "total": 95
+}
